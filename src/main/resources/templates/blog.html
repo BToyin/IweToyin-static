@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blog Page</title>
+    <link rel="stylesheet" th:href="@{vendors/animate.css/animate.min.css}">
+    <link rel="stylesheet" th:href="@{css/style.css}">
+    <script src="vendors/jquery/jquery.min.js"></script>
+    <script src="js/loader.js"></script>
+</head>
+
+<body>
+    <div class="page-loader"></div>
+    <div th:include="fragments/header"></div>
+    <div th:include="fragments/nav-pop-up"></div>
+
+    <main class="blog-page-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 blog-post-archive">
+                    <article class="media blog-post wow fadeInUp">
+                        <img src="images/blog_1.jpg" alt="blog post" class="blog-post-thumbnail">
+                        <div class="media-body">
+                            <h5 class="blog-post-title">Online Resources for self-isolated UI Designers</h5>
+                            <p class="blog-post-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.</p>
+                            <a href="#!" class="blog-post-link">Read more</a>
+                        </div>
+                    </article>
+                    <article class="media blog-post wow fadeInUp">
+                        <img src="images/blog_2.jpg" alt="blog post" class="blog-post-thumbnail">
+                        <div class="media-body">
+                            <h5 class="blog-post-title">Top UI/UX Design Trends for Mobile Apps [2020]</h5>
+                            <p class="blog-post-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.</p>
+                            <a href="#!" class="blog-post-link">Read more</a>
+                        </div>
+                    </article>
+                    <article class="media blog-post wow fadeInUp">
+                        <img src="images/blog_3.jpg" alt="blog post" class="blog-post-thumbnail">
+                        <div class="media-body">
+                            <h5 class="blog-post-title">Top UI/UX Design Trends for Mobile Apps [2020]</h5>
+                            <p class="blog-post-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.</p>
+                            <a href="#!" class="blog-post-link">Read more</a>
+                        </div>
+                    </article>
+                    <article class="media blog-post wow fadeInUp">
+                        <img src="images/blog_4.jpg" alt="blog post" class="blog-post-thumbnail">
+                        <div class="media-body">
+                            <h5 class="blog-post-title">Top UI/UX Design Trends for Mobile Apps [2020]</h5>
+                            <p class="blog-post-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.</p>
+                            <a href="#!" class="blog-post-link">Read more</a>
+                        </div>
+                    </article>
+                    <article class="media blog-post wow fadeInUp">
+                        <img src="images/blog_5.jpg" alt="blog post" class="blog-post-thumbnail">
+                        <div class="media-body">
+                            <h5 class="blog-post-title">Top UI/UX Design Trends for Mobile Apps [2020]</h5>
+                            <p class="blog-post-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.</p>
+                            <a href="#!" class="blog-post-link">Read more</a>
+                        </div>
+                    </article>
+                    <article class="media blog-post wow fadeInUp">
+                        <img src="images/blog_6.jpg" alt="blog post" class="blog-post-thumbnail">
+                        <div class="media-body">
+                            <h5 class="blog-post-title">Top UI/UX Design Trends for Mobile Apps [2020]</h5>
+                            <p class="blog-post-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.</p>
+                            <a href="#!" class="blog-post-link">Read more</a>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-lg-4 blog-sidebar wow fadeInRight">
+                    <div class="widget-twitter">
+                        <h5 class=tweet>Role of Proximity in Product Interaction Design (IxD)</h5>
+                        <p class="username">Toyin@webflow</p>
+                    </div>
+                    <div class="widget-subscribe">
+                        <h6 class="widget-tile">NEWS LETTER</h6>
+                        <form action="/index.html" method="post" class="subscribe-form">
+                            <div class="form-group">
+                                <label for="email" class="sr-only">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Your mail">
+                            </div>
+                            <button class="btn btn-block btn-subscribe rounded-0">Subscribe</button>
+                        </form>
+                        <p class="subscribe-text">Get special offers on the latest developments from Toyzone</p>
+                    </div>
+                    <div class="widget-posts">
+                        <h6 class="widget-title">BUSINESS</h6>
+                        <div class="media blog-post">
+                            <img src="images/blog_sidebar_1.jpg" alt="blog sidebar" class="post-thumbnail">
+                            <div class="media-body align-self-center">
+                                <h6 class="post-title">A UX guide to designing better mood boards</h6>
+                            </div>
+                        </div>
+                        <div class="media blog-post">
+                            <img src="images/blog_sidebar_2.jpg" alt="blog sidebar" class="post-thumbnail">
+                            <div class="media-body align-self-center">
+                                <h6 class="post-title">Best Practices for a Smoother Designer</h6>
+                            </div>
+                        </div>
+                        <div class="media blog-post">
+                            <img src="images/blog_sidebar_3.jpg" alt="blog sidebar" class="post-thumbnail">
+                            <div class="media-body align-self-center">
+                                <h6 class="post-title">Common pitfalls during the designer-developer </h6>
+                            </div>
+                        </div>
+                        <div class="media blog-post">
+                            <img src="images/blog_sidebar_4.jpg" alt="blog sidebar" class="post-thumbnail">
+                            <div class="media-body align-self-center">
+                                <h6 class="post-title">Don’t forget to account for all the states of a </h6>
+                            </div>
+                        </div>
+                        <div class="media blog-post">
+                            <img src="images/blog_sidebar_5.jpg" alt="blog sidebar" class="post-thumbnail">
+                            <div class="media-body align-self-center">
+                                <h6 class="post-title">Sit together and use tools to improve </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div th:include="fragments/footer"></div>
+
+    <script src="vendors/wowjs/wow.min.js"></script>
+    <script src="vendors/popper.js/popper.min.js"></script>
+    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+</body>
+
+</html>
