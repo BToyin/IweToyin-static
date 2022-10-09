@@ -16,4 +16,9 @@ public class HomePageController {
     public String getBlogPage (Model model) {
         return "blog";
     }
+
+    @GetMapping("/blog/posts/post1")
+    public String getBlogPost1 (Model model) {
+        return "blog-posts/post-1";
+    }
 }
