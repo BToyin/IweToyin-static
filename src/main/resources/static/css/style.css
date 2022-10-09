@@ -7244,9 +7244,8 @@ a.text-dark:hover, a.text-dark:focus {
 
 .section-text-ct {
   font-family: 'Crimson Text', serif;
-  font-size: 22px;
+  font-size: 20px;
   color: #000000;
-  font-weight: 600;
   line-height: 1.23; }
 
 .section-text-light {
@@ -7262,6 +7261,7 @@ a.text-dark:hover, a.text-dark:focus {
 .service-list .list-group-item {
   padding: 8px 0;
   border-color: var(--primary);
+  font-size: 14px;
   font-size: 14px;
   font-weight: 500; }
 
