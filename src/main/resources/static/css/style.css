@@ -7511,7 +7511,7 @@ html {
       .header-carousel .carousel-indicators li.active {
         opacity: 1; }
   .header-carousel .carousel-item-title {
-    color: var(--secondary;
+    color: var(--secondary);
     font-size: 48px;
     font-weight: 700;
     line-height: 1.21;
