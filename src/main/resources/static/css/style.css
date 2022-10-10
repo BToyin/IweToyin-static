@@ -7905,4 +7905,20 @@ html {
     opacity: 1;
     width: 100%; }
 
+.main-blog-section > .blog-post-title {
+    color: var(--secondary);
+}
+
+.main-blog-section > .blog-cover-picture {
+    color: var(--secondary);
+}
+
+.primary-color {
+  color: var(--primary);
+}
+
+.secondary-color {
+  color: var(--secondary);
+}
+
 /*# sourceMappingURL=style.css.map */

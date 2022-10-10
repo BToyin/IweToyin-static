@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blog-Footer</title>
+    <link rel="stylesheet" th:href="@{vendors/animate.css/animate.min.css}">
+    <link rel="stylesheet" th:href="@{css/style.css}">
+    <script src="vendors/jquery/jquery.min.js"></script>
+    <script src="js/loader.js"></script>
+</head>
+<body>
+    <div th:fragment="blog-footer" class="lerongba-footer wow fadeInUp">
+        <div class="container load-more-link link-hover-fx">
+            <a href="#" class="float-left secondary-color">&laquo; Previous Post</a>
+            <a href="#" class="float-right secondary-color">Next Post &raquo;</a>
+        </div>
+    </div>
+</body>
+</html>
