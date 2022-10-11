@@ -12,9 +12,18 @@
 </head>
 <body>
     <div th:fragment="blog-footer" class="lerongba-footer wow fadeInUp">
-        <div class="container load-more-link link-hover-fx">
-            <a href="#" class="float-left secondary-color">&laquo; Previous Post</a>
-            <a href="#" class="float-right secondary-color">Next Post &raquo;</a>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <a href="#" class="float-left secondary-color load-more-link link-hover-fx">&laquo; Previous Post</a>
+                </div>
+                <div class="col-sm-4 text-center">
+                    <a th:href="@{/blog}" class="secondary-color load-more-link link-hover-fx">See all posts</a>
+                </div>
+                <div class="col-sm-4">
+                    <a href="#" class="float-right secondary-color load-more-link link-hover-fx">Next Post &raquo;</a>
+                </div>
+            </div>
         </div>
     </div>
 </body>
