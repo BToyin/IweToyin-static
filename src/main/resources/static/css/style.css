@@ -7774,7 +7774,7 @@ html {
         padding: 20px 0 0; } }
 
 .blog-page-wrapper {
-  padding-top: 100px;
+  padding-top: 50px;
   padding-bottom: 50px; }
 
 .blog-post-archive .blog-post {
@@ -7798,7 +7798,7 @@ html {
     font-size: 20px;
     font-weight: 500;
     line-height: 1.25;
-    color: #312c2c;
+    color: black;
     margin-bottom: 14px; }
   .blog-post-archive .blog-post-excerpt {
     font-size: 14px;
@@ -7810,6 +7810,9 @@ html {
     font-size: 15px;
     font-weight: 500;
     color: #000000; }
+  .blog-post-archive .blog-post-link:hover, .blog-post-archive .blog-post-link:focus {
+        color: rgba(0, 0, 0, 0.6);
+        text-decoration: none; }
 
 .blog-sidebar .widget-title {
   margin-bottom: 24px; }
