@@ -20,6 +20,7 @@
   --gray: #6c757d;
   --gray-dark: #343a40;
   --primary: #fdef6b;
+  /*(253,239,107,1)*/
   --secondary: #7B1818;
   --success: #28a745;
   --info: #17a2b8;
@@ -7866,8 +7867,8 @@ html {
     color: #d3d3d3; }
 
 .blog-sidebar .subscribe-form .btn-subscribe {
-  background-color: rgba(0, 145, 255, 0.66);
-  color: #ffffff;
+  background-color: rgba(253,239,107,0.8);
+  color: black;
   font-weight: 400;
   padding-top: 13px;
   padding-bottom: 14px;

@@ -13,8 +13,8 @@
 <body>
     <div th:fragment="blog-sidebar" class="blog-sidebar wow fadeInRight">
       <div class="widget-twitter">
-        <h5 class=tweet>Definition of Lerongba - Yoruba word for thinking</h5>
-        <p class="username">@baitajani</p>
+        <h5 class=tweet>"Where you will sit when you are old shows where you stood in youth."</h5>
+        <p class="username">Yoruba Proverb</p>
       </div>
       <div class="widget-subscribe">
         <h6 class="widget-tile">SUBSCRIBE</h6>
@@ -25,38 +25,38 @@
           </div>
           <button class="btn btn-block btn-subscribe rounded-0">Subscribe</button>
         </form>
-        <p class="subscribe-text">Get special offers on the latest developments from Toyzone</p>
+        <p class="subscribe-text">Hear about new blog posts, significant website updates and most importantly...No Spam!</p>
       </div>
       <div class="widget-posts">
-        <h6 class="widget-title">BUSINESS</h6>
+        <h6 class="widget-title">POPULAR BLOG POSTS</h6>
         <div class="media blog-post">
           <img src="/images/blog_sidebar_1.jpg" alt="blog sidebar" class="post-thumbnail">
           <div class="media-body align-self-center">
-            <h6 class="post-title">A UX guide to designing better mood boards</h6>
+            <a th:href="@{/blog/posts/post1}" class="load-more-link link-hover-fx"><h6 class="post-title">Being Mandem at Uni</h6></a>
           </div>
         </div>
         <div class="media blog-post">
           <img src="/images/blog_sidebar_2.jpg" alt="blog sidebar" class="post-thumbnail">
           <div class="media-body align-self-center">
-            <h6 class="post-title">Best Practices for a Smoother Designer</h6>
+            <a th:href="@{/blog/posts/post1}" class="load-more-link link-hover-fx"><h6 class="post-title">Being Mandem and Dancing</h6></a>
           </div>
         </div>
         <div class="media blog-post">
           <img src="/images/blog_sidebar_3.jpg" alt="blog sidebar" class="post-thumbnail">
           <div class="media-body align-self-center">
-            <h6 class="post-title">Common pitfalls during the designer-developer </h6>
+            <a th:href="@{/blog/posts/post1}" class="load-more-link link-hover-fx"><h6 class="post-title">White People Voice</h6></a>
           </div>
         </div>
         <div class="media blog-post">
           <img src="/images/blog_sidebar_4.jpg" alt="blog sidebar" class="post-thumbnail">
           <div class="media-body align-self-center">
-            <h6 class="post-title">Don’t forget to account for all the states of a </h6>
+            <a th:href="@{/blog/posts/post1}" class="load-more-link link-hover-fx"><h6 class="post-title">Motivation and Me</h6></a>
           </div>
         </div>
         <div class="media blog-post">
           <img src="/images/blog_sidebar_5.jpg" alt="blog sidebar" class="post-thumbnail">
           <div class="media-body align-self-center">
-            <h6 class="post-title">Sit together and use tools to improve </h6>
+            <a th:href="@{/blog/posts/post1}" class="load-more-link link-hover-fx"><h6 class="post-title">Another blog title</h6></a>
           </div>
         </div>
       </div>
