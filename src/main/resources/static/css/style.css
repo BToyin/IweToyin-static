@@ -7698,11 +7698,9 @@ html {
   font-size: 25px;
   font-weight: 700;
   line-height: 1;
-  color: var(--primary);
+  color: var(--secondary);
   margin-bottom: 30px; }
 
-.contact-page-street-address {
-  margin-bottom: 28px; }
 
 .contact-page-content-wrapper {
   display: flex;
@@ -7815,10 +7813,10 @@ html {
         color: rgba(0, 0, 0, 0.6);
         text-decoration: none; }
 
-.blog-sidebar .widget-title {
+.widget-title {
   margin-bottom: 24px; }
 
-.blog-sidebar .widget-twitter {
+.widget-twitter {
   background-color: #000000;
   padding: 78px 64px 54px 44px;
   color: #ffffff;
@@ -7826,10 +7824,10 @@ html {
   background-image: url(../images/Bg_blog_right.png);
   background-size: cover;
   background-repeat: no-repeat; }
-  .blog-sidebar .widget-twitter .tweet {
+  .widget-twitter .tweet {
     line-height: 1.25;
     margin-bottom: 31px; }
-  .blog-sidebar .widget-twitter .username {
+  .widget-twitter .username {
     font-size: 12px;
     font-weight: 500;
     color: #c1b8b8;
@@ -7839,34 +7837,34 @@ html {
     background-size: 20px;
     margin-bottom: 0; }
 
-.blog-sidebar .widget-subscribe {
+.widget-subscribe {
   margin-bottom: 20px; }
 
-.blog-sidebar .subscribe-form .form-group {
+.subscribe-form .form-group {
   margin-bottom: 24px; }
 
-.blog-sidebar .subscribe-form .form-control {
+.subscribe-form .form-control {
   border: 0;
   border-radius: 0;
   border-bottom: 1px solid #d3d3d3;
   padding: 5px 0;
   font-size: 16px;
   font-weight: 500; }
-  .blog-sidebar .subscribe-form .form-control:focus {
+  .subscribe-form .form-control:focus {
     outline: none;
     box-shadow: none; }
-  .blog-sidebar .subscribe-form .form-control::-webkit-input-placeholder {
+  .subscribe-form .form-control::-webkit-input-placeholder {
     color: #d3d3d3; }
-  .blog-sidebar .subscribe-form .form-control::-moz-placeholder {
+  .subscribe-form .form-control::-moz-placeholder {
     color: #d3d3d3; }
-  .blog-sidebar .subscribe-form .form-control:-ms-input-placeholder {
+  .subscribe-form .form-control:-ms-input-placeholder {
     color: #d3d3d3; }
-  .blog-sidebar .subscribe-form .form-control::-ms-input-placeholder {
+  .subscribe-form .form-control::-ms-input-placeholder {
     color: #d3d3d3; }
-  .blog-sidebar .subscribe-form .form-control::placeholder {
+  .subscribe-form .form-control::placeholder {
     color: #d3d3d3; }
 
-.blog-sidebar .subscribe-form .btn-subscribe {
+.subscribe-form .btn-subscribe {
   background-color: rgba(253,239,107,0.8);
   color: black;
   font-weight: 400;
@@ -7874,12 +7872,12 @@ html {
   padding-bottom: 14px;
   margin-bottom: 10px; }
 
-.blog-sidebar .subscribe-text {
+.subscribe-text {
   font-size: 13px;
   line-height: 1.54;
   color: #312c2c; }
 
-.blog-sidebar .widget-posts .blog-post {
+.widget-posts .blog-post {
   margin-bottom: 27px; }
   .blog-sidebar .widget-posts .blog-post .post-thumbnail {
     width: 80px;
@@ -7887,7 +7885,7 @@ html {
     -o-object-fit: cover;
        object-fit: cover;
     margin-right: 13px; }
-  .blog-sidebar .widget-posts .blog-post .post-title {
+  .widget-posts .blog-post .post-title {
     font-size: 14px;
     font-weight: 500;
     line-height: 1.43;
@@ -7923,6 +7921,10 @@ html {
 
 .secondary-color {
   color: var(--secondary);
+}
+
+#welcome-section .section-title {
+    font-size: 4rem;
 }
 
 /*# sourceMappingURL=style.css.map */

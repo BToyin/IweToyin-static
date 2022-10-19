@@ -15,8 +15,24 @@
     <div class="page-loader"></div>
     <div th:include="fragments/header"></div>
     <div th:include="fragments/nav-pop-up"></div>
+     <section class="site-section" id="welcome-section">
+         <div class="container">
+             <div class="row">
+                 <h2 class="section-title mb-3">Welcome to My Virtual space</h2>
+                 <div class="col-md-6 d-flex flex-column wow fadeInUp">
+                     <p class="section-text-ct text-justify">If you don't already know, the handsome man in the pictures is me - Toyin (or Bait to some). Lerongba means "Thinking" in my native Yoruba and that's what this website is about. The website is an expression of my thinking.
+                         Expect to find a chaotic blog, semi-useful resources I put together and some shameless self-promotion.
+                         I hope you enjoy!
+                     </p>
+                 </div>
+                 <div class="col-md-6 wow fadeInUp d-flex align-items-center">
+                     <img src="/images/avatar.jpg" class="w-100 mb-5" alt="Profile Picture">
+                 </div>
+             </div>
+         </div>
+     </section>
     <div class="container wow fadeInUp">
-        <div id="headerCarousel" class="header-carousel carousel slide" data-ride="carousel" data-interval="6000">
+        <div id="headerCarousel" class="header-carousel carousel slide" data-ride="carousel" data-interval="10000">
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
                     <div class="row">
@@ -61,12 +77,12 @@
             </ol>
         </div>
     </div>
-    <section class="bg-primary site-section" id="about">
+    <section class="bg-primary site-section" id="about-me">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 d-flex flex-column justify-content-center wow fadeInUp">
                     <h2 class="section-title mb-3">About Me</h2>
-                    <p class="section-text-ct text-justify">Hello and Welcome to My Website. If you don't already know, the handsome man in the picture is me - Toyin. So, just a little introduction. I'm a German born, Nigerian, Chemical Engineering Graduate, living in Birmingham and now working as a Software Engineer specialising in Java. Lerongba means "Thinking" in my native Yoruba and that's what this website is about. The website, and more specifically the blog, is an expression of my thinking. Lastly, I painfully designed this website myself, without a website building service (I don't recommend), so if there's any feedback or small bugs please do let me know. The website will incrementally get better with time. Thanks for reading this far and enjoy!</p>
+                    <p class="section-text-ct text-justify">Hello and welcome to My Website. (Something introduing myself and my name etc). So, just a little introduction. I'm a German born, Nigerian, Chemical Engineering Graduate, living in Birmingham and now working as a Software Engineer specialising in Java. Lastly, I painfully designed this website myself, without a website building service (I don't recommend), so if there's any feedback or small bugs please do let me know. The website will incrementally get better with time. Thanks for reading this far and enjoy!</p>
                 </div>
                 <div class="col-md-6 wow fadeInUp d-flex align-items-center">
                     <img src="images/img_3.png" class="w-100 mb-5" alt="Profile Picture">
@@ -115,27 +131,27 @@
         <div class="container">
             <h2 class="section-title latest-blog-posts-title">Latest Blog Posts</h2>
             <div class="row">
-                <div class="col-md-6wow fadeInUp">
+                <div class="col-md-6 wow fadeInUp">
                     <div class="project-card wow fadeInUp">
                         <img src="images/Works4.png" alt="Project" class="project-thumbnail">
-                        <h6 class="blog-title">Being Mandem at Uni</h6>
+                        <a th:href="@{/blog/posts/post1}" class="load-more-link"><h6 class="blog-title">Being Mandem at Uni</h6></a>
                         <p class="Project-category">Tags for Blog post </p>
                     </div>
                     <div class="project-card wow fadeInUp">
                         <img src="images/Works2.png" alt="Project" class="project-thumbnail">
-                        <h6 class="blog-title">White People Voice</h6>
+                        <a th:href="@{/blog/posts/post1}" class="load-more-link"><h6 class="blog-title">White People Voice</h6></a>
                         <p class="Project-category">Tags for Blog post </p>
                     </div>
                 </div>
                 <div class="col-md-6 project-column-indented">
                     <div class="project-card wow fadeInUp">
                         <img src="images/Works3.png" alt="Project" class="project-thumbnail">
-                        <h6 class="blog-title">Blog title</h6>
+                        <a th:href="@{/blog/posts/post1}" class="load-more-link"><h6 class="blog-title">Being Mandem and Dancing</h6></a>
                         <p class="Project-category">Tags for Blog post </p>
                     </div>
                     <div class="project-card wow fadeInUp">
                         <img src="images/Works1.png" alt="Project" class="project-thumbnail">
-                        <h6 class="blog-title">Blog title</h6>
+                        <a th:href="@{/blog/posts/post1}" class="load-more-link"><h6 class="blog-title">Blog Title</h6></a>
                         <p class="Project-category">Tags for Blog post </p>
                     </div>
                 </div>
@@ -148,14 +164,10 @@
     <section class="contact-section site-section">
         <div class="container wow fadeInUp">
             <h2 class="section-title mb-0">Holla at me</h2>
-            <h6 class="font-weight-semibold mb-4 mb-md-0">Please get in touch through socials or email to provide feedback on the blog, website or any resources shared. I do appreciate it.</h6>
+            <h6 class="font-weight-medium mb-4 mb-md-0">Please get in touch through socials or email to provide feedback on the blog, website or any resources shared. Thank you</h6>
             <div class="contact-address">
                 <div class="row">
-                    <div class="col-md-5">
-                        <p class="font-weight-medium">9010 Varna, Bulgaria, <br> Breeze Borough, <br> Saint Nicholas, 26</p>
-                    </div>
-                    <div class="col-md-5 mb-4 mb-md-0">
-                        <p class="font-weight-medium">baittoyinajani@gmail.com</p>
+                    <div class="col-md-2 mb-4 mb-md-0 d-flex align-items-center">
                         <ul class="nav contact-social-links">
                             <li class="nav-item">
                                 <a href="https://www.linkedin.com/in/bait-toyin-ajani-338961191/" class="nav-link">
@@ -169,7 +181,18 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="col-md-2 d-flex align-items-end">
+                    <div class="col-md-8 mb-4 mb-md-0 widget-subscribe">
+                        <h6 class="widget-tile">SUBSCRIBE</h6>
+                        <p class="subscribe-text">Hear about new blog posts, significant website updates and most importantly...No Spam!</p>
+                        <form action="/index.html" method="post" class="subscribe-form">
+                            <div class="form-group">
+                                <label for="email" class="sr-only">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Your mail">
+                            </div>
+                            <button class="btn btn-block btn-subscribe rounded-0">Subscribe</button>
+                        </form>
+                    </div>
+                    <div class="col-md-2 d-flex align-items-center">
                         <a href="#top" class="go-top-btn">
                             <img src="images/arrow_up@1x.svg" alt="arrow up">
                             <span class="sr-only">Go to top</span>
