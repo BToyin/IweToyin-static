@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Lerongba</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" th:href="@{vendors/animate.css/animate.min.css}">
     <link rel="stylesheet" th:href="@{css/style.css}">
     <script src="vendors/jquery/jquery.min.js"></script>
@@ -13,80 +14,77 @@
 
 <body>
     <div class="page-loader"></div>
-    <div th:include="fragments/header"></div>
     <div th:include="fragments/nav-pop-up"></div>
-     <section class="site-section" id="welcome-section">
-         <div class="container">
-             <div class="row">
-                 <h2 class="section-title mb-3">Welcome to My Virtual space</h2>
-                 <div class="col-md-6 d-flex flex-column wow fadeInUp">
-                     <p class="section-text-ct text-justify">If you don't already know, the handsome man in the pictures is me - Toyin (or Bait to some). Lerongba means "Thinking" in my native Yoruba and that's what this website is about. The website is an expression of my thinking.
-                         Expect to find a chaotic blog, semi-useful resources I put together and some shameless self-promotion.
-                         I hope you enjoy!
-                     </p>
-                 </div>
-                 <div class="col-md-6 wow fadeInUp d-flex align-items-center">
-                     <img src="/images/avatar.jpg" class="w-100 mb-5" alt="Profile Picture">
-                 </div>
-             </div>
-         </div>
-     </section>
-    <div class="container wow fadeInUp">
-        <div id="headerCarousel" class="header-carousel carousel slide" data-ride="carousel" data-interval="10000">
-            <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h1 class="carousel-item-title" data-animation="animated fadeInRight" data-number="01"><span>Regular Blog Posts</span></h1>
-                            <p class="carousel-item-description" data-animation="animated fadeInRight">Will be publishing regular blog posts about the general thoughts in my head. Don't expect anything too fancy or well organised; my head runs on chaos energy and blog will reflect that. </p>
-                            <a th:href="@{/blog}" class="carousel-item-link link-hover-fx" data-animation="animated fadeInRight">SEE BLOG POSTS</a>
-                            <ul class="carousel-item-social-links nav" data-animation="animated fadeInRight">
-                                <li>
-                                    <a href="https://www.facebook.com/geniusdoe" class="link-hover-fx">FACEBOOK</a>
-                                </li>
-                                <li>
-                                    <a href="https://www.linkedin.com/in/bait-toyin-ajani-338961191/" class="link-hover-fx">LINKEDIN</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <img src="images/avatar.jpg" alt="Profile Picture" class="img-fluid w-100 rounded" width="372px">
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h1 class="carousel-item-title" data-animation="animated fadeInRight" data-number="02"><span>Coding & Tuition Service</span></h1>
-                            <p class="carousel-item-description" data-animation="animated fadeInRight">If you like what you see on this website, I could teach you how I did it. I'm also an experienced tutor. Please get in touch for rates.</p>
-                            <a href="#services" class="carousel-item-link link-hover-fx" data-animation="animated fadeInRight">READ MORE</a>
-                            <ul class="carousel-item-social-links nav" data-animation="animated fadeInRight">
-                                <li><a href="https://www.facebook.com/geniusdoe" class="link-hover-fx">FACEBOOK</a></li>
-                                <li><a href="https://www.linkedin.com/in/bait-toyin-ajani-338961191/" class="link-hover-fx">LINKEDIN</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <img src="images/blog_1.jpg" alt="<span>Coding and Tuition Services</span>" class="img-fluid w-100 rounded" width="372px">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <ol class="carousel-indicators">
-                <li data-target="#headerCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#headerCarousel" data-slide-to="1"></li>
-            </ol>
+    <!-- First Parallax Image with Logo Text -->
+    <div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
+        <div th:include="fragments/header"></div>
+        <div class="w3-display-middle" style="white-space:nowrap;">
+            <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">WELCOME </span>
         </div>
     </div>
-    <section class="bg-primary site-section" id="about-me">
+    <section class="site-section" id="about-me">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 d-flex flex-column justify-content-center wow fadeInUp">
                     <h2 class="section-title mb-3">About Me</h2>
-                    <p class="section-text-ct text-justify">Hello and welcome to My Website. (Something introduing myself and my name etc). So, just a little introduction. I'm a German born, Nigerian, Chemical Engineering Graduate, living in Birmingham and now working as a Software Engineer specialising in Java. Lastly, I painfully designed this website myself, without a website building service (I don't recommend), so if there's any feedback or small bugs please do let me know. The website will incrementally get better with time. Thanks for reading this far and enjoy!</p>
+                    <p class="section-text-ct text-justify">Hello and welcome to Lerongba! If you don't already know, the handsome man in the pictures is me - Toyin (or Bait to some).
+                        So, just a little introduction. I'm a German born, Nigerian, Chemical Engineering Graduate, living in Birmingham and now working as a Software Engineer specialising in Java.
+                        Lerongba means "Thinking" in my native Yoruba and that's what this website is about. The website is an expression of my thinking.
+                        Expect to find a chaotic blog, semi-useful resources I put together and some shameless self-promotion.
+                        Lastly, I painfully designed this web app myself, without a website building service (I don't recommend), so if there's any feedback or small bugs please do let me know.
+                        Thanks for reading this far and enjoy!</p>
                 </div>
                 <div class="col-md-6 wow fadeInUp d-flex align-items-center">
                     <img src="images/img_3.png" class="w-100 mb-5" alt="Profile Picture">
                 </div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-primary" id="carousel-section">
+        <div class="container wow fadeInUp">
+            <div id="headerCarousel" class="header-carousel carousel slide" data-ride="carousel" data-interval="10000">
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h1 class="carousel-item-title" data-animation="animated fadeInRight" data-number="01"><span>Regular Blog Posts</span></h1>
+                                <p class="carousel-item-description" data-animation="animated fadeInRight">Will be publishing regular blog posts about the general thoughts in my head. Don't expect anything too fancy or well organised; my head runs on chaos energy and blog will reflect that. </p>
+                                <a th:href="@{/blog}" class="carousel-item-link link-hover-fx" data-animation="animated fadeInRight">SEE BLOG POSTS</a>
+                                <ul class="carousel-item-social-links nav" data-animation="animated fadeInRight">
+                                    <li>
+                                        <a href="https://www.facebook.com/geniusdoe" class="link-hover-fx">FACEBOOK</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.linkedin.com/in/bait-toyin-ajani-338961191/" class="link-hover-fx">LINKEDIN</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <img src="images/avatar.jpg" alt="Profile Picture" class="img-fluid w-100 rounded" width="372px">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h1 class="carousel-item-title" data-animation="animated fadeInRight" data-number="02"><span>Coding & Tuition Service</span></h1>
+                                <p class="carousel-item-description" data-animation="animated fadeInRight">If you like what you see on this website, I could teach you how I did it. I'm also an experienced tutor. Please get in touch for rates.</p>
+                                <a href="#services" class="carousel-item-link link-hover-fx" data-animation="animated fadeInRight">READ MORE</a>
+                                <ul class="carousel-item-social-links nav" data-animation="animated fadeInRight">
+                                    <li><a href="https://www.facebook.com/geniusdoe" class="link-hover-fx">FACEBOOK</a></li>
+                                    <li><a href="https://www.linkedin.com/in/bait-toyin-ajani-338961191/" class="link-hover-fx">LINKEDIN</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <img src="images/blog_1.jpg" alt="<span>Coding and Tuition Services</span>" class="img-fluid w-100 rounded" width="372px">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ol class="carousel-indicators">
+                    <li data-target="#headerCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#headerCarousel" data-slide-to="1"></li>
+                </ol>
             </div>
         </div>
     </section>
@@ -203,7 +201,6 @@
         </div>
     </section>
     <div th:include="fragments/footer"></div>
-
 
     <script src="vendors/wowjs/wow.min.js"></script>
     <script src="vendors/popper.js/popper.min.js"></script>
