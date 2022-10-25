@@ -17,10 +17,11 @@
     <div th:include="fragments/nav-pop-up"></div>
     <main class="contact-page-wrapper">
         <div class="container">
+            <h2 class="section-title text-center pb-5">Contact Me</h2>
             <div class="row">
                 <div class="col-md-6 col-lg-4 offset-lg-2 contact-page-content-wrapper wow fadeInLeft">
                     <div class="contact-page-content">
-                        <h4 class="contact-page-title">Any Feedback is appreciated</h4>
+                        <h4 class="contact-page-title">Contact me to provide feedback or enquire about tuition rates</h4>
                         <p class="mb-3">baittoyinajani@gmail.com</p>
                         <ul class="nav contact-social-links">
                             <li class="nav-item">
@@ -38,6 +39,13 @@
                 </div>
                 <div class="col-md-6 col-lg-4 contact-page-form-wrapper wow fadeInRight">
                     <form action="/index" method="post">
+                        <div class="form-group">
+                            <label for="contact-about" class=font-weight-bold">What are you contacting me about?</label>
+                            <select class="form-control" id="contact-about" name="contact-about">
+                                <option>To provide general feedback</option>
+                                <option>To enquire about rates and services</option>
+                            </select>
+                        </div>
                         <div class="form-group">
                             <label for="name" class="sr-only">Name</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="Name">

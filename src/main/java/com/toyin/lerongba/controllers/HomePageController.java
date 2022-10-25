@@ -21,4 +21,9 @@ public class HomePageController {
     public String getBlogPost1 (Model model) {
         return "blog-posts/post-1";
     }
+
+    @GetMapping("/about-me")
+    public String getAboutMePage (Model model) {
+        return "/index#about-me";
+    }
 }
