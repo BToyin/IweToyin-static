@@ -7405,7 +7405,8 @@ html {
     @media (max-width: 767px) {
       .nav-popup-modal-content {
         display: block;
-        padding-bottom: 0; } }
+        padding-bottom: 0;
+        transform: translateX(0%) translateY(30px);} }
     .nav-popup-modal-content > .container {
       overflow: auto;
       max-height: 100%;
@@ -7422,7 +7423,7 @@ html {
         padding-right: 15px;
         display: block;
         border-right: 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.29); } }
+        border-bottom: 1px solid rgba(255, 255, 255, 0.29);} }
   .nav-popup-modal .blog-posts {
     padding-left: 90px; }
     @media (max-width: 767px) {

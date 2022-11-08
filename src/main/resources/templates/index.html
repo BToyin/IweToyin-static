@@ -14,14 +14,13 @@
 
 <body>
     <div class="page-loader"></div>
-    <div th:include="fragments/nav-pop-up"></div>
-    <!-- First Parallax Image with Logo Text -->
-    <div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
+    <div class="bgimg-1 w3-display-container">
         <div th:include="fragments/header"></div>
         <div class="w3-display-middle" style="white-space:nowrap;">
-            <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">WELCOME </span>
+            <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">LERONGBA</span>
         </div>
     </div>
+    <div th:include="fragments/nav-pop-up"></div>
     <section class="site-section" id="about-me">
         <div class="container">
             <div class="row">
@@ -121,6 +120,9 @@
                             <li class="list-group-item">Web design with HMTL & CSS</li>
                         </ul>
                     </div>
+                </div>
+                <div class="col-12">
+                    <a th:href="@{/contact}" class="load-more-link link-hover-fx">CONTACT ME ABOUT MY SERVICES</a>
                 </div>
             </div>
         </div>
