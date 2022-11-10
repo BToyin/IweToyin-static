@@ -6,6 +6,9 @@ $('.lerongba-nav-popup-toggle').click(function(){
 $('.main-nav .nav-link[href^="#"]:not([href="#!"])').click(function(){
     $('body').removeClass('nav-popup-modal-open');
 });
+$('.main-nav .nav-link[href^="../../#"]:not([href="#!"])').click(function(){
+    $('body').removeClass('nav-popup-modal-open');
+});
 $myCarousel = $('.carousel');
 
 function doAnimations(elems) {
