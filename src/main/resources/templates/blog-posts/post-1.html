@@ -47,11 +47,12 @@
             </p>
           </article>
         </div>
-        <div th:include="/fragments/blog-sidebar" class="col-lg-4"></div>
+        <div th:include="/fragments/blog-sidebar" class="col-lg-4 laptop-only"></div>
       </div>
     </div>
   </main>
   <div th:include="/fragments/blog-footer"></div>
+  <div th:include="/fragments/blog-sidebar" class="col-lg-4 mobile-only"></div>
   <div th:include="/fragments/footer"></div>
 
   <script src="/vendors/wowjs/wow.min.js"></script>

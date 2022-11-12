@@ -7946,3 +7946,17 @@ html {
     min-height: 700px;
   }
 }
+
+/*show on full laptop screens only*/
+@media only screen and (max-width: 1026px) {
+  .laptop-only {
+    display: none;
+  }
+}
+
+/*show for mobile/table only*/
+@media only screen and (min-width: 1027px) {
+  .mobile-only {
+    display: none;
+  }
+}
