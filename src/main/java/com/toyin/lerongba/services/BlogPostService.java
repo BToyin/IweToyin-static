@@ -11,9 +11,9 @@ import java.util.List;
 @Service
 public class BlogPostService {
 
-    private BlogPostRepository blogPostRepository;
-
     @Autowired
+    private final BlogPostRepository blogPostRepository;
+
     public BlogPostService(BlogPostRepository blogPostRepository) {
         this.blogPostRepository = blogPostRepository;
     }

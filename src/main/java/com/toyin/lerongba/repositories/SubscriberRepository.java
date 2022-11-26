@@ -13,4 +13,6 @@ public interface SubscriberRepository extends JpaRepository<Subscriber, Integer>
     Optional<Subscriber> findById(Integer integer);
 
     Subscriber findSubscriberByEmail(String email);
+
+    boolean existsByEmail(String email);
 }

@@ -184,13 +184,15 @@
                     <div class="col-md-8 mb-4 mb-md-0 widget-subscribe">
                         <h6 class="widget-tile">SUBSCRIBE</h6>
                         <p class="subscribe-text">Hear about new blog posts, significant website updates and most importantly...No Spam!</p>
-                        <form action="/index.html" method="post" class="subscribe-form">
-                            <div class="form-group">
-                                <label for="email" class="sr-only">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Your mail">
-                            </div>
-                            <button class="btn btn-block btn-subscribe rounded-0">Subscribe</button>
-                        </form>
+<!--                        <p th:if="${error}" class="error">Email address already subscribed</p>-->
+<!--                        <p th:if="${passed}" class="alert-success">Email address added as subscriber successfully!</p>-->
+<!--                        <form class="subscriber-form" action="#" th:action="@{/add-subscriber}" th:object="${subscriber}" method="post">-->
+<!--                            <div class="form-group">-->
+<!--                                <label for="email" class="sr-only">Email</label>-->
+<!--                                <input type="text" class="form-control" th:field="*{email}" id="email" name="email" placeholder="Your mail">-->
+<!--                            </div>-->
+<!--                            <input class="btn btn-block btn-subscribe rounded-0" type="submit" value="Subscribe">-->
+<!--                        </form>-->
                     </div>
                     <div class="col-md-2 d-flex align-items-center">
                         <a href="#top" class="go-top-btn">
@@ -202,7 +204,7 @@
             </div>
         </div>
     </section>
-    <div th:include="fragments/footer"></div>
+    <div th:include="fragments/footer :: footer">Footer not found.</div>
 
     <script src="vendors/wowjs/wow.min.js"></script>
     <script src="vendors/popper.js/popper.min.js"></script>
