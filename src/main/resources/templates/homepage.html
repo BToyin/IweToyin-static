@@ -161,7 +161,7 @@
         </div>
     </div>
 </section>
-<section class="contact-section site-section">
+<section class="contact-section site-section" id="contact-section">
     <div class="container wow fadeInUp">
         <h2 class="section-title mb-0">Holla at me</h2>
         <h6 class="font-weight-medium mb-4 mb-md-0">Please get in touch through socials or email to provide feedback on the blog, website or any resources shared. Thank you</h6>
@@ -182,16 +182,14 @@
                     </ul>
                 </div>
                 <div class="col-md-8 mb-4 mb-md-0 widget-subscribe">
-                    <h6 class="widget-tile">SUBSCRIBE</h6>
                     <p class="subscribe-text">Hear about new blog posts, significant website updates and most importantly...No Spam!</p>
                     <p th:if="${error}" class="alert-danger">Email address already subscribed</p>
                     <p th:if="${passed}" class="alert-success">Email address added as subscriber successfully!</p>
-                    <form class="subscriber-form" action="#" th:action="@{/add-subscriber}" th:object="${subscriber}" method="post">
+                    <form class="subscriber-form" id="subscriber-form" action="#" th:action="@{/homepage/subscribe}" th:object="${subscriber}" method="post">
                         <div class="form-group">
-                            <label for="email" class="sr-only">Email</label>
-                            <input type="email" class="form-control" th:field="*{email}" id="email" name="email" placeholder="Your mail">
+                            <input type="email" class="form-control" th:field="*{email}" id="email" placeholder="Your email">
                         </div>
-                        <input class="btn btn-block btn-subscribe rounded-0" type="submit" value="Subscribe">
+                        <input class="btn btn-block btn-subscribe" type="submit" value="Subscribe" id="submit-subscriber-form">
                     </form>
                 </div>
                 <div class="col-md-2 d-flex align-items-center">

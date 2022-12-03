@@ -7855,13 +7855,14 @@ html {
   .subscribe-form .form-control::placeholder {
     color: #d3d3d3; }
 
-.subscribe-form .btn-subscribe {
-  background-color: rgba(253,239,107,0.8);
+.subscriber-form .btn-subscribe {
   color: black;
   font-weight: 400;
-  padding-top: 13px;
-  padding-bottom: 14px;
-  margin-bottom: 10px; }
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+  display: block;
+  border-radius: 0 !important;}
 
 .subscribe-text {
   font-size: 13px;

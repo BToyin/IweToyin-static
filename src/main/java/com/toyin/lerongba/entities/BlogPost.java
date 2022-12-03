@@ -7,8 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.sql.Timestamp;
-import java.util.Objects;
 
 @Entity
 @Table(name = "blog_post", schema = "lerongba")
@@ -19,7 +17,6 @@ public class BlogPost {
     private String author;
     private String excerpt;
     private String content;
-    private Timestamp lastUpdate;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -60,26 +57,4 @@ public class BlogPost {
         this.content = content;
     }
 
-    @Basic
-    @Column(name = "last_update")
-    public Timestamp getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(Timestamp lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        BlogPost blogPost = (BlogPost) o;
-        return getPostId().equals(blogPost.getPostId()) && Objects.equals(getTitle(), blogPost.getTitle()) && Objects.equals(getAuthor(), blogPost.getAuthor()) && Objects.equals(getExcerpt(), blogPost.getExcerpt()) && Objects.equals(getContent(), blogPost.getContent()) && Objects.equals(getLastUpdate(), blogPost.getLastUpdate());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getPostId(), getTitle(), getAuthor(), getExcerpt(), getContent(), getLastUpdate());
-    }
 }
