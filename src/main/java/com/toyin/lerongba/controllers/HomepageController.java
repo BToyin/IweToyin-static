@@ -19,11 +19,9 @@ public class HomepageController {
         return "redirect:homepage#about-me";
     }
 
-
     @GetMapping("/homepage#services")
     public String getServicesSection(Model model) {
         return "redirect:homepage#services";
     }
-
 
 }
