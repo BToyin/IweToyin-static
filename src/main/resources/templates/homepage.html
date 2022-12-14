@@ -6,211 +6,209 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Lerongba</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" th:href="@{vendors/animate.css/animate.min.css}">
-    <link rel="stylesheet" th:href="@{css/style.css}">
-    <script src="vendors/jquery/jquery.min.js"></script>
-    <script src="js/loader.js"></script>
+    <link rel="stylesheet" href="/vendors/animate.css/animate.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/vendors/jquery/jquery.min.js"></script>
+    <script src="/js/loader.js"></script>
 </head>
 
 <body>
-<div class="page-loader"></div>
-<div class="bgimg-1 w3-display-container">
-    <div th:include="fragments/header"></div>
-    <div class="w3-display-middle" style="white-space:nowrap;">
-        <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">LERONGBA</span>
-    </div>
-</div>
-<div th:include="fragments/nav-pop-up"></div>
-<section class="site-section" id="about-me">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 d-flex flex-column justify-content-center wow fadeInUp">
-                <h2 class="section-title mb-3">About Me</h2>
-                <p class="section-text-ct text-justify">Hello and welcome to Lerongba! If you don't already know, the handsome man in the pictures is me - Toyin (or Bait to some).
-                    So, just a little introduction. I'm a German born, Nigerian, Chemical Engineering Graduate, living in Birmingham and now working as a Software Engineer specialising in Java.
-                    Lerongba means "Thinking" in my native Yoruba and that's what this website is about. The website is an expression of my thinking.
-                    Expect to find a chaotic blog, semi-useful resources I put together and some shameless self-promotion.
-                    Lastly, I painfully designed this web app myself, without a website building service (I don't recommend), so if there's any feedback or small bugs please do let me know.
-                    Thanks for reading this far and enjoy!</p>
-            </div>
-            <div class="col-md-6 wow fadeInUp d-flex align-items-center">
-                <img src="images/img_3.png" class="w-100 mb-5" alt="Profile Picture">
-            </div>
+    <div class="page-loader"></div>
+    <div class="bgimg-1 w3-display-container">
+        <div th:include="fragments/header"></div>
+        <div class="w3-display-middle" style="white-space:nowrap;">
+            <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">LERONGBA</span>
         </div>
     </div>
-</section>
-<section class="bg-primary" id="carousel-section">
-    <div class="container wow fadeInUp">
-        <div id="headerCarousel" class="header-carousel carousel slide" data-ride="carousel" data-interval="10000">
-            <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h1 class="carousel-item-title" data-animation="animated fadeInRight" data-number="01"><span>Regular Blog Posts</span></h1>
-                            <p class="carousel-item-description" data-animation="animated fadeInRight">Will be publishing regular blog posts about the general thoughts in my head. Don't expect anything too fancy or well organised; my head runs on chaos energy and blog will reflect that. </p>
-                            <a th:href="@{/blog}" class="carousel-item-link link-hover-fx" data-animation="animated fadeInRight">SEE BLOG POSTS</a>
-                            <ul class="carousel-item-social-links nav" data-animation="animated fadeInRight">
-                                <li>
-                                    <a href="https://www.facebook.com/geniusdoe" class="link-hover-fx">FACEBOOK</a>
-                                </li>
-                                <li>
-                                    <a href="https://www.linkedin.com/in/bait-toyin-ajani-338961191/" class="link-hover-fx">LINKEDIN</a>
-                                </li>
-                            </ul>
+    <div th:include="fragments/nav-pop-up"></div>
+    <section class="site-section" id="about-me">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 d-flex flex-column justify-content-center wow fadeInUp">
+                    <h2 class="section-title mb-3">About Me</h2>
+                    <p class="section-text-ct text-justify">Hello and welcome to Lerongba! If you don't already know, the handsome man in the pictures is me - Toyin (or Bait to some).
+                        So, just a little introduction. I'm a German born, Nigerian, Chemical Engineering Graduate, living in Birmingham and now working as a Software Engineer specialising in Java.
+                        Lerongba means "Thinking" in my native Yoruba and that's what this website is about. The website is an expression of my thinking.
+                        Expect to find a chaotic blog, semi-useful resources I put together and some shameless self-promotion.
+                        Lastly, I painfully designed this web app myself, without a website building service (I don't recommend), so if there's any feedback or small bugs please do let me know.
+                        Thanks for reading this far and enjoy!</p>
+                </div>
+                <div class="col-md-6 wow fadeInUp d-flex align-items-center">
+                    <img src="/images/img_3.png" class="w-100 mb-5" alt="Profile Picture">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-primary" id="carousel-section">
+        <div class="container wow fadeInUp">
+            <div id="headerCarousel" class="header-carousel carousel slide" data-ride="carousel" data-interval="10000">
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h1 class="carousel-item-title" data-animation="animated fadeInRight" data-number="01"><span>Regular Blog Posts</span></h1>
+                                <p class="carousel-item-description" data-animation="animated fadeInRight">Will be publishing regular blog posts about the general thoughts in my head. Don't expect anything too fancy or well organised; my head runs on chaos energy and blog will reflect that. </p>
+                                <a th:href="@{/blog}" class="carousel-item-link link-hover-fx" data-animation="animated fadeInRight">SEE BLOG POSTS</a>
+                                <ul class="carousel-item-social-links nav" data-animation="animated fadeInRight">
+                                    <li>
+                                        <a href="https://www.facebook.com/geniusdoe" class="link-hover-fx">FACEBOOK</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.linkedin.com/in/bait-toyin-ajani-338961191/" class="link-hover-fx">LINKEDIN</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <img src="/images/avatar.jpg" alt="Profile Picture" class="img-fluid w-100 rounded" width="372px">
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <img src="images/avatar.jpg" alt="Profile Picture" class="img-fluid w-100 rounded" width="372px">
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h1 class="carousel-item-title" data-animation="animated fadeInRight" data-number="02"><span>Coding & Tuition Service</span></h1>
+                                <p class="carousel-item-description" data-animation="animated fadeInRight">If you like what you see on this website, I could teach you how I did it. I'm also an experienced tutor. Please get in touch for rates.</p>
+                                <a href="#services" class="carousel-item-link link-hover-fx" data-animation="animated fadeInRight">READ MORE</a>
+                                <ul class="carousel-item-social-links nav" data-animation="animated fadeInRight">
+                                    <li><a href="https://www.facebook.com/geniusdoe" class="link-hover-fx">FACEBOOK</a></li>
+                                    <li><a href="https://www.linkedin.com/in/bait-toyin-ajani-338961191/" class="link-hover-fx">LINKEDIN</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <img src="/images/blog_1.jpg" alt="<span>Coding and Tuition Services</span>" class="img-fluid w-100 rounded" width="372px">
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h1 class="carousel-item-title" data-animation="animated fadeInRight" data-number="02"><span>Coding & Tuition Service</span></h1>
-                            <p class="carousel-item-description" data-animation="animated fadeInRight">If you like what you see on this website, I could teach you how I did it. I'm also an experienced tutor. Please get in touch for rates.</p>
-                            <a href="#services" class="carousel-item-link link-hover-fx" data-animation="animated fadeInRight">READ MORE</a>
-                            <ul class="carousel-item-social-links nav" data-animation="animated fadeInRight">
-                                <li><a href="https://www.facebook.com/geniusdoe" class="link-hover-fx">FACEBOOK</a></li>
-                                <li><a href="https://www.linkedin.com/in/bait-toyin-ajani-338961191/" class="link-hover-fx">LINKEDIN</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <img src="images/blog_1.jpg" alt="<span>Coding and Tuition Services</span>" class="img-fluid w-100 rounded" width="372px">
-                        </div>
+                <ol class="carousel-indicators">
+                    <li data-target="#headerCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#headerCarousel" data-slide-to="1"></li>
+                </ol>
+            </div>
+        </div>
+    </section>
+    <section class="site-section" id="services">
+        <div class="container">
+            <div class="service-section">
+                <h2 class="section-title my-services-title">My Services</h2>
+                <p class="text-justify">So not only does my awesome website offer you entertainment through a super interesting blog but you can also see below the services I offer and why I'm so amazing.</p>
+                <div class="row">
+                    <div class="col-md-4 mb-4 mb-md-0 wow fadeInUp">
+                        <h6 class="service-category-title">Development</h6>
+                        <ul class="service-list list-group list-group-flush">
+                            <li class="list-group-item">UI & UX design</li>
+                            <li class="list-group-item">Backend Development</li>
+                            <li class="list-group-item">Website Development</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 mb-4 mb-md-0 wow fadeInUp">
+                        <h6 class="service-category-title">Tech Stack</h6>
+                        <ul class="service-list list-group list-group-flush">
+                            <li class="list-group-item">Java (Full Stack)</li>
+                            <li class="list-group-item">Spring Boot (Web design)</li>
+                            <li class="list-group-item">SQL</li>
+                            <li class="list-group-item">HMTL & CSS</li>
+                            <li class="list-group-item">Python</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 mb-4 mb-md-0 wow fadeInUp">
+                        <h6 class="service-category-title">Tuition</h6>
+                        <ul class="service-list list-group list-group-flush">
+                            <li class="list-group-item">GCSE Maths and Sciences</li>
+                            <li class="list-group-item">A-Level Maths and Chemistry</li>
+                            <li class="list-group-item">Java Development</li>
+                            <li class="list-group-item">Web design with HMTL & CSS</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <a th:href="@{/contact}" class="load-more-link link-hover-fx">CONTACT ME ABOUT MY SERVICES</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="recent-blogs-section site-section bg-primary" id="works">
+        <div class="container">
+            <h2 class="section-title latest-blog-posts-title">Latest Blog Posts</h2>
+            <div class="row">
+                <div class="col-md-6 wow fadeInUp">
+                    <div class="project-card wow fadeInUp">
+                        <img src="/images/Works4.png" alt="Project" class="project-thumbnail">
+                        <a th:href="@{/blog/posts/post1}" class="load-more-link"><h6 class="blog-title">Being Mandem at Uni</h6></a>
+                        <p class="Project-category">Tags for Blog post </p>
+                    </div>
+                    <div class="project-card wow fadeInUp">
+                        <img src="/images/Works2.png" alt="Project" class="project-thumbnail">
+                        <a th:href="@{/blog/posts/post1}" class="load-more-link"><h6 class="blog-title">White People Voice</h6></a>
+                        <p class="Project-category">Tags for Blog post </p>
+                    </div>
+                </div>
+                <div class="col-md-6 project-column-indented">
+                    <div class="project-card wow fadeInUp">
+                        <img src="/images/Works3.png" alt="Project" class="project-thumbnail">
+                        <a th:href="@{/blog/posts/post1}" class="load-more-link"><h6 class="blog-title">Being Mandem and Dancing</h6></a>
+                        <p class="Project-category">Tags for Blog post </p>
+                    </div>
+                    <div class="project-card wow fadeInUp">
+                        <img src="/images/Works1.png" alt="Project" class="project-thumbnail">
+                        <a th:href="@{/blog/posts/post1}" class="load-more-link"><h6 class="blog-title">Blog Title</h6></a>
+                        <p class="Project-category">Tags for Blog post </p>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <a th:href="@{/blog}" class="load-more-link link-hover-fx">SEE ALL BLOG POSTS</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="contact-section site-section" id="contact-section">
+        <div class="container wow fadeInUp">
+            <h2 class="section-title mb-0">Holla at me</h2>
+            <h6 class="font-weight-medium mb-4 mb-md-0">Please get in touch through socials or email to provide feedback on the blog, website or any resources shared. Thank you</h6>
+            <div class="contact-address">
+                <div class="row">
+                    <div class="col-md-2 mb-4 mb-md-0 d-flex align-items-center">
+                        <ul class="nav contact-social-links">
+                            <li class="nav-item">
+                                <a href="https://www.linkedin.com/in/bait-toyin-ajani-338961191/" class="nav-link">
+                                    <img src="/images/linkedin@1x.svg" alt="Linkedin">
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://www.facebook.com/geniusdoe" class="nav-link">
+                                    <img src="/images/facebook@1x.svg" alt="Facebook">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-8 mb-4 mb-md-0 widget-subscribe">
+                        <p class="subscribe-text">Hear about new blog posts, significant website updates and most importantly...No Spam!</p>
+                        <p th:if="${error}" class="alert-danger">Error! Email address already subscribed</p>
+                        <p th:if="${passed}" class="alert-success">Email address added as subscriber successfully!</p>
+                        <form class="subscriber-form" id="subscriber-form" action="#" th:action="@{/homepage/subscribe}" th:object="${subscriber}" method="post">
+                            <div class="form-group">
+                                <input type="email" class="form-control" th:field="*{email}" id="email" placeholder="Your email" name="email">
+                            </div>
+                            <input class="btn btn-block btn-subscribe" type="submit" value="Subscribe" id="submit-subscriber-form">
+                        </form>
+                    </div>
+                    <div class="col-md-2 d-flex align-items-center">
+                        <a href="#top" class="go-top-btn">
+                            <img src="/images/arrow_up@1x.svg" alt="arrow up">
+                            <span class="sr-only">Go to top</span>
+                        </a>
                     </div>
                 </div>
             </div>
-            <ol class="carousel-indicators">
-                <li data-target="#headerCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#headerCarousel" data-slide-to="1"></li>
-            </ol>
         </div>
-    </div>
-</section>
-<section class="site-section" id="services">
-    <div class="container">
-        <div class="service-section">
-            <h2 class="section-title my-services-title">My Services</h2>
-            <p class="text-justify">So not only does my awesome website offer you entertainment through a super interesting blog but you can also see below the services I offer and why I'm so amazing.</p>
-            <div class="row">
-                <div class="col-md-4 mb-4 mb-md-0 wow fadeInUp">
-                    <h6 class="service-category-title">Development</h6>
-                    <ul class="service-list list-group list-group-flush">
-                        <li class="list-group-item">UI & UX design</li>
-                        <li class="list-group-item">Backend Development</li>
-                        <li class="list-group-item">Website Development</li>
-                    </ul>
-                </div>
-                <div class="col-md-4 mb-4 mb-md-0 wow fadeInUp">
-                    <h6 class="service-category-title">Tech Stack</h6>
-                    <ul class="service-list list-group list-group-flush">
-                        <li class="list-group-item">Java (Full Stack)</li>
-                        <li class="list-group-item">Spring Boot (Web design)</li>
-                        <li class="list-group-item">SQL</li>
-                        <li class="list-group-item">HMTL & CSS</li>
-                        <li class="list-group-item">Python</li>
-                    </ul>
-                </div>
-                <div class="col-md-4 mb-4 mb-md-0 wow fadeInUp">
-                    <h6 class="service-category-title">Tuition</h6>
-                    <ul class="service-list list-group list-group-flush">
-                        <li class="list-group-item">GCSE Maths and Sciences</li>
-                        <li class="list-group-item">A-Level Maths and Chemistry</li>
-                        <li class="list-group-item">Java Development</li>
-                        <li class="list-group-item">Web design with HMTL & CSS</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-12">
-                <a th:href="@{/contact}" class="load-more-link link-hover-fx">CONTACT ME ABOUT MY SERVICES</a>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="recent-blogs-section site-section bg-primary" id="works">
-    <div class="container">
-        <h2 class="section-title latest-blog-posts-title">Latest Blog Posts</h2>
-        <div class="row">
-            <div class="col-md-6 wow fadeInUp">
-                <div class="project-card wow fadeInUp">
-                    <img src="images/Works4.png" alt="Project" class="project-thumbnail">
-                    <a th:href="@{/blog/posts/post1}" class="load-more-link"><h6 class="blog-title">Being Mandem at Uni</h6></a>
-                    <p class="Project-category">Tags for Blog post </p>
-                </div>
-                <div class="project-card wow fadeInUp">
-                    <img src="images/Works2.png" alt="Project" class="project-thumbnail">
-                    <a th:href="@{/blog/posts/post1}" class="load-more-link"><h6 class="blog-title">White People Voice</h6></a>
-                    <p class="Project-category">Tags for Blog post </p>
-                </div>
-            </div>
-            <div class="col-md-6 project-column-indented">
-                <div class="project-card wow fadeInUp">
-                    <img src="images/Works3.png" alt="Project" class="project-thumbnail">
-                    <a th:href="@{/blog/posts/post1}" class="load-more-link"><h6 class="blog-title">Being Mandem and Dancing</h6></a>
-                    <p class="Project-category">Tags for Blog post </p>
-                </div>
-                <div class="project-card wow fadeInUp">
-                    <img src="images/Works1.png" alt="Project" class="project-thumbnail">
-                    <a th:href="@{/blog/posts/post1}" class="load-more-link"><h6 class="blog-title">Blog Title</h6></a>
-                    <p class="Project-category">Tags for Blog post </p>
-                </div>
-            </div>
-            <div class="col-12">
-                <a th:href="@{/blog}" class="load-more-link link-hover-fx">SEE ALL BLOG POSTS</a>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="contact-section site-section" id="contact-section">
-    <div class="container wow fadeInUp">
-        <h2 class="section-title mb-0">Holla at me</h2>
-        <h6 class="font-weight-medium mb-4 mb-md-0">Please get in touch through socials or email to provide feedback on the blog, website or any resources shared. Thank you</h6>
-        <div class="contact-address">
-            <div class="row">
-                <div class="col-md-2 mb-4 mb-md-0 d-flex align-items-center">
-                    <ul class="nav contact-social-links">
-                        <li class="nav-item">
-                            <a href="https://www.linkedin.com/in/bait-toyin-ajani-338961191/" class="nav-link">
-                                <img src="images/linkedin@1x.svg" alt="Linkedin">
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="https://www.facebook.com/geniusdoe" class="nav-link">
-                                <img src="images/facebook@1x.svg" alt="Facebook">
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-8 mb-4 mb-md-0 widget-subscribe">
-                    <p class="subscribe-text">Hear about new blog posts, significant website updates and most importantly...No Spam!</p>
-                    <p th:if="${error}" class="alert-danger">Email address already subscribed</p>
-                    <p th:if="${passed}" class="alert-success">Email address added as subscriber successfully!</p>
-                    <form class="subscriber-form" id="subscriber-form" action="#" th:action="@{/homepage/subscribe}" th:object="${subscriber}" method="post">
-                        <div class="form-group">
-                            <input type="email" class="form-control" th:field="*{email}" id="email" placeholder="Your email">
-                        </div>
-                        <input class="btn btn-block btn-subscribe" type="submit" value="Subscribe" id="submit-subscriber-form">
-                    </form>
-                </div>
-                <div class="col-md-2 d-flex align-items-center">
-                    <a href="#top" class="go-top-btn">
-                        <img src="images/arrow_up@1x.svg" alt="arrow up">
-                        <span class="sr-only">Go to top</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<div th:include="fragments/footer :: footer">Footer not found.</div>
+    </section>
+    <div th:include="fragments/footer :: footer">Footer not found.</div>
 
-<script src="vendors/wowjs/wow.min.js"></script>
-<script src="vendors/popper.js/popper.min.js"></script>
-<script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="js/main.js"></script>
-<script>
-        new WOW().init();
-    </script>
+    <script src="/vendors/wowjs/wow.min.js"></script>
+    <script src="/vendors/popper.js/popper.min.js"></script>
+    <script src="/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script> new WOW().init(); </script>
 </body>
 
 </html>
