@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Lerongba - Blog</title>
+    <title>Lerongba - Blog1</title>
     <link rel="stylesheet" href="/vendors/animate.css/animate.min.css">
     <link rel="stylesheet" href="/css/style.css">
     <script src="vendors/jquery/jquery.min.js"></script>
@@ -21,52 +21,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 blog-post-archive">
-                    <article class="media blog-post wow fadeInUp">
-                        <img src="images/blog_1.jpg" alt="blog post" class="blog-post-thumbnail">
+                    <article class="media blog-post wow fadeInUp" th:each="blogPost: ${allBlogPosts}">
+<!--                        Either the actual image saved in DB or the image saved locally-->
+                        <img src="/images/blog_1.jpg" alt="blog post" class="blog-post-thumbnail">
                         <div class="media-body">
-                            <h5 class="blog-post-title">Being Mandem at Uni</h5>
-                            <p class="blog-post-excerpt">Talking about my experience of being "mandem" at university. Essentially just being myself.</p>
-                            <a th:href="@{/blog/posts/post1}" class="blog-post-link link-hover-fx">Read more</a>
-                        </div>
-                    </article>
-                    <article class="media blog-post wow fadeInUp">
-                        <img src="images/blog_2.jpg" alt="blog post" class="blog-post-thumbnail">
-                        <div class="media-body">
-                            <h5 class="blog-post-title">Top UI/UX Design Trends for Mobile Apps [2020]</h5>
-                            <p class="blog-post-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.</p>
-                            <a th:href="@{/blog/posts/post1}" class="blog-post-link link-hover-fx">Read more</a>
-                        </div>
-                    </article>
-                    <article class="media blog-post wow fadeInUp">
-                        <img src="images/blog_3.jpg" alt="blog post" class="blog-post-thumbnail">
-                        <div class="media-body">
-                            <h5 class="blog-post-title">Top UI/UX Design Trends for Mobile Apps [2020]</h5>
-                            <p class="blog-post-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.</p>
-                            <a href="#!" class="blog-post-link link-hover-fx">Read more</a>
-                        </div>
-                    </article>
-                    <article class="media blog-post wow fadeInUp">
-                        <img src="images/blog_4.jpg" alt="blog post" class="blog-post-thumbnail">
-                        <div class="media-body">
-                            <h5 class="blog-post-title">Top UI/UX Design Trends for Mobile Apps [2020]</h5>
-                            <p class="blog-post-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.</p>
-                            <a href="#!" class="blog-post-link link-hover-fx">Read more</a>
-                        </div>
-                    </article>
-                    <article class="media blog-post wow fadeInUp">
-                        <img src="images/blog_5.jpg" alt="blog post" class="blog-post-thumbnail">
-                        <div class="media-body">
-                            <h5 class="blog-post-title">Top UI/UX Design Trends for Mobile Apps [2020]</h5>
-                            <p class="blog-post-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.</p>
-                            <a href="#!" class="blog-post-link link-hover-fx">Read more</a>
-                        </div>
-                    </article>
-                    <article class="media blog-post wow fadeInUp">
-                        <img src="images/blog_6.jpg" alt="blog post" class="blog-post-thumbnail">
-                        <div class="media-body">
-                            <h5 class="blog-post-title">Top UI/UX Design Trends for Mobile Apps [2020]</h5>
-                            <p class="blog-post-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.</p>
-                            <a href="#!" class="blog-post-link link-hover-fx">Read more</a>
+                            <h5 class="blog-post-title" th:text="${blogPost.title}"></h5>
+                            <p class="blog-post-excerpt" th:text="${blogPost.excerpt}"></p>
+                            <a th:href="@{/blog/posts/{id}(id=${blogPost.postId})}" class="blog-post-link link-hover-fx">Read more</a>
                         </div>
                     </article>
                 </div>

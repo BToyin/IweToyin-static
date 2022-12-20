@@ -13,4 +13,6 @@ public interface BlogPostRepository extends JpaRepository<BlogPost, Integer> {
     Optional<BlogPost> findById(Integer integer);
 
     BlogPost findBlogPostByTitle(String title);
+
+    boolean existsByTitle(String title);
 }

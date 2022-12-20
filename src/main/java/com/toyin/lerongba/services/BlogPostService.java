@@ -18,7 +18,7 @@ public class BlogPostService {
         this.blogPostRepository = blogPostRepository;
     }
 
-    public List<BlogPost> getBlogPosts() {
+    public List<BlogPost> getAllBlogPosts() {
         return (List<BlogPost>) blogPostRepository.findAll();
     }
 
@@ -30,8 +30,16 @@ public class BlogPostService {
         return blogPostRepository.findBlogPostByTitle(title);
     }
 
+    public boolean existsByTitle(String title) {
+        return blogPostRepository.existsByTitle(title);
+    }
+
+    public String createExcerpt(String blogContent) {
+        return blogContent.substring(0,200) + "...";
+    }
+
     @Transactional
-    public void createBlogPost(BlogPost blogPost) {
+    public void createNewBlogPost(BlogPost blogPost) {
         blogPostRepository.save(blogPost);
     }
 

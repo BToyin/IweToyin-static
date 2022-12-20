@@ -27,6 +27,7 @@ public class BlogPost {
     @NotBlank
     private String title;
     @Basic
+    @NotBlank
     @Column(name = "author")
     private String author;
     @Basic

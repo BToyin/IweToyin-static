@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title th:text="${'Lerongba - Blog post - ' + blogpost.title}"></title>
+  <link rel="stylesheet" href="/vendors/animate.css/animate.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/vendors/jquery/jquery.min.js"></script>
+  <script src="/js/loader.js"></script>
+</head>
+<body>
+<div class="page-loader"></div>
+<div th:include="/fragments/header"></div>
+<div th:include="/fragments/nav-pop-up"></div>
+<main class="blog-post-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="main-blog-section col-lg-8">
+        <h1 class="blog-post-title" th:action="${blogpost}" th:text="${blogpost.title}"></h1>
+        <article>
+<!--           need to configure how to save images in the DB and then pull them back here to use as the cover art-->
+          <img src="/images/avatar.jpg" alt="Blog post cover picture" class="blog-cover-picture w-100">
+          <p class="text-justify" th:text="${'Posted by ' + blogpost.author}" ></p>
+          <p class="text-justify" th:text="${blogpost.content}"></p>
+        </article>
+      </div>
+      <div th:include="/fragments/blog-sidebar" class="col-lg-4 laptop-only"></div>
+    </div>
+  </div>
+</main>
+<div th:include="/fragments/blog-footer"></div>
+<div th:include="/fragments/blog-sidebar" class="col-lg-4 mobile-only"></div>
+<div th:include="/fragments/footer"></div>
+
+<script src="/vendors/wowjs/wow.min.js"></script>
+<script src="/vendors/popper.js/popper.min.js"></script>
+<script src="/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script>
+        new WOW().init();
+  </script>
+</body>
+</html>
