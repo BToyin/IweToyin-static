@@ -17,12 +17,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
-import java.security.Principal;
 import java.util.List;
 
 @Controller
 public class BlogPostController {
-
 
     @Autowired
     final private BlogPostService blogPostService;
@@ -41,14 +39,21 @@ public class BlogPostController {
     }
 
     @GetMapping("/blog/posts/post1")
-    public String getBlogPost1 (Model model) {
-        return "blog-posts/post-1";
+    public String getBlogPage (ModelMap model) {
+        List<BlogPost> allBlogPosts = blogPostService.getAllBlogPosts();
+        List<BlogPost> latest5BlogPosts = blogPostService.getLatest5BlogPosts();
+        model.addAttribute("allBlogPosts", allBlogPosts);
+        model.addAttribute("latest5BlogPosts", latest5BlogPosts);
+        return "blog";
     }
+
 
     @GetMapping("/blog/posts/{id}")
     public String getBlogPost (@PathVariable("id") int id, ModelMap model) {
         BlogPost blogPost = blogPostService.getBlogPostById(id);
         List<BlogPost> allBlogPosts = blogPostService.getAllBlogPosts();
+        List<BlogPost> latest5BlogPosts = blogPostService.getLatest5BlogPosts();
+        model.addAttribute("latest5BlogPosts", latest5BlogPosts);
         model.addAttribute("numberOfBlogPosts", allBlogPosts.size());
         model.addAttribute("blogPost",blogPost);
         return "blog-post";

@@ -14,8 +14,7 @@
     <div class="page-loader"></div>
     <div th:include="/fragments/header"></div>
     <div th:include="/fragments/nav-pop-up"></div>
-    <main class="blog-post-wrapper">
-      <div class="container">
+    <main class="container">
         <div class="row">
           <div class="main-blog-section col-lg-8">
             <h1 class="blog-post-title" th:action="${blogPost}" th:text="${blogPost.title}"></h1>
@@ -28,7 +27,6 @@
           </div>
           <div th:include="/fragments/blog-sidebar" class="col-lg-4 laptop-only"></div>
         </div>
-      </div>
     </main>
     <div class="lerongba-footer wow fadeInUp">
         <div class="container">
@@ -45,7 +43,7 @@
             </div>
         </div>
     </div>
-    <div th:include="/fragments/blog-sidebar" class="col-lg-4 mobile-only"></div>
+    <div th:include="/fragments/blog-sidebar" class="container mobile-only"></div>
     <div th:include="/fragments/footer"></div>
 
     <script src="/vendors/wowjs/wow.min.js"></script>

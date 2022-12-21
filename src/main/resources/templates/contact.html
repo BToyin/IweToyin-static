@@ -18,6 +18,7 @@
     <main class="contact-page-wrapper">
         <div class="container">
             <h2 class="section-title text-center pb-5">Contact Me</h2>
+            <p th:if="${passed}" class="alert-success" th:text="${passed}"></p>
             <div class="row">
                 <div class="col-md-6 col-lg-4 offset-lg-2 contact-page-content-wrapper wow fadeInLeft">
                     <div class="contact-page-content">
@@ -38,29 +39,27 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 contact-page-form-wrapper wow fadeInRight">
-                    <form action="/index" method="post">
+                    <form action="#" th:action="@{/contact/submit}" th:object="${contact}" method="post">
                         <div class="form-group">
-                            <label for="contact-about" class="font-weight-bold">What are you contacting me about?</label>
-                            <select class="form-control" id="contact-about" name="contact-about">
-                                <option>To provide general feedback</option>
-                                <option>To enquire about rates and services</option>
+                            <label for="contact-reason" class="font-weight-bold">What are you contacting me about?</label>
+                            <select class="form-control" id="contact-reason" th:field="*{contactReason}" >
+                                <option th:each="contactReason : ${contactReasons}" th:value="${contactReason}" th:text="${contactReason}"></option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="name" class="sr-only">Name</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                            <input type="text" class="form-control" id="name" placeholder="Name" th:field="*{name}">
                         </div>
                         <div class="form-group">
                             <label for="email" class="sr-only">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                            <input type="email" class="form-control" id="email" placeholder="Email" th:field="*{email}">
                         </div>
                         <div class="form-group">
                             <label for="message" class="sr-only">Message</label>
-                            <input type="text" class="form-control" id="message" name="message" placeholder="Message">
+                            <textarea class="form-control"rows="5" cols="25" id="message"  placeholder="Message" th:field="*{message}"></textarea>
+<!--                            <input type="text" class="form-control" id="message" placeholder="Message" th:field="*{message}">-->
                         </div>
-                        <div>
-                            <button class="btn btn-block" type="Submit">Send</button>
-                        </div>
+                        <button class="btn btn-block" type="submit">Send</button>
                     </form>
                 </div>
             </div>

@@ -8,20 +8,26 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomepageController {
 
-    @GetMapping("/homepage")
+    @GetMapping("/home")
     public String getHomePage(Model model) {
         model.addAttribute("subscriber", new Subscriber());
-        return "homepage";
+        return "home";
     }
 
-    @GetMapping("/homepage#about-me")
+    @GetMapping("/")
+    public String getHomePage1(Model model) {
+        model.addAttribute("subscriber", new Subscriber());
+        return "home";
+    }
+
+    @GetMapping("/home#about-me")
     public String getAboutMeSection(Model model) {
-        return "redirect:homepage#about-me";
+        return "redirect:home#about-me";
     }
 
-    @GetMapping("/homepage#services")
+    @GetMapping("/home#services")
     public String getServicesSection(Model model) {
-        return "redirect:homepage#services";
+        return "redirect:home#services";
     }
 
 }

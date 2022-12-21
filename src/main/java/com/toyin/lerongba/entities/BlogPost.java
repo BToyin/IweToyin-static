@@ -22,27 +22,26 @@ public class BlogPost {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "post_id")
     private Integer postId;
-    @Basic
+
     @Column(name = "title")
     @NotBlank
     private String title;
-    @Basic
+
     @NotBlank
     @Column(name = "author")
     private String author;
-    @Basic
+
     @Column(name = "excerpt", columnDefinition = "TINYTEXT")
     private String excerpt;
-    @Basic
+
     @NotEmpty
     @Column(name = "content", length = 16777215, columnDefinition = "MEDIUMTEXT")
     private String content;
 
-    @Basic
     @CreationTimestamp
     @Column(name = "created_time")
     private LocalDateTime createdTime;
-    @Basic
+
     @UpdateTimestamp
     @Column(name = "last_update")
     private LocalDateTime lastUpdate;

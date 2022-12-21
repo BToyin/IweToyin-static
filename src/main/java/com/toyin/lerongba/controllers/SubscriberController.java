@@ -25,19 +25,8 @@ public class SubscriberController {
         this.subscriberService = subscriberService;
     }
 
-    @PostMapping("/homepage/subscribe")
-    public RedirectView saveSubscriber(@ModelAttribute Subscriber subscriber, RedirectAttributes redirectAttrs, HttpServletRequest request) {
 
-        if (subscriberService.existsByEmail(subscriber.getEmail())) {
-            redirectAttrs.addFlashAttribute("error", "Error! Email address already subscribed");
-        } else {
-            subscriberService.createSubscriber(subscriber);
-            redirectAttrs.addFlashAttribute("passed", "Email address added as subscriber successfully!");
-        }
-        return new RedirectView("/homepage/subscribe",true);
-    }
-
-    @GetMapping("/homepage/subscribe")
+    @GetMapping("/home/subscribe")
     public String getHomePageAfterSubmission(HttpServletRequest request, Model model) {
         Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(request);
         if (inputFlashMap != null) {
@@ -50,6 +39,18 @@ public class SubscriberController {
             }
         }
         model.addAttribute("subscriber", new Subscriber());
-        return "/homepage";
+        return "/home";
+    }
+
+    @PostMapping("/home/subscribe")
+    public RedirectView saveSubscriber(@ModelAttribute Subscriber subscriber, RedirectAttributes redirectAttrs, HttpServletRequest request) {
+
+        if (subscriberService.existsByEmail(subscriber.getEmail())) {
+            redirectAttrs.addFlashAttribute("error", "Error! Email address already subscribed");
+        } else {
+            subscriberService.createSubscriber(subscriber);
+            redirectAttrs.addFlashAttribute("passed", "Email address added as subscriber successfully!");
+        }
+        return new RedirectView("/home/subscribe",true);
     }
 }

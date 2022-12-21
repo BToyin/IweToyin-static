@@ -18,45 +18,23 @@
       </div>
       <div class="widget-subscribe">
         <h6 class="widget-tile">SUBSCRIBE</h6>
+        <p class="subscribe-text">Hear about new blog posts, significant website updates and most importantly...No Spam!</p>
         <form action="/index.html" method="post" class="subscribe-form">
           <div class="form-group">
             <label for="email" class="sr-only">Email</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Your mail">
+            <input type="email" class="form-control" id="email" name="email" placeholder="Your email">
           </div>
           <button class="btn btn-block btn-subscribe rounded-0">Subscribe</button>
         </form>
-        <p class="subscribe-text">Hear about new blog posts, significant website updates and most importantly...No Spam!</p>
       </div>
       <div class="widget-posts">
-        <h6 class="widget-title">POPULAR BLOG POSTS</h6>
-        <div class="media blog-post">
+        <h6 class="widget-title">LATEST BLOG POSTS</h6>
+        <div class="media blog-post" th:each="blogPost: ${latest5BlogPosts}">
           <img src="/images/blog_sidebar_1.jpg" alt="blog sidebar" class="post-thumbnail">
           <div class="media-body align-self-center">
-            <a th:href="@{/blog/posts/post1}" class="load-more-link link-hover-fx"><h6 class="post-title">Being Mandem at Uni</h6></a>
-          </div>
-        </div>
-        <div class="media blog-post">
-          <img src="/images/blog_sidebar_2.jpg" alt="blog sidebar" class="post-thumbnail">
-          <div class="media-body align-self-center">
-            <a th:href="@{/blog/posts/post1}" class="load-more-link link-hover-fx"><h6 class="post-title">Being Mandem and Dancing</h6></a>
-          </div>
-        </div>
-        <div class="media blog-post">
-          <img src="/images/blog_sidebar_3.jpg" alt="blog sidebar" class="post-thumbnail">
-          <div class="media-body align-self-center">
-            <a th:href="@{/blog/posts/post1}" class="load-more-link link-hover-fx"><h6 class="post-title">White People Voice</h6></a>
-          </div>
-        </div>
-        <div class="media blog-post">
-          <img src="/images/blog_sidebar_4.jpg" alt="blog sidebar" class="post-thumbnail">
-          <div class="media-body align-self-center">
-            <a th:href="@{/blog/posts/post1}" class="load-more-link link-hover-fx"><h6 class="post-title">Motivation and Me</h6></a>
-          </div>
-        </div>
-        <div class="media blog-post">
-          <img src="/images/blog_sidebar_5.jpg" alt="blog sidebar" class="post-thumbnail">
-          <div class="media-body align-self-center">
-            <a th:href="@{/blog/posts/post1}" class="load-more-link link-hover-fx"><h6 class="post-title">Another blog title</h6></a>
+            <a th:href="@{/blog/posts/{id}(id=${blogPost.postId})}" class="load-more-link link-hover-fx">
+              <h6 class="post-title" th:text="${blogPost.title}"></h6>
+            </a>
           </div>
         </div>
       </div>

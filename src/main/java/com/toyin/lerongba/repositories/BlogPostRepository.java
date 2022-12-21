@@ -23,4 +23,6 @@ public interface BlogPostRepository extends JpaRepository<BlogPost, Integer> {
 
     List<BlogPost> findTop5ByOrderByCreatedTimeDesc();
 
+    List<BlogPost> findTop2ByOrderByCreatedTimeDesc();
+
 }

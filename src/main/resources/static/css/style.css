@@ -7768,7 +7768,7 @@ html {
   padding-bottom: 50px; }
 
 .blog-post-archive .blog-post {
-  margin-bottom: 73px;
+  margin-bottom: 50px;
   max-width: 570px; }
   @media (max-width: 767px) {
     .blog-post-archive .blog-post {
@@ -7961,3 +7961,5 @@ html {
     display: none;
   }
 }
+
+border-top: 1px solid #e6e6e6;

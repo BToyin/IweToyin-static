@@ -1,7 +1,8 @@
 package com.toyin.lerongba.entities;
 
+
 import org.hibernate.annotations.CreationTimestamp;
-import javax.persistence.Basic;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,35 +10,47 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 @Entity
-@Table(name = "subscriber", schema = "lerongba")
-public class Subscriber {
+@Table(name = "contact", schema = "lerongba")
+public class Contact {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "subscriber_id")
-    private Integer subscriberId;
+    @Column(name = "contact_id")
+    private Integer contactId;
+
+
+    @NotBlank(message = "Reason for contact is required")
+    @Column(name = "contactReason", nullable = false)
+    private String contactReason;
 
     @Email(message = "Please enter a valid e-mail address")
     @NotEmpty(message = "Email can't be empty")
     @Column(name = "email", nullable = false)
     private String email;
 
+    @NotBlank(message = "Name cannot be left blank")
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @Column
+    private String message;
+
     @CreationTimestamp
     @Column(name = "created_time")
     private LocalDateTime createdTime;
 
 
-    public Integer getSubscriberId() {
-        return subscriberId;
+    public Integer getContactId() {
+        return contactId;
     }
 
-    public void setSubscriberId(Integer subscriberId) {
-        this.subscriberId = subscriberId;
+    public void setContactId(Integer contactId) {
+        this.contactId = contactId;
     }
 
     public String getEmail() {
@@ -48,6 +61,22 @@ public class Subscriber {
         this.email = email;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     public LocalDateTime getCreatedTime() {
         return createdTime;
     }
@@ -56,16 +85,11 @@ public class Subscriber {
         this.createdTime = createdTime;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Subscriber that = (Subscriber) o;
-        return getSubscriberId().equals(that.getSubscriberId()) && getEmail().equals(that.getEmail()) && Objects.equals(getCreatedTime(), that.getCreatedTime());
+    public String getContactReason() {
+        return contactReason;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getSubscriberId(), getEmail(), getCreatedTime());
+    public void setContactReason(String contactReason) {
+        this.contactReason = contactReason;
     }
 }

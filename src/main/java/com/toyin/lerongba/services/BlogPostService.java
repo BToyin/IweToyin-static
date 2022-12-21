@@ -28,6 +28,10 @@ public class BlogPostService {
         return (List<BlogPost>) blogPostRepository.findTop5ByOrderByCreatedTimeDesc();
     }
 
+    public List<BlogPost> getLatest2BlogPosts() {
+        return (List<BlogPost>) blogPostRepository.findTop2ByOrderByCreatedTimeDesc();
+    }
+
     public BlogPost getBlogPostById(int id){
         return blogPostRepository.findById(id).get();
     }

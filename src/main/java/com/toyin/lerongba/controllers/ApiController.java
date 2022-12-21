@@ -1,8 +1,10 @@
 package com.toyin.lerongba.controllers;
 
 import com.toyin.lerongba.entities.BlogPost;
+import com.toyin.lerongba.entities.Contact;
 import com.toyin.lerongba.entities.Subscriber;
 import com.toyin.lerongba.services.BlogPostService;
+import com.toyin.lerongba.services.ContactService;
 import com.toyin.lerongba.services.SubscriberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,6 +24,14 @@ public class ApiController {
     private SubscriberService subscriberService;
     @Autowired
     private BlogPostService blogPostService;
+    @Autowired
+    ContactService contactService;
+
+    @GetMapping("/subscriber/all")
+    public List<Subscriber> getAllSubscribers() {
+        return subscriberService.getAllSubscribers();
+    }
+
     @PostMapping("/subscriber/register")
     public ResponseEntity register(@RequestBody Subscriber subscriber) {
 
@@ -33,10 +43,11 @@ public class ApiController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @GetMapping("/subscriber/all")
-    public List<Subscriber> getAllSubscribers() {
-        return subscriberService.getAllSubscribers();
+    @GetMapping("/blog/posts/all")
+    public List<BlogPost> getBlogPosts() {
+        return blogPostService.getAllBlogPosts();
     }
+
     @PostMapping("/blog/posts/create")
     public ResponseEntity postNewBlog(@RequestBody BlogPost blogPost) {
         if(blogPostService.existsByTitle(blogPost.getTitle())) {
@@ -48,9 +59,17 @@ public class ApiController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @GetMapping("/blog/posts/all")
-    public List<BlogPost> getBlogPosts() {
-        return blogPostService.getAllBlogPosts();
+
+    @GetMapping("/contact/all")
+    public List<Contact> getAllContacts() {
+        return contactService.getAllContacts();
     }
+
+    @PostMapping("/contact/submit")
+    public ResponseEntity submitMessage(@RequestBody Contact contact) {
+        contactService.createContact(contact);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
 
 }
