@@ -4,6 +4,8 @@ import com.toyin.lerongba.entities.BlogPost;
 import com.toyin.lerongba.entities.Subscriber;
 import com.toyin.lerongba.services.BlogPostService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -32,7 +34,9 @@ public class BlogPostController {
     @GetMapping("/blog")
     public String getAllBlogsPage (ModelMap model) {
         List<BlogPost> allBlogPosts = blogPostService.getAllBlogPosts();
+        List<BlogPost> latest5BlogPosts = blogPostService.getLatest5BlogPosts();
         model.addAttribute("allBlogPosts", allBlogPosts);
+        model.addAttribute("latest5BlogPosts", latest5BlogPosts);
         return "blog";
     }
 
@@ -42,16 +46,11 @@ public class BlogPostController {
     }
 
     @GetMapping("/blog/posts/{id}")
-    public String getNextBlogPost (@PathVariable("id") int id, ModelMap model) {
-        BlogPost blogPost = blogPostService.getBlogPostById(id + 1);
-        model.addAttribute("blogpost",blogPost);
-        return "blog-post";
-    }
-
-    @GetMapping("/blog/posts/{id}")
-    public String getPreviousBlogPost (@PathVariable("id") int id, ModelMap model) {
-        BlogPost blogPost = blogPostService.getBlogPostById(id - 1);
-        model.addAttribute("blogpost",blogPost);
+    public String getBlogPost (@PathVariable("id") int id, ModelMap model) {
+        BlogPost blogPost = blogPostService.getBlogPostById(id);
+        List<BlogPost> allBlogPosts = blogPostService.getAllBlogPosts();
+        model.addAttribute("numberOfBlogPosts", allBlogPosts.size());
+        model.addAttribute("blogPost",blogPost);
         return "blog-post";
     }
 
@@ -66,5 +65,4 @@ public class BlogPostController {
         }
         return new RedirectView("/addNewBlogPost",true);
     }
-
 }

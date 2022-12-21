@@ -3,6 +3,8 @@ package com.toyin.lerongba.services;
 import com.toyin.lerongba.entities.BlogPost;
 import com.toyin.lerongba.repositories.BlogPostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,7 +21,11 @@ public class BlogPostService {
     }
 
     public List<BlogPost> getAllBlogPosts() {
-        return (List<BlogPost>) blogPostRepository.findAll();
+        return (List<BlogPost>) blogPostRepository.findAllByOrderByCreatedTimeDesc();
+    }
+
+    public List<BlogPost> getLatest5BlogPosts() {
+        return (List<BlogPost>) blogPostRepository.findTop5ByOrderByCreatedTimeDesc();
     }
 
     public BlogPost getBlogPostById(int id){
