@@ -179,7 +179,7 @@
                         <p class="subscribe-text">Hear about new blog posts, significant website updates and most importantly...No Spam!</p>
                         <p th:if="${error}"  th:text="${error}" class="alert-danger"></p>
                         <p th:if="${passed}" th:text="${passed}" class="alert-success"></p>
-                        <form class="subscriber-form" id="subscriber-form" action="#" th:action="@{/home/subscribe}" th:object="${subscriber}" method="post">
+                        <form class="subscribe-form" id="subscriber-form" action="#" th:action="@{/home/subscribe}" th:object="${subscriber}" method="post">
                             <div class="form-group">
                                 <input type="email" class="form-control" th:field="*{email}" id="email" placeholder="Your email" name="email">
                             </div>

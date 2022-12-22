@@ -19,12 +19,21 @@
       <div class="widget-subscribe">
         <h6 class="widget-tile">SUBSCRIBE</h6>
         <p class="subscribe-text">Hear about new blog posts, significant website updates and most importantly...No Spam!</p>
-        <form action="/index.html" method="post" class="subscribe-form">
+        <form th:if="${#strings.startsWith(#httpServletRequest.requestURI, '/blog/post')}" class="subscribe-form" id="subscribe-form" action="#" th:action="@{/blog/posts/{id}/subscribe(id=${blogPost.postId})}" th:object="${subscriber}" method="post">
+          <p th:if="${error}"  th:text="${error}" class="alert-danger"></p>
+          <p th:if="${passed}" th:text="${passed}" class="alert-success"></p>
           <div class="form-group">
-            <label for="email" class="sr-only">Email</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Your email">
+            <input type="email" class="form-control" th:field="*{email}" id="email" placeholder="Your email" name="email">
           </div>
-          <button class="btn btn-block btn-subscribe rounded-0">Subscribe</button>
+          <input class="btn btn-block btn-subscribe" type="submit" value="Subscribe" id="submit-subscribe-form">
+        </form>
+        <form th:unless="${#strings.startsWith(#httpServletRequest.requestURI, '/blog/post')}" class="subscribe-form" action="#" th:action="@{/blog/subscribe}" th:object="${subscriber}" method="post">
+          <p th:if="${error}"  th:text="${error}" class="alert-danger"></p>
+          <p th:if="${passed}" th:text="${passed}" class="alert-success"></p>
+          <div class="form-group">
+            <input type="email" class="form-control" th:field="*{email}" placeholder="Your email" name="email">
+          </div>
+          <input class="btn btn-block btn-subscribe" type="submit" value="Subscribe">
         </form>
       </div>
       <div class="widget-posts">

@@ -50,7 +50,7 @@ public class SubscriberController {
     }
 
     @PostMapping("/home/subscribe")
-    public RedirectView saveSubscriber(@ModelAttribute Subscriber subscriber, RedirectAttributes redirectAttrs, HttpServletRequest request) {
+    public RedirectView saveSubscriber(@ModelAttribute Subscriber subscriber, RedirectAttributes redirectAttrs) {
 
         if (subscriberService.existsByEmail(subscriber.getEmail())) {
             redirectAttrs.addFlashAttribute("error", "Error! Email address already subscribed");
