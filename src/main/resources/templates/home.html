@@ -132,26 +132,20 @@
             <h2 class="section-title latest-blog-posts-title">Latest Blog Posts</h2>
             <div class="row">
                 <div class="col-md-6 wow fadeInUp">
-                    <div class="project-card wow fadeInUp">
+                    <div class="project-card wow fadeInUp" th:each="blogPost : ${latest2BlogPosts}">
                         <img src="/images/Works4.png" alt="Project" class="project-thumbnail">
-                        <a th:href="@{/blog/posts/post1}" class="load-more-link"><h6 class="blog-title">Being Mandem at Uni</h6></a>
-                        <p class="Project-category">Tags for Blog post </p>
-                    </div>
-                    <div class="project-card wow fadeInUp">
-                        <img src="/images/Works2.png" alt="Project" class="project-thumbnail">
-                        <a th:href="@{/blog/posts/post1}" class="load-more-link"><h6 class="blog-title">White People Voice</h6></a>
+                        <a th:href="@{/blog/posts/{id}(id=${blogPost.postId})}" class="load-more-link">
+                            <h6 class="blog-title" th:text="${blogPost.title}">Blog Post Title</h6>
+                        </a>
                         <p class="Project-category">Tags for Blog post </p>
                     </div>
                 </div>
                 <div class="col-md-6 project-column-indented">
-                    <div class="project-card wow fadeInUp">
+                    <div class="project-card wow fadeInUp" th:each="blogPost : ${latest3rdAnd4thBlogPosts}">
                         <img src="/images/Works3.png" alt="Project" class="project-thumbnail">
-                        <a th:href="@{/blog/posts/post1}" class="load-more-link"><h6 class="blog-title">Being Mandem and Dancing</h6></a>
-                        <p class="Project-category">Tags for Blog post </p>
-                    </div>
-                    <div class="project-card wow fadeInUp">
-                        <img src="/images/Works1.png" alt="Project" class="project-thumbnail">
-                        <a th:href="@{/blog/posts/post1}" class="load-more-link"><h6 class="blog-title">Blog Title</h6></a>
+                        <a th:href="@{/blog/posts/{id}(id=${blogPost.postId})}" class="load-more-link">
+                            <h6 class="blog-title" th:text="${blogPost.title}">Blog Post Title</h6>
+                        </a>
                         <p class="Project-category">Tags for Blog post </p>
                     </div>
                 </div>
@@ -183,8 +177,8 @@
                     </div>
                     <div class="col-md-8 mb-4 mb-md-0 widget-subscribe">
                         <p class="subscribe-text">Hear about new blog posts, significant website updates and most importantly...No Spam!</p>
-                        <p th:if="${error}" class="alert-danger">Error! Email address already subscribed</p>
-                        <p th:if="${passed}" class="alert-success">Email address added as subscriber successfully!</p>
+                        <p th:if="${error}"  th:text="${error}" class="alert-danger"></p>
+                        <p th:if="${passed}" th:text="${passed}" class="alert-success"></p>
                         <form class="subscriber-form" id="subscriber-form" action="#" th:action="@{/home/subscribe}" th:object="${subscriber}" method="post">
                             <div class="form-group">
                                 <input type="email" class="form-control" th:field="*{email}" id="email" placeholder="Your email" name="email">

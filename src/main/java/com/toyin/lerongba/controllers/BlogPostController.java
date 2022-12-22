@@ -31,19 +31,9 @@ public class BlogPostController {
 
     @GetMapping("/blog")
     public String getAllBlogsPage (ModelMap model) {
-        List<BlogPost> allBlogPosts = blogPostService.getAllBlogPosts();
-        List<BlogPost> latest5BlogPosts = blogPostService.getLatest5BlogPosts();
-        model.addAttribute("allBlogPosts", allBlogPosts);
-        model.addAttribute("latest5BlogPosts", latest5BlogPosts);
-        return "blog";
-    }
-
-    @GetMapping("/blog/posts/post1")
-    public String getBlogPage (ModelMap model) {
-        List<BlogPost> allBlogPosts = blogPostService.getAllBlogPosts();
-        List<BlogPost> latest5BlogPosts = blogPostService.getLatest5BlogPosts();
-        model.addAttribute("allBlogPosts", allBlogPosts);
-        model.addAttribute("latest5BlogPosts", latest5BlogPosts);
+        model.addAttribute("allBlogPosts", blogPostService.getAllBlogPosts());
+        model.addAttribute("latest5BlogPosts", blogPostService.getLatest5BlogPosts());
+        model.addAttribute("latest2BlogPosts", blogPostService.getLatest2BlogPosts());
         return "blog";
     }
 
@@ -51,10 +41,9 @@ public class BlogPostController {
     @GetMapping("/blog/posts/{id}")
     public String getBlogPost (@PathVariable("id") int id, ModelMap model) {
         BlogPost blogPost = blogPostService.getBlogPostById(id);
-        List<BlogPost> allBlogPosts = blogPostService.getAllBlogPosts();
-        List<BlogPost> latest5BlogPosts = blogPostService.getLatest5BlogPosts();
-        model.addAttribute("latest5BlogPosts", latest5BlogPosts);
-        model.addAttribute("numberOfBlogPosts", allBlogPosts.size());
+        model.addAttribute("latest5BlogPosts", blogPostService.getLatest5BlogPosts());
+        model.addAttribute("numberOfBlogPosts", blogPostService.getAllBlogPosts().size());
+        model.addAttribute("latest2BlogPosts", blogPostService.getLatest2BlogPosts());
         model.addAttribute("blogPost",blogPost);
         return "blog-post";
     }

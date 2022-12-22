@@ -21,15 +21,20 @@ public class BlogPostService {
     }
 
     public List<BlogPost> getAllBlogPosts() {
-        return (List<BlogPost>) blogPostRepository.findAllByOrderByCreatedTimeDesc();
+        return blogPostRepository.findAllByOrderByCreatedTimeDesc();
     }
 
     public List<BlogPost> getLatest5BlogPosts() {
-        return (List<BlogPost>) blogPostRepository.findTop5ByOrderByCreatedTimeDesc();
+        return blogPostRepository.findTop5ByOrderByCreatedTimeDesc();
+    }
+
+    public List<BlogPost> getLatest3rdAnd4thBlogPosts() {
+         List<BlogPost> latest4BlogPosts = blogPostRepository.findTop4ByOrderByCreatedTimeDesc();
+         return latest4BlogPosts.subList(2,4);
     }
 
     public List<BlogPost> getLatest2BlogPosts() {
-        return (List<BlogPost>) blogPostRepository.findTop2ByOrderByCreatedTimeDesc();
+        return blogPostRepository.findTop2ByOrderByCreatedTimeDesc();
     }
 
     public BlogPost getBlogPostById(int id){

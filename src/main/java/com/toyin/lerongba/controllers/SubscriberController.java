@@ -1,6 +1,7 @@
 package com.toyin.lerongba.controllers;
 
 import com.toyin.lerongba.entities.Subscriber;
+import com.toyin.lerongba.services.BlogPostService;
 import com.toyin.lerongba.services.SubscriberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,8 +22,12 @@ public class SubscriberController {
     @Autowired
     final private SubscriberService subscriberService;
 
-    public SubscriberController(SubscriberService subscriberService) {
+    @Autowired
+    final private BlogPostService blogPostService;
+
+    public SubscriberController(SubscriberService subscriberService, BlogPostService blogPostService) {
         this.subscriberService = subscriberService;
+        this.blogPostService = blogPostService;
     }
 
 
@@ -39,7 +44,9 @@ public class SubscriberController {
             }
         }
         model.addAttribute("subscriber", new Subscriber());
-        return "/home";
+        model.addAttribute("latest3rdAnd4thBlogPosts", blogPostService.getLatest3rdAnd4thBlogPosts());
+        model.addAttribute("latest2BlogPosts", blogPostService.getLatest2BlogPosts());
+        return "home";
     }
 
     @PostMapping("/home/subscribe")
