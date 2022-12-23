@@ -5,6 +5,7 @@ import com.toyin.lerongba.repositories.SubscriberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -32,6 +33,16 @@ public class SubscriberService {
 
     public Subscriber getSubscriberByEmail(String email){
         return subscriberRepository.findSubscriberByEmail(email);
+    }
+
+    public String submitSubscriberForm(String redirectUrl, Subscriber subscriber, RedirectAttributes redirectAttrs) {
+        if (existsByEmail(subscriber.getEmail())) {
+            redirectAttrs.addFlashAttribute("error", "Error! Email address already subscribed");
+        } else {
+            createSubscriber(subscriber);
+            redirectAttrs.addFlashAttribute("passed", "Email address added as subscriber successfully!");
+        }
+        return "redirect:"+redirectUrl;
     }
 
     @Transactional

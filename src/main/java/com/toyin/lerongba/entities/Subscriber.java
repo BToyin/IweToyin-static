@@ -23,7 +23,7 @@ public class Subscriber {
     private Integer subscriberId;
 
     @Email(message = "Please enter a valid e-mail address")
-    @NotEmpty(message = "Email can't be empty")
+    @NotEmpty(message = "Email cannot be empty")
     @Column(name = "email", nullable = false)
     private String email;
 

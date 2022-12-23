@@ -23,6 +23,7 @@
           <p th:if="${error}"  th:text="${error}" class="alert-danger"></p>
           <p th:if="${passed}" th:text="${passed}" class="alert-success"></p>
           <div class="form-group">
+            <p  th:if="${#fields.hasErrors('email')}" th:errors="*{email}" th:class="${#fields.hasErrors('email')} ? alert-danger">Invalid Email</p>
             <input type="email" class="form-control" th:field="*{email}" id="email" placeholder="Your email" name="email">
           </div>
           <input class="btn btn-block btn-subscribe" type="submit" value="Subscribe" id="submit-subscribe-form">
@@ -31,6 +32,7 @@
           <p th:if="${error}"  th:text="${error}" class="alert-danger"></p>
           <p th:if="${passed}" th:text="${passed}" class="alert-success"></p>
           <div class="form-group">
+            <p  th:if="${#fields.hasErrors('email')}" th:errors="*{email}" th:class="${#fields.hasErrors('email')} ? alert-danger">Invalid Email</p>
             <input type="email" class="form-control" th:field="*{email}" placeholder="Your email" name="email">
           </div>
           <input class="btn btn-block btn-subscribe" type="submit" value="Subscribe">

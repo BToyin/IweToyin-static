@@ -181,6 +181,7 @@
                         <p th:if="${passed}" th:text="${passed}" class="alert-success"></p>
                         <form class="subscribe-form" id="subscriber-form" action="#" th:action="@{/home/subscribe}" th:object="${subscriber}" method="post">
                             <div class="form-group">
+                                <p  th:if="${#fields.hasErrors('email')}" th:errors="*{email}" th:class="${#fields.hasErrors('email')} ? alert-danger">Invalid Email</p>
                                 <input type="email" class="form-control" th:field="*{email}" id="email" placeholder="Your email" name="email">
                             </div>
                             <input class="btn btn-block btn-subscribe" type="submit" value="Subscribe" id="submit-subscriber-form">

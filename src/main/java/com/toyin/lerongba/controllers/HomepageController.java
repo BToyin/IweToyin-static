@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 @Controller
 public class HomepageController {
@@ -18,7 +19,6 @@ public class HomepageController {
 
     @GetMapping("/home")
     public String getHomePage(Model model) {
-        model.addAttribute("subscriber", new Subscriber());
         model.addAttribute("latest3rdAnd4thBlogPosts", blogPostService.getLatest3rdAnd4thBlogPosts());
         model.addAttribute("latest2BlogPosts", blogPostService.getLatest2BlogPosts());
         return "home";
@@ -26,7 +26,6 @@ public class HomepageController {
 
     @GetMapping("/")
     public String getHomePageFromIndex(Model model) {
-        model.addAttribute("subscriber", new Subscriber());
         model.addAttribute("latest3rdAnd4thBlogPosts", blogPostService.getLatest3rdAnd4thBlogPosts());
         model.addAttribute("latest2BlogPosts", blogPostService.getLatest2BlogPosts());
         return "home";
@@ -40,6 +39,11 @@ public class HomepageController {
     @GetMapping("/home#services")
     public String getServicesSection(Model model) {
         return "redirect:home#services";
+    }
+
+    @ModelAttribute("subscriber")
+    private Subscriber createSubscriber() {
+        return new Subscriber();
     }
 
 }
