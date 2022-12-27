@@ -53,11 +53,13 @@ public class BlogPostService {
     }
 
     public String createExcerpt(String blogContent) {
-        return blogContent.substring(0,200) + "...";
+        return blogContent.substring(0,199) + "...";
     }
 
     @Transactional
     public void createNewBlogPost(BlogPost blogPost) {
+        String excerpt = createExcerpt(blogPost.getContent());
+        blogPost.setExcerpt(excerpt);
         blogPostRepository.save(blogPost);
     }
 

@@ -3,7 +3,6 @@ package com.toyin.lerongba.entities;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -35,6 +35,7 @@ public class BlogPost {
     private String excerpt;
 
     @NotEmpty
+    @Size(min = 200, message = "Blog post is too short - should be at least 200 characters long")
     @Column(name = "content", length = 16777215, columnDefinition = "MEDIUMTEXT")
     private String content;
 

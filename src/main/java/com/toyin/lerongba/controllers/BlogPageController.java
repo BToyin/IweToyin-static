@@ -37,6 +37,14 @@ public class BlogPageController {
         return "blog";
     }
 
+    @PostMapping("/blog/subscribe")
+    private String saveSubscriber(@Valid @ModelAttribute("subscriber") Subscriber subscriber, BindingResult bindingResult, RedirectAttributes redirectAttrs) {
+        if (bindingResult.hasErrors()) {
+            return "blog";
+        }
+        return subscriberService.submitSubscriberForm("/blog/subscribe", subscriber, redirectAttrs);
+    }
+
     @GetMapping("/blog/subscribe")
     public String getAllBlogsPageAfterSubmission(HttpServletRequest request, ModelMap model) {
         Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(request);
@@ -50,28 +58,6 @@ public class BlogPageController {
             }
         }
         return "blog";
-    }
-
-
-//    @PostMapping("/addNewBlogPost")
-//    public RedirectView SaveNewBlogPost(@ModelAttribute BlogPost blogPost, RedirectAttributes redirectAttrs, HttpServletRequest request) {
-//
-//        if (blogPostService.existsByTitle(blogPost.getTitle())) {
-//            redirectAttrs.addFlashAttribute("error", "Error! Blog post title already exists");
-//        } else {
-//            blogPostService.createNewBlogPost(blogPost);
-//            redirectAttrs.addFlashAttribute("passed", "Blog post has been submitted successfully!");
-//        }
-//        return new RedirectView("/addNewBlogPost",true);
-//    }
-
-
-    @PostMapping("/blog/subscribe")
-    private String saveSubscriber(@Valid @ModelAttribute("subscriber") Subscriber subscriber, BindingResult bindingResult, RedirectAttributes redirectAttrs) {
-        if (bindingResult.hasErrors()) {
-            return "blog";
-        }
-        return subscriberService.submitSubscriberForm("/blog/subscribe", subscriber, redirectAttrs);
     }
 
     @ModelAttribute

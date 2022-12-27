@@ -21,11 +21,17 @@ import java.util.List;
 public class ApiController {
 
     @Autowired
-    private SubscriberService subscriberService;
+    private final SubscriberService subscriberService;
     @Autowired
-    private BlogPostService blogPostService;
+    private final BlogPostService blogPostService;
     @Autowired
-    ContactService contactService;
+    private final ContactService contactService;
+
+    public ApiController(SubscriberService subscriberService, BlogPostService blogPostService, ContactService contactService) {
+        this.subscriberService = subscriberService;
+        this.blogPostService = blogPostService;
+        this.contactService = contactService;
+    }
 
     @GetMapping("/subscriber/all")
     public List<Subscriber> getAllSubscribers() {
@@ -53,8 +59,6 @@ public class ApiController {
         if(blogPostService.existsByTitle(blogPost.getTitle())) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        String excerpt = blogPostService.createExcerpt(blogPost.getContent());
-        blogPost.setExcerpt(excerpt);
         blogPostService.createNewBlogPost(blogPost);
         return new ResponseEntity(HttpStatus.OK);
     }
