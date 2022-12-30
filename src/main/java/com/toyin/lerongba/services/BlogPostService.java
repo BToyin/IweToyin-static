@@ -6,6 +6,8 @@ import org.jsoup.Jsoup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -79,15 +81,15 @@ public class BlogPostService {
 
     }
 
-    public List<BlogPost> getBlogPosts(int page) {
-        return blogPostRepository.findAll(PageRequest.of(page, 5)).getContent();
-    }
-
-    public Page<BlogPost> getBlogPostsPage(int page) {
-        return blogPostRepository.findAll(PageRequest.of(page, 5));
+    public List<BlogPost> getBlogPosts() {
+        Sort sort = Sort.by(Sort.Direction.DESC, "createdTime");
+        Pageable pageable = PageRequest.of(0, 3, sort);
+        return blogPostRepository.findAll(pageable).getContent();
     }
 
     public List<BlogPost> getMoreBlogPosts(int page) {
-        return blogPostRepository.findAll(PageRequest.of(page, 5)).getContent();
+        Sort sort = Sort.by(Sort.Direction.DESC, "createdTime");
+        Pageable pageable = PageRequest.of(page, 3, sort);
+        return blogPostRepository.findAll(pageable).getContent();
     }
 }

@@ -1,13 +1,10 @@
 package com.toyin.lerongba.controllers;
 
-import co.elastic.clients.elasticsearch.license.LicenseStatus;
 import com.toyin.lerongba.entities.BlogPost;
 import com.toyin.lerongba.entities.Subscriber;
 import com.toyin.lerongba.services.BlogPostService;
 import com.toyin.lerongba.services.SubscriberService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -18,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
-import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -39,8 +35,8 @@ public class BlogPageController {
     }
 
     @GetMapping("/blog")
-    public String getAllBlogsPage (ModelMap model) {
-        List<BlogPost> posts = blogPostService.getBlogPosts(0);
+    public String getBlogsPage (ModelMap model) {
+        List<BlogPost> posts = blogPostService.getBlogPosts();
         model.addAttribute("blogPosts", posts);
         return "blog";
     }
