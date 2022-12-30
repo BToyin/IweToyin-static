@@ -1,15 +1,14 @@
 package com.toyin.lerongba.services;
 
 import com.toyin.lerongba.entities.BlogPost;
-import com.toyin.lerongba.entities.Subscriber;
 import com.toyin.lerongba.repositories.BlogPostRepository;
+import org.jsoup.Jsoup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
+
 
 import java.util.List;
 
@@ -33,11 +32,18 @@ public class BlogPostService {
 
     public List<BlogPost> getLatest3rdAnd4thBlogPosts() {
          List<BlogPost> latest4BlogPosts = blogPostRepository.findTop4ByOrderByCreatedTimeDesc();
+         if (latest4BlogPosts.size() < 4){
+             return null;
+         }
          return latest4BlogPosts.subList(2,4);
     }
 
     public List<BlogPost> getLatest2BlogPosts() {
-        return blogPostRepository.findTop2ByOrderByCreatedTimeDesc();
+        List<BlogPost> latest2BlogPosts = blogPostRepository.findTop2ByOrderByCreatedTimeDesc();
+        if (latest2BlogPosts.size() < 2){
+            return null;
+        }
+        return latest2BlogPosts;
     }
 
     public BlogPost getBlogPostById(int id){
@@ -53,14 +59,35 @@ public class BlogPostService {
     }
 
     public String createExcerpt(String blogContent) {
-        return blogContent.substring(0,199) + "...";
+        String excerpt = blogContent.substring(0,199);
+        return Jsoup.parse(excerpt).text() + "...";
+    }
+
+    public String parseContent(String rawBlogContent) {
+        return Jsoup.parse(rawBlogContent).text();
     }
 
     @Transactional
     public void createNewBlogPost(BlogPost blogPost) {
-        String excerpt = createExcerpt(blogPost.getContent());
-        blogPost.setExcerpt(excerpt);
+        String content = parseContent(blogPost.getRawContent());
+        blogPost.setContent(content);
+        blogPost.setExcerpt(createExcerpt(content));
         blogPostRepository.save(blogPost);
     }
 
+    public void editBlogPost() {
+
+    }
+
+    public List<BlogPost> getBlogPosts(int page) {
+        return blogPostRepository.findAll(PageRequest.of(page, 5)).getContent();
+    }
+
+    public Page<BlogPost> getBlogPostsPage(int page) {
+        return blogPostRepository.findAll(PageRequest.of(page, 5));
+    }
+
+    public List<BlogPost> getMoreBlogPosts(int page) {
+        return blogPostRepository.findAll(PageRequest.of(page, 5)).getContent();
+    }
 }

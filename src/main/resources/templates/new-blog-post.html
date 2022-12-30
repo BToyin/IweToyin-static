@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <script src="/vendors/jquery/jquery.min.js"></script>
     <script src="/js/loader.js"></script>
+    <script src="https://cdn.tiny.cloud/1/m3vgd2xc0vho8h4bwusu3eohvu2irq91cyw44tfsty0v2d3z/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 
 <body>
@@ -21,7 +22,7 @@
                 <h2 class="section-title text-center pb-5">Add a new blog post</h2>
                 <p th:if="${passed}" class="alert-success text-center" th:text="${passed}"></p>
                 <p th:if="${error}" class="alert-danger text-center" th:text="${error}"></p>
-                <div class="contact-page-form-wrapper pl-0 py-5 wow fadeInUp">
+                <div class="contact-page-form-wrapper pl-0 pt-0 pb-5 wow fadeInUp">
                     <form action="#" th:action="@{/blog/newBlogPost/submit}" th:object="${blogPost}" method="post">
                         <div class="form-group">
                             <label for="title" class="font-weight-bold">Title</label>
@@ -34,9 +35,9 @@
                             <input type="text" class="form-control" id="author" placeholder="Author" th:field="*{author}">
                         </div>
                         <div class="form-group">
-                            <label for="content" class="font-weight-bold">Blog Post content</label>
-                            <p  th:if="${#fields.hasErrors('content')}" th:errors="*{content}" th:class="${#fields.hasErrors('content')} ? alert-danger">Invalid Message</p>
-                            <textarea class="form-control" rows="30" cols="25" id="content"  placeholder="Blog post content" th:field="*{content}"></textarea>
+                            <label for="rawContent" class="font-weight-bold">Blog Post content</label>
+                            <p  th:if="${#fields.hasErrors('rawContent')}" th:errors="*{rawContent}" th:class="${#fields.hasErrors('rawContent')} ? alert-danger">Invalid Message</p>
+                            <textarea class="form-control" rows="30" cols="25" id="rawContent"  placeholder="Blog post content" th:field="*{rawContent}"></textarea>
                         </div>
                         <button class="btn btn-block" type="submit">Submit</button>
                     </form>

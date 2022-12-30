@@ -1,5 +1,6 @@
 package com.toyin.lerongba.entities;
 
+import com.toyin.lerongba.validation.BlogPostConstraint;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -11,9 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
-import java.util.Objects;
+import java.util.List;
 
 @Entity
 @Table(name = "blog_post", schema = "lerongba")
@@ -34,10 +34,16 @@ public class BlogPost {
     @Column(name = "excerpt", columnDefinition = "TINYTEXT")
     private String excerpt;
 
-    @NotEmpty
-    @Size(min = 200, message = "Blog post is too short - should be at least 200 characters long")
     @Column(name = "content", length = 16777215, columnDefinition = "MEDIUMTEXT")
     private String content;
+
+//    @Column(name = "tags")
+//    private List<String> tags;
+
+    @NotEmpty
+    @BlogPostConstraint(message = "Blog post is too short - should be at least 200 characters long")
+    @Column(name = "raw_content", length = 16777215, columnDefinition = "MEDIUMTEXT")
+    private String rawContent;
 
     @CreationTimestamp
     @Column(name = "created_time")
@@ -103,16 +109,19 @@ public class BlogPost {
         this.lastUpdate = lastUpdate;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        BlogPost blogPost = (BlogPost) o;
-        return getPostId().equals(blogPost.getPostId()) && getTitle().equals(blogPost.getTitle()) && getAuthor().equals(blogPost.getAuthor()) && Objects.equals(getExcerpt(), blogPost.getExcerpt()) && getContent().equals(blogPost.getContent()) && Objects.equals(getCreatedTime(), blogPost.getCreatedTime()) && Objects.equals(getLastUpdate(), blogPost.getLastUpdate());
+    public String getRawContent() {
+        return rawContent;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getPostId(), getTitle(), getAuthor(), getExcerpt(), getContent(), getCreatedTime(), getLastUpdate());
+    public void setRawContent(String rawContent) {
+        this.rawContent = rawContent;
     }
+
+//    public List<String> getTags() {
+//        return tags;
+//    }
+//
+//    public void setTags(List<String> tags) {
+//        this.tags = tags;
+//    }
 }

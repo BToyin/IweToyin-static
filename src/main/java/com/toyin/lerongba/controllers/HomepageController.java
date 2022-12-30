@@ -5,6 +5,7 @@ import com.toyin.lerongba.services.BlogPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
@@ -17,17 +18,8 @@ public class HomepageController {
         this.blogPostService = blogPostService;
     }
 
-    @GetMapping("/home")
+    @GetMapping(value = {"/home", "/"} )
     public String getHomePage(Model model) {
-        model.addAttribute("latest3rdAnd4thBlogPosts", blogPostService.getLatest3rdAnd4thBlogPosts());
-        model.addAttribute("latest2BlogPosts", blogPostService.getLatest2BlogPosts());
-        return "home";
-    }
-
-    @GetMapping("/")
-    public String getHomePageFromIndex(Model model) {
-        model.addAttribute("latest3rdAnd4thBlogPosts", blogPostService.getLatest3rdAnd4thBlogPosts());
-        model.addAttribute("latest2BlogPosts", blogPostService.getLatest2BlogPosts());
         return "home";
     }
 
@@ -42,8 +34,11 @@ public class HomepageController {
     }
 
     @ModelAttribute("subscriber")
-    private Subscriber createSubscriber() {
-        return new Subscriber();
+    private void prepareHomeModelAttributes(ModelMap model) {
+        model.addAttribute("latest3rdAnd4thBlogPosts", blogPostService.getLatest3rdAnd4thBlogPosts());
+        model.addAttribute("latest2BlogPosts", blogPostService.getLatest2BlogPosts());
+        model.addAttribute("subscriber",new Subscriber());
+
     }
 
 }
