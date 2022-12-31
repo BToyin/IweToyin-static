@@ -20,8 +20,8 @@
         <h2 class="section-title text-center pb-5">Blog Posts</h2>
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 blog-post-archive" id="blogPosts">
-                    <article class="media blog-post wow fadeInUp" th:each="blogPost: ${blogPosts}">
+                <div class="col-lg-8 blog-post-archive">
+                    <article class="wow fadeInUp" th:each="blogPost: ${blogPosts}">
 <!--                        Either the actual image saved in DB or the image saved locally-->
                         <img src="/images/blog_1.jpg" alt="blog post" class="blog-post-thumbnail">
                         <div class="media-body">
@@ -30,9 +30,8 @@
                             <a th:href="@{/blog/posts/{id}(id=${blogPost.postId})}" class="blog-post-link link-hover-fx">Read more</a>
                         </div>
                     </article>
-                    <button id="load-more" class="btn btn-primary">Load more</button>
                 </div>
-                <div th:include="fragments/blog-sidebar" class="col-lg-4"></div>
+                <div th:include="fragments/blog-sidebar" class="blog-sidebar col-lg-4"></div>
             </div>
         </div>
     </main>
@@ -43,9 +42,6 @@
     <script src="/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/js/main.js"></script>
     <script>new WOW().init();</script>
-    <script>
-        document.getElementById('load-more').addEventListener('click', loadMorePosts);
-    </script>
 </body>
 
 </html>

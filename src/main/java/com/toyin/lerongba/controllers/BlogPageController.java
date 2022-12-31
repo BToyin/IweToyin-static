@@ -11,8 +11,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
@@ -35,16 +33,8 @@ public class BlogPageController {
     }
 
     @GetMapping("/blog")
-    public String getBlogsPage (ModelMap model) {
-        List<BlogPost> posts = blogPostService.getBlogPosts();
-        model.addAttribute("blogPosts", posts);
+    public String getBlogsPage () {
         return "blog";
-    }
-
-    @GetMapping("/blog/more")
-    @ResponseBody
-    public List<BlogPost> getMorePosts(@RequestParam(defaultValue = "0") int page) {
-        return blogPostService.getMoreBlogPosts(page);
     }
 
 
@@ -74,6 +64,7 @@ public class BlogPageController {
     @ModelAttribute
     private void prepareBlogsPageModelAttributes(ModelMap model) {
         model.addAttribute("subscriber", new Subscriber());
+        model.addAttribute("blogPosts", blogPostService.getAllBlogPosts());
         model.addAttribute("latest5BlogPosts", blogPostService.getLatest5BlogPosts());
         model.addAttribute("latest2BlogPosts", blogPostService.getLatest2BlogPosts());
     }

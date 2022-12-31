@@ -6308,11 +6308,12 @@ html {
   }
 }
 
+@media (max-width: 767px) {
+    .blog-sidebar { padding-top: 15px;}}
+
 /*show for mobile/table only*/
 @media only screen and (min-width: 1027px) {
   .mobile-only {
     display: none;
   }
 }
-
-border-top: 1px solid #e6e6e6;

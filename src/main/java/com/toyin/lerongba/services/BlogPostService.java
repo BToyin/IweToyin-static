@@ -5,6 +5,7 @@ import com.toyin.lerongba.repositories.BlogPostRepository;
 import org.jsoup.Jsoup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -75,21 +77,5 @@ public class BlogPostService {
         blogPost.setContent(content);
         blogPost.setExcerpt(createExcerpt(content));
         blogPostRepository.save(blogPost);
-    }
-
-    public void editBlogPost() {
-
-    }
-
-    public List<BlogPost> getBlogPosts() {
-        Sort sort = Sort.by(Sort.Direction.DESC, "createdTime");
-        Pageable pageable = PageRequest.of(0, 3, sort);
-        return blogPostRepository.findAll(pageable).getContent();
-    }
-
-    public List<BlogPost> getMoreBlogPosts(int page) {
-        Sort sort = Sort.by(Sort.Direction.DESC, "createdTime");
-        Pageable pageable = PageRequest.of(page, 3, sort);
-        return blogPostRepository.findAll(pageable).getContent();
     }
 }

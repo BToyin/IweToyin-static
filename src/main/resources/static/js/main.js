@@ -6,36 +6,6 @@ tinymce.init({
   selector: 'textarea#rawContent'
 });
 
-let page = 1;
-function loadMorePosts() {
-  const xhr = new XMLHttpRequest();
-  let page = 1;
-  xhr.open('GET', '/blog/more?page=' + page, true);
-  xhr.onload = function() {
-    if (this.status === 200) {
-      page++;
-      const posts = JSON.parse(this.responseText);
-      if (posts.length > 0) {
-        posts.forEach(function(post) {
-          const blogPost = document.createElement('article');
-          blogPost.innerHTML = `
-            <img src="/images/blog_1.jpg" alt="blog post" class="blog-post-thumbnail">
-            <div class="media-body">
-              <h5 class="blog-post-title">${post.title}</h5>
-              <p class="blog-post-excerpt">${post.excerpt}</p>
-              <a href="/blog/posts/${post.postId}" class="blog-post-link link-hover-fx">Read more</a>
-            </div>
-          `;
-          blogPost.classList.add('media', 'blog-post', 'wow', 'fadeInUp');
-          document.getElementById('blogPosts').insertBefore(blogPost, document.getElementById('load-more'));
-        });
-      } else {
-        document.getElementById('load-more').disabled = true;
-      }
-    }
-  };
-  xhr.send();
-}
 
 
 
