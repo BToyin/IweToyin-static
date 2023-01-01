@@ -27,6 +27,7 @@ public class ApiController {
     @Autowired
     private final ContactService contactService;
 
+
     public ApiController(SubscriberService subscriberService, BlogPostService blogPostService, ContactService contactService) {
         this.subscriberService = subscriberService;
         this.blogPostService = blogPostService;
@@ -74,6 +75,5 @@ public class ApiController {
         contactService.createContact(contact);
         return new ResponseEntity(HttpStatus.OK);
     }
-
 
 }

@@ -1,6 +1,6 @@
 package com.toyin.lerongba.entities;
 
-import com.toyin.lerongba.validation.BlogPostConstraint;
+import com.toyin.lerongba.constraint.BlogPostConstraint;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -13,7 +13,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Table(name = "blog_post", schema = "lerongba")
@@ -36,9 +35,6 @@ public class BlogPost {
 
     @Column(name = "content", length = 16777215, columnDefinition = "MEDIUMTEXT")
     private String content;
-
-//    @Column(name = "tags")
-//    private List<String> tags;
 
     @NotEmpty
     @BlogPostConstraint(message = "Blog post is too short - should be at least 200 characters long")
@@ -117,11 +113,4 @@ public class BlogPost {
         this.rawContent = rawContent;
     }
 
-//    public List<String> getTags() {
-//        return tags;
-//    }
-//
-//    public void setTags(List<String> tags) {
-//        this.tags = tags;
-//    }
 }

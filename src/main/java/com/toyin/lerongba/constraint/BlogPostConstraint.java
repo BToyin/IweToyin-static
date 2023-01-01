@@ -1,4 +1,6 @@
-package com.toyin.lerongba.validation;
+package com.toyin.lerongba.constraint;
+
+import com.toyin.lerongba.validation.BlogPostValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

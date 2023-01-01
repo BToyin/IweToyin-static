@@ -1,5 +1,6 @@
 package com.toyin.lerongba.validation;
 
+import com.toyin.lerongba.constraint.BlogPostConstraint;
 import org.jsoup.Jsoup;
 
 import javax.validation.ConstraintValidator;
