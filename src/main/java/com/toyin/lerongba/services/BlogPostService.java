@@ -4,16 +4,10 @@ import com.toyin.lerongba.entities.BlogPost;
 import com.toyin.lerongba.repositories.BlogPostRepository;
 import org.jsoup.Jsoup;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
-import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -26,24 +20,28 @@ public class BlogPostService {
         this.blogPostRepository = blogPostRepository;
     }
 
-    public List<BlogPost> getAllBlogPosts() {
-        return blogPostRepository.findAllByOrderByCreatedTimeDesc();
+    public List<BlogPost> getAllApprovedBlogPosts() {
+        return blogPostRepository.findAllByApprovedTrueOrderByCreatedTimeDesc();
     }
 
-    public List<BlogPost> getLatest5BlogPosts() {
-        return blogPostRepository.findTop5ByOrderByCreatedTimeDesc();
+    public List<BlogPost> getAllUnApprovedBlogPosts() {
+        return blogPostRepository.findAllByApprovedFalseOrderByCreatedTimeDesc();
     }
 
-    public List<BlogPost> getLatest3rdAnd4thBlogPosts() {
-         List<BlogPost> latest4BlogPosts = blogPostRepository.findTop4ByOrderByCreatedTimeDesc();
+    public List<BlogPost> getLatest5ApprovedBlogPosts() {
+        return blogPostRepository.findTop5ByApprovedTrueOrderByCreatedTimeDesc();
+    }
+
+    public List<BlogPost> getLatest3rdAnd4thApprovedBlogPosts() {
+         List<BlogPost> latest4BlogPosts = blogPostRepository.findTop4ByApprovedTrueOrderByCreatedTimeDesc();
          if (latest4BlogPosts.size() < 4){
              return null;
          }
          return latest4BlogPosts.subList(2,4);
     }
 
-    public List<BlogPost> getLatest2BlogPosts() {
-        List<BlogPost> latest2BlogPosts = blogPostRepository.findTop2ByOrderByCreatedTimeDesc();
+    public List<BlogPost> getLatest2ApprovedBlogPosts() {
+        List<BlogPost> latest2BlogPosts = blogPostRepository.findTop2ByApprovedTrueOrderByCreatedTimeDesc();
         if (latest2BlogPosts.size() < 2){
             return null;
         }
@@ -51,11 +49,7 @@ public class BlogPostService {
     }
 
     public BlogPost getBlogPostById(int id){
-        return blogPostRepository.findById(id).get();
-    }
-
-    public BlogPost getBlogPostByTitle(String title){
-        return blogPostRepository.findBlogPostByTitle(title);
+        return blogPostRepository.findById(id).orElse(null);
     }
 
     public boolean existsByTitle(String title) {
@@ -76,6 +70,12 @@ public class BlogPostService {
         String content = parseContent(blogPost.getRawContent());
         blogPost.setContent(content);
         blogPost.setExcerpt(createExcerpt(content));
+        blogPost.setApproved(false);
+        blogPostRepository.save(blogPost);
+    }
+    @Transactional
+    public void approveBlogPost(BlogPost blogPost) {
+        blogPost.setApproved(true);
         blogPostRepository.save(blogPost);
     }
 }

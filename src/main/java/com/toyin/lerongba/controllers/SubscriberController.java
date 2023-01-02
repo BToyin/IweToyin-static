@@ -9,7 +9,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
@@ -60,9 +59,9 @@ public class SubscriberController {
     @ModelAttribute
     private void addHomePageModelAttributes(ModelMap model) {
         model.addAttribute("subscriber", new Subscriber());
-        model.addAttribute("latest3rdAnd4thBlogPosts", blogPostService.getLatest3rdAnd4thBlogPosts());
-        model.addAttribute("latest2BlogPosts", blogPostService.getLatest2BlogPosts());
-        model.addAttribute("numberOfBlogPosts", blogPostService.getAllBlogPosts().size());
+        model.addAttribute("latest3rdAnd4thBlogPosts", blogPostService.getLatest3rdAnd4thApprovedBlogPosts());
+        model.addAttribute("latest2BlogPosts", blogPostService.getLatest2ApprovedBlogPosts());
+        model.addAttribute("numberOfBlogPosts", blogPostService.getAllApprovedBlogPosts().size());
     }
 
 

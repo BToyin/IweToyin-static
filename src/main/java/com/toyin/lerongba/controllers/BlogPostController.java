@@ -33,11 +33,11 @@ public class BlogPostController {
     }
 
 
-
     @GetMapping("/blog/posts/{id}")
     public String getBlogPost (@PathVariable("id") int id, ModelMap model) {
         return "blog-post";
     }
+
 
     @PostMapping(value = {"/blog/posts/{id}/subscribe"})
     public String saveSubscriber(@Valid @ModelAttribute("subscriber") Subscriber subscriber, BindingResult bindingResult, RedirectAttributes redirectAttrs) {
@@ -66,9 +66,9 @@ public class BlogPostController {
     private void addBlogPostPageModelAttributes(ModelMap model, @PathVariable int id) {
         BlogPost blogPost = blogPostService.getBlogPostById(id);
         model.addAttribute("subscriber", new Subscriber());
-        model.addAttribute("latest5BlogPosts", blogPostService.getLatest5BlogPosts());
-        model.addAttribute("numberOfBlogPosts", blogPostService.getAllBlogPosts().size());
-        model.addAttribute("latest2BlogPosts", blogPostService.getLatest2BlogPosts());
+        model.addAttribute("latest5BlogPosts", blogPostService.getLatest5ApprovedBlogPosts());
+        model.addAttribute("numberOfBlogPosts", blogPostService.getAllApprovedBlogPosts().size());
+        model.addAttribute("latest2BlogPosts", blogPostService.getLatest2ApprovedBlogPosts());
         model.addAttribute("blogPost",blogPost);
     }
 }

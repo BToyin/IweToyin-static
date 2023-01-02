@@ -1,34 +1,27 @@
 package com.toyin.lerongba.entities;
 
 import org.hibernate.annotations.CreationTimestamp;
-import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
-@Table(name = "subscriber", schema = "lerongba")
 public class Subscriber {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "subscriber_id")
     private Integer subscriberId;
 
     @Email(message = "Please enter a valid e-mail address")
     @NotEmpty(message = "Email cannot be empty")
-    @Column(name = "email", nullable = false)
     private String email;
 
     @CreationTimestamp
-    @Column(name = "created_time")
     private LocalDateTime createdTime;
 
 

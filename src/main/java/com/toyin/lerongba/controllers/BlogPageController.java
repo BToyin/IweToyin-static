@@ -1,6 +1,5 @@
 package com.toyin.lerongba.controllers;
 
-import com.toyin.lerongba.entities.BlogPost;
 import com.toyin.lerongba.entities.Subscriber;
 import com.toyin.lerongba.services.BlogPostService;
 import com.toyin.lerongba.services.SubscriberService;
@@ -16,7 +15,6 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -64,9 +62,9 @@ public class BlogPageController {
     @ModelAttribute
     private void prepareBlogsPageModelAttributes(ModelMap model) {
         model.addAttribute("subscriber", new Subscriber());
-        model.addAttribute("blogPosts", blogPostService.getAllBlogPosts());
-        model.addAttribute("latest5BlogPosts", blogPostService.getLatest5BlogPosts());
-        model.addAttribute("latest2BlogPosts", blogPostService.getLatest2BlogPosts());
+        model.addAttribute("blogPosts", blogPostService.getAllApprovedBlogPosts());
+        model.addAttribute("latest5BlogPosts", blogPostService.getLatest5ApprovedBlogPosts());
+        model.addAttribute("latest2BlogPosts", blogPostService.getLatest2ApprovedBlogPosts());
     }
 
 }

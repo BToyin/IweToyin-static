@@ -9,51 +9,46 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "blog_post", schema = "lerongba")
 public class BlogPost {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "post_id")
-    private Integer postId;
+    private int postId;
 
-    @Column(name = "title")
     @NotBlank
     private String title;
 
     @NotBlank
-    @Column(name = "author")
     private String author;
 
-    @Column(name = "excerpt", columnDefinition = "TINYTEXT")
+    @Column(columnDefinition = "TINYTEXT")
     private String excerpt;
 
-    @Column(name = "content", length = 16777215, columnDefinition = "MEDIUMTEXT")
+    @Column(length = 16777215, columnDefinition = "MEDIUMTEXT")
     private String content;
 
     @NotEmpty
     @BlogPostConstraint(message = "Blog post is too short - should be at least 200 characters long")
-    @Column(name = "raw_content", length = 16777215, columnDefinition = "MEDIUMTEXT")
+    @Column(length = 16777215, columnDefinition = "MEDIUMTEXT")
     private String rawContent;
 
+    private boolean approved;
+
     @CreationTimestamp
-    @Column(name = "created_time")
     private LocalDateTime createdTime;
 
     @UpdateTimestamp
-    @Column(name = "last_update")
     private LocalDateTime lastUpdate;
 
-    public Integer getPostId() {
+    public int getPostId() {
         return postId;
     }
 
-    public void setPostId(Integer postId) {
+    public void setPostId(int postId) {
         this.postId = postId;
     }
 
@@ -113,4 +108,11 @@ public class BlogPost {
         this.rawContent = rawContent;
     }
 
+    public boolean isApproved() {
+        return approved;
+    }
+
+    public void setApproved(boolean approved) {
+        this.approved = approved;
+    }
 }

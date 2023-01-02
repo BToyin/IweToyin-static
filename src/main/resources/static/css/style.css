@@ -6324,3 +6324,24 @@ html {
   line-height: 1;
   color: var(--secondary);
   margin-bottom: 30px; }
+
+
+
+  .approve-form-wrapper .form-group {
+    margin-bottom: 42px; }
+  .approve-form-wrapper .form-control {
+    border: 0;
+    border-radius: 0;
+    border-bottom: 1px solid #d3d3d3;
+    padding: 5px 0;
+    font-size: 16px;
+    font-weight: 500; }
+    .approve-form-wrapper .form-control:focus {
+      outline: none;
+      box-shadow: none; }
+  .approve-form-wrapper .btn {
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 1;
+    color: #000000;
+    padding: 0; }

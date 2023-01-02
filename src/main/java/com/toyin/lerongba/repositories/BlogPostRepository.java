@@ -1,9 +1,10 @@
 package com.toyin.lerongba.repositories;
 
 import com.toyin.lerongba.entities.BlogPost;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,15 +16,17 @@ public interface BlogPostRepository extends JpaRepository<BlogPost, Integer> {
     @Override
     Optional<BlogPost> findById(Integer integer);
 
-    BlogPost findBlogPostByTitle(String title);
+    Optional<BlogPost> findByTitle(String title);
 
     boolean existsByTitle(String title);
 
-    List<BlogPost> findAllByOrderByCreatedTimeDesc();
+    List<BlogPost> findTop5ByApprovedTrueOrderByCreatedTimeDesc();
 
-    List<BlogPost> findTop5ByOrderByCreatedTimeDesc();
+    List<BlogPost> findTop2ByApprovedTrueOrderByCreatedTimeDesc();
 
-    List<BlogPost> findTop2ByOrderByCreatedTimeDesc();
+    List<BlogPost> findTop4ByApprovedTrueOrderByCreatedTimeDesc();
 
-    List<BlogPost> findTop4ByOrderByCreatedTimeDesc();
+    List<BlogPost> findAllByApprovedTrueOrderByCreatedTimeDesc();
+
+    List<BlogPost> findAllByApprovedFalseOrderByCreatedTimeDesc();
 }

@@ -35,8 +35,8 @@ public class HomepageController {
 
     @ModelAttribute("subscriber")
     private void prepareHomeModelAttributes(ModelMap model) {
-        model.addAttribute("latest3rdAnd4thBlogPosts", blogPostService.getLatest3rdAnd4thBlogPosts());
-        model.addAttribute("latest2BlogPosts", blogPostService.getLatest2BlogPosts());
+        model.addAttribute("latest3rdAnd4thBlogPosts", blogPostService.getLatest3rdAnd4thApprovedBlogPosts());
+        model.addAttribute("latest2BlogPosts", blogPostService.getLatest2ApprovedBlogPosts());
         model.addAttribute("subscriber",new Subscriber());
 
     }

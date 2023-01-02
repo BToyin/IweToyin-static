@@ -32,12 +32,12 @@ public class NewBlogPostController {
     }
 
 
-    @GetMapping("/blog/newBlogPost")
-    public String getSubmitNewBlogPostPage (ModelMap model) {
+    @GetMapping("/blog/new")
+    public String showSubmitNewBlogPostPage(ModelMap model) {
         return "new-blog-post";
     }
 
-    @PostMapping("/blog/newBlogPost/submit")
+    @PostMapping("/blog/new/submit")
     public String submitNewBlogPost(@Valid @ModelAttribute("blogPost") BlogPost blogPost, BindingResult bindingResult, RedirectAttributes redirectAttrs) {
         if (bindingResult.hasErrors()) {
             return "new-blog-post";
@@ -46,13 +46,13 @@ public class NewBlogPostController {
             redirectAttrs.addFlashAttribute("error", "Error! Blog post title already exists");
         } else {
             blogPostService.createNewBlogPost(blogPost);
-            redirectAttrs.addFlashAttribute("passed", "Blog post has been submitted successfully!");
+            redirectAttrs.addFlashAttribute("passed", "Blog post has been submitted successfully! Please wait for approval!");
         }
-        return "redirect:/blog/newBlogPost/submit";
+        return "redirect:/blog/new/submit";
     }
 
-    @GetMapping("/blog/newBlogPost/submit")
-    public String getSubmitNewBlogPostPageAfterSubmission (HttpServletRequest request, ModelMap model) {
+    @GetMapping("/blog/new/submit")
+    public String submitNewBlogPost(HttpServletRequest request, ModelMap model) {
         Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(request);
         if (inputFlashMap != null) {
             if (inputFlashMap.containsKey("passed")) {
@@ -66,12 +66,44 @@ public class NewBlogPostController {
         return "new-blog-post";
     }
 
+    @PostMapping("/blog/new/approve")
+    public String approveBlogPost(@ModelAttribute BlogPost blogPost,  BindingResult bindingResult, RedirectAttributes redirectAttrs) {
+        if (bindingResult.hasErrors()) {
+            return "new-blog-post";
+        }
+        BlogPost checkBlogPost = blogPostService.getBlogPostById(blogPost.getPostId());
+        if (checkBlogPost != null) {
+            blogPostService.approveBlogPost(checkBlogPost);
+            redirectAttrs.addFlashAttribute("passed", "Blog post has been approved successfully!");
+        } else {
+            redirectAttrs.addAttribute("error", "error occurred");
+        }
+        return "redirect:/blog/new/approve";
+    }
+
+    @GetMapping("/blog/new/approve")
+    public String approveBlogPost(HttpServletRequest request, ModelMap model) {
+        Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(request);
+        if (inputFlashMap != null) {
+            if (inputFlashMap.containsKey("passed")) {
+                String passed = (String) inputFlashMap.get("passed");
+                model.addAttribute("passed", passed);
+            } else if (inputFlashMap.containsKey("error")) {
+                String error = (String) inputFlashMap.get("error");
+                model.addAttribute("error", error);
+            }
+        }
+        return "new-blog-post";
+    }
+
+
     @ModelAttribute
     private void prepareBlogsPageModelAttributes(ModelMap model) {
         model.addAttribute("subscriber", new Subscriber());
         model.addAttribute("blogPost", new BlogPost());
-        model.addAttribute("latest5BlogPosts", blogPostService.getLatest5BlogPosts());
-        model.addAttribute("latest2BlogPosts", blogPostService.getLatest2BlogPosts());
+        model.addAttribute("latest5BlogPosts", blogPostService.getLatest5ApprovedBlogPosts());
+        model.addAttribute("latest2BlogPosts", blogPostService.getLatest2ApprovedBlogPosts());
+        model.addAttribute("unApprovedBlogPosts", blogPostService.getAllUnApprovedBlogPosts());
     }
 
 }
