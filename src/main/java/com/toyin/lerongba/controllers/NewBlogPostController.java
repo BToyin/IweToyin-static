@@ -4,19 +4,25 @@ import com.toyin.lerongba.entities.BlogPost;
 import com.toyin.lerongba.entities.Subscriber;
 import com.toyin.lerongba.services.BlogPostService;
 import com.toyin.lerongba.services.SubscriberService;
+import com.toyin.lerongba.util.FileUploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.Map;
+import java.util.Objects;
 
 @Controller
 public class NewBlogPostController {
@@ -38,13 +44,18 @@ public class NewBlogPostController {
     }
 
     @PostMapping("/blog/new/submit")
-    public String submitNewBlogPost(@Valid @ModelAttribute("blogPost") BlogPost blogPost, BindingResult bindingResult, RedirectAttributes redirectAttrs) {
+    public String submitNewBlogPost(@Valid @ModelAttribute("blogPost") BlogPost blogPost, BindingResult bindingResult, @RequestParam("image") MultipartFile multipartFile, RedirectAttributes redirectAttrs) throws IOException {
         if (bindingResult.hasErrors()) {
             return "new-blog-post";
         }
         if (blogPostService.existsByTitle(blogPost.getTitle())) {
             redirectAttrs.addFlashAttribute("error", "Error! Blog post title already exists");
         } else {
+            String fileName = Objects.requireNonNull(multipartFile.getOriginalFilename()).replaceAll("\\s", "-");
+            if (!fileName.isEmpty()){
+                blogPost.setPhotos(fileName);
+                FileUploadUtil.saveFile(multipartFile);
+            }
             blogPostService.createNewBlogPost(blogPost);
             redirectAttrs.addFlashAttribute("passed", "Blog post has been submitted successfully! Please wait for approval!");
         }
