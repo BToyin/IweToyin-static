@@ -24,7 +24,7 @@
             <p th:if="${passed}" class="alert-success text-center" th:text="${passed}"></p>
             <p th:if="${error}" class="alert-danger text-center" th:text="${error}"></p>
             <div class="contact-page-form-wrapper pl-0 pt-0 pb-5 wow fadeInUp">
-                <form action="#" th:action="@{/blog/new/submit}" th:object="${blogPost}" method="post">
+                <form action="#" th:action="@{/blog/new/submit}" th:object="${blogPost}" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="title" class="font-weight-bold">Title</label>
                         <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}"
@@ -43,6 +43,10 @@
                            th:class="${#fields.hasErrors('rawContent')} ? alert-danger">Invalid Message</p>
                         <textarea class="form-control" rows="30" cols="25" id="rawContent"
                                   placeholder="Blog post content" th:field="*{rawContent}"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Image: </label>
+                        <input type="file" name="image" accept="image/png, image/jpeg" />
                     </div>
                     <button class="btn btn-block" type="submit">Submit</button>
                 </form>
@@ -89,14 +93,6 @@
 <script src="/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="/js/main.js"></script>
 <script>new WOW().init();</script>
-<script>
-      function submitForm(formId, method) {
-        const form = document.getElementById(formId);
-        form.method = method;
-        form.submit();
-      }
-
-</script>
 </body>
 
 </html>

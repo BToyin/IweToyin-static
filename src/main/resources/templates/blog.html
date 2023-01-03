@@ -22,8 +22,7 @@
             <div class="row">
                 <div class="col-lg-8 blog-post-archive">
                     <article class="wow fadeInUp mb-5" th:each="blogPost: ${blogPosts}">
-<!--                        Either the actual image saved in DB or the image saved locally-->
-                        <img src="/images/blog_1.jpg" alt="blog post" class="blog-post-thumbnail">
+                        <img th:src="@{'/images/blogPhotos/' + ${blogPost.photos}}" alt="blog post" class="blog-post-thumbnail">
                         <div class="media-body">
                             <h5 class="blog-post-title" th:text="${blogPost.title}"></h5>
                             <p class="blog-post-excerpt" th:text="${blogPost.excerpt}"></p>

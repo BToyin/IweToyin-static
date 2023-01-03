@@ -78,4 +78,8 @@ public class BlogPostService {
         blogPost.setApproved(true);
         blogPostRepository.save(blogPost);
     }
+
+    public BlogPost getBlogPostByTitle(String title) {
+        return blogPostRepository.findByTitle(title).orElse(null);
+    }
 }

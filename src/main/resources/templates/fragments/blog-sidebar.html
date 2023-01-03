@@ -41,7 +41,7 @@
       <div class="widget-posts">
         <h6 class="widget-title">LATEST BLOG POSTS</h6>
         <div class="media blog-post" th:each="blogPost: ${latest5BlogPosts}">
-          <img src="/images/blog_sidebar_1.jpg" alt="blog sidebar" class="post-thumbnail">
+          <img th:src="@{'/images/blogPhotos/' + ${blogPost.photos}}" alt="blog sidebar" class="post-thumbnail">
           <div class="media-body align-self-center">
             <a th:href="@{/blog/posts/{id}(id=${blogPost.postId})}" class="load-more-link link-hover-fx">
               <h6 class="post-title" th:text="${blogPost.title}"></h6>
