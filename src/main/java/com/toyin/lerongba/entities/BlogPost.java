@@ -45,7 +45,7 @@ public class BlogPost {
     private LocalDateTime lastUpdate;
 
     @Column(columnDefinition = "varchar(64) DEFAULT 'blog-default-image.jpg'")
-    private String photos = "blog-default-image.jpg";
+    private String photoFileName = "blog-default-image.jpg";
 
     public int getPostId() {
         return postId;
@@ -119,11 +119,11 @@ public class BlogPost {
         this.approved = approved;
     }
 
-    public String getPhotos() {
-        return photos;
+    public String getPhotoFileName() {
+        return photoFileName;
     }
 
-    public void setPhotos(String photos) {
-        this.photos = photos;
+    public void setPhotoFileName(String photoFileName) {
+        this.photoFileName = photoFileName;
     }
 }

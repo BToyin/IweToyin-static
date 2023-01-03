@@ -27,14 +27,14 @@
                 <div class="col-md-6 d-flex flex-column justify-content-center wow fadeInUp">
                     <h2 class="section-title mb-3">About Me</h2>
                     <p class="section-text-ct text-justify">Hello and welcome to Lerongba! If you don't already know, the handsome man in the pictures is me - Toyin (or Bait to some).
-                        So, just a little introduction. I'm a German-born, Nigerian, Chemical Engineering Graduate, living in Birmingham and now working as a Software Engineer specialising in Java.
-                        Lerongba means "Thinking" in my native Yoruba and that's what this website is about. The website is an expression of my thinking.
+                        So, just a little introduction. I'm a German-born, Nigerian, Chemical Engineering Graduate, living in Birmingham and now working as a Senior Software Engineer specialising in Java.
+                        Lerongba [le-ron-ba] means "Thinking" in my native Yoruba and that's what this website is about. The website is an expression of my thinking.
                         Expect to find a chaotic blog, semi-useful resources I put together and some shameless self-promotion.
                         Lastly, I painfully designed this web app myself, without a website building service (I don't recommend), so if there's any feedback or small bugs please do let me know.
                         Thanks for reading this far and enjoy!</p>
                 </div>
                 <div class="col-md-6 wow fadeInUp d-flex align-items-center">
-                    <img src="/images/img_3.png" class="w-100 mb-5" alt="Profile Picture">
+                    <img src="/images/avatar.jpg" class="w-100 mb-5" alt="Profile Picture">
                 </div>
             </div>
         </div>
@@ -59,7 +59,7 @@
                                 </ul>
                             </div>
                             <div class="col-md-6">
-                                <img src="/images/avatar.jpg" alt="Profile Picture" class="img-fluid w-100 rounded" width="372px">
+                                <img src="/images/blogging-cover-art.jpg" alt="Blog post cover picture" class="img-fluid w-100 rounded" width="372px">
                             </div>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                                 </ul>
                             </div>
                             <div class="col-md-6">
-                                <img src="/images/blog_1.jpg" alt="<span>Coding and Tuition Services</span>" class="img-fluid w-100 rounded" width="372px">
+                                <img src="/images/coding-service.jpg" alt="Coding and Tuition Services" class="img-fluid w-100 rounded" width="372px">
                             </div>
                         </div>
                     </div>
@@ -93,20 +93,20 @@
             <div class="row">
                 <div class="col-md-6 wow fadeInUp">
                     <div class="project-card wow fadeInUp" th:each="blogPost : ${latest2BlogPosts}">
-                        <img th:src="@{'/images/blogPhotos/' + ${blogPost.photos}}" alt="Project" class="project-thumbnail">
+                        <img th:src="@{'/images/blogPhotos/' + ${blogPost.photoFileName}}" alt="Project" class="project-thumbnail">
                         <a th:href="@{/blog/posts/{id}(id=${blogPost.postId})}" class="load-more-link">
                             <h6 class="blog-title" th:text="${blogPost.title}">Blog Post Title</h6>
                         </a>
-                        <p class="Project-category">Tags for Blog post </p>
+                        <p class="Project-category"></p>
                     </div>
                 </div>
                 <div class="col-md-6 project-column-indented">
                     <div class="project-card wow fadeInUp" th:each="blogPost : ${latest3rdAnd4thBlogPosts}">
-                        <img th:src="@{'/images/blogPhotos/' + ${blogPost.photos}}" alt="Project" class="project-thumbnail">
+                        <img th:src="@{'/images/blogPhotos/' + ${blogPost.photoFileName}}" alt="Project" class="project-thumbnail">
                         <a th:href="@{/blog/posts/{id}(id=${blogPost.postId})}" class="load-more-link">
                             <h6 class="blog-title" th:text="${blogPost.title}">Blog Post Title</h6>
                         </a>
-                        <p class="Project-category">Tags for Blog post </p>
+                        <p class="Project-category"> </p>
                     </div>
                 </div>
                 <div class="col-12">

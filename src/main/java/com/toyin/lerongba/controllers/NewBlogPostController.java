@@ -8,7 +8,6 @@ import com.toyin.lerongba.util.FileUploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -53,7 +52,7 @@ public class NewBlogPostController {
         } else {
             String fileName = Objects.requireNonNull(multipartFile.getOriginalFilename()).replaceAll("\\s", "-");
             if (!fileName.isEmpty()){
-                blogPost.setPhotos(fileName);
+                blogPost.setPhotoFileName(fileName);
                 FileUploadUtil.saveFile(multipartFile);
             }
             blogPostService.createNewBlogPost(blogPost);
@@ -104,7 +103,7 @@ public class NewBlogPostController {
                 model.addAttribute("error", error);
             }
         }
-        return "new-blog-post";
+        return "blog";
     }
 
 
