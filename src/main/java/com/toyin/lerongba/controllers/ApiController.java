@@ -2,18 +2,19 @@ package com.toyin.lerongba.controllers;
 
 import com.toyin.lerongba.entities.BlogPost;
 import com.toyin.lerongba.entities.Contact;
+import com.toyin.lerongba.entities.MyUserDetails;
 import com.toyin.lerongba.entities.Subscriber;
+import com.toyin.lerongba.entities.User;
 import com.toyin.lerongba.services.BlogPostService;
 import com.toyin.lerongba.services.ContactService;
+import com.toyin.lerongba.services.MyUserDetailsService;
 import com.toyin.lerongba.services.SubscriberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,12 +30,15 @@ public class ApiController {
     private final BlogPostService blogPostService;
     @Autowired
     private final ContactService contactService;
+    @Autowired
+    private final MyUserDetailsService userDetailsService;
 
 
-    public ApiController(SubscriberService subscriberService, BlogPostService blogPostService, ContactService contactService) {
+    public ApiController(SubscriberService subscriberService, BlogPostService blogPostService, ContactService contactService, MyUserDetailsService userDetailsService) {
         this.subscriberService = subscriberService;
         this.blogPostService = blogPostService;
         this.contactService = contactService;
+        this.userDetailsService = userDetailsService;
     }
 
     @GetMapping("/subscriber/all")
@@ -76,6 +80,17 @@ public class ApiController {
     @PostMapping("/contact/submit")
     public ResponseEntity submitMessage(@RequestBody Contact contact) {
         contactService.createContact(contact);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @GetMapping("/users/all")
+    public List<User> getUsers() {
+        return userDetailsService.getAllUsers();
+    }
+
+    @PostMapping("/users/create")
+    public ResponseEntity createUser(@RequestBody User user) {
+        userDetailsService.createUser(user);
         return new ResponseEntity(HttpStatus.OK);
     }
 
