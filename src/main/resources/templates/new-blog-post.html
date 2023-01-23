@@ -45,8 +45,8 @@
                                   placeholder="Blog post content" th:field="*{rawContent}"></textarea>
                     </div>
                     <div class="form-group">
-                        <label>Image: </label>
-                        <input type="file" name="image" accept="image/png, image/jpeg" />
+                        <label for="photoFileName" class="font-weight-bold">Image: </label>
+                        <input type="file" name="image" accept="image/png, image/jpeg" id="photoFileName"/>
                     </div>
                     <button class="btn btn-block" type="submit">Submit</button>
                 </form>
