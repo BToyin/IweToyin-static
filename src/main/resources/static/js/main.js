@@ -1,17 +1,20 @@
-$('.lerongba-nav-popup-toggle').click(function(){
+$('.iwetoyin-nav-popup-toggle').click(function(){
     $('body').toggleClass('nav-popup-modal-open');
 });
+
+$(document).ready(function() {
+  $(".nav-link").filter(function() {
+    return $(this).attr("th:case") !== '*'
+    }).click(function() {
+    $("body").removeClass("nav-popup-modal-open");
+  });
+});
+
 
 tinymce.init({
   selector: 'textarea#rawContent'
 });
 
-
-
-
-$('.main-nav .nav-link[href^="/home"]:not([href="#!"])').click(function(){
-    $('body').removeClass('nav-popup-modal-open');
-});
 $myCarousel = $('.carousel');
 
 function doAnimations(elems) {

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Lerongba - Nav-pop-up</title>
+    <title>Ìwé Toyin - Nav-pop-up</title>
     <link rel="stylesheet" href="/vendors/animate.css/animate.min.css">
     <link rel="stylesheet" href="/css/style.css">
     <script src="vendors/jquery/jquery.min.js"></script>
@@ -20,11 +20,15 @@
                             <li class="nav-item">
                                 <a th:href="@{/home}" class="nav-link">Home</a>
                             </li>
-                            <li class="nav-item">
-                                <a th:href="@{/home#about-me}" class="nav-link">About Me</a>
+                            <li class="nav-item" th:switch="${#httpServletRequest.requestURI.split('/').length}">
+                                <a th:case="0" href="#about-me" class="nav-link">About Me</a>
+                                <a th:case="1" href="../home#about-me" class="nav-link">About Me</a>
+                                <a th:case="*" th:href="@{/home#about-me}" class="nav-link">About Me</a>
                             </li>
-                            <li class="nav-item">
-                                <a th:href="@{/home#services}" class="nav-link">Services</a>
+                            <li class="nav-item" th:switch="${#httpServletRequest.requestURI.split('/').length}">
+                                <a th:case="0" href="#services" class="nav-link">Services</a>
+                                <a th:case="1" href="../home#services" class="nav-link">Services</a>
+                                <a th:case="*" th:href="@{/home#services}" class="nav-link">Services</a>
                             </li>
                             <li class="nav-item">
                                 <a th:href="@{/contact}" class="nav-link">Contact</a>
@@ -34,7 +38,7 @@
                     <div class="col-md-6 blog-posts text-white">
                         <h5 class="popup-blog-headng">Blog</h5>
                         <div class="media mb-4" th:each="blogPost : ${latest2BlogPosts}">
-                            <img th:src="@{'/images/blogPhotos/' + ${blogPost.photoFileName}}" alt="blog" width="86px" class="img-fluid mr-4">
+                            <img th:src="@{'/images/blogPhotos/' + ${blogPost.photoFileName}}" alt="blog" width="86px" class="img-fluid mr-4" src="">
                             <div class="media-body align-self-end">
                                 <a th:href="@{/blog/posts/{id}(id=${blogPost.postId})}" class="nav-link">
                                     <h5 class="popup-blog-post-title" th:text="${blogPost.title}"></h5>
