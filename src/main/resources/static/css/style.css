@@ -5590,7 +5590,7 @@ a.text-dark:hover, a.text-dark:focus {
   font-family: 'Poppins', serif;
   font-size: 17px;
   color: #000000;
-  line-height: 1.4; }
+  line-height: 1.6; }
 
 .section-text-light {
   font-size: 14px;
@@ -6272,20 +6272,13 @@ html {
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url('/images/cover-photo.jpg');
-  min-height: 100%;
+  min-height: 100vh;
 }
 
 
 /* Second image (Portfolio) */
 .w3-wide {letter-spacing: 10px;}
 .w3-hover-opacity {cursor: pointer;}
-
-/* Turn off parallax scrolling for tablets and phones */
-@media only screen and (max-device-width: 1600px) {
-  .bgimg-1 {
-    min-height: 713px;
-  }
-}
 
 /*show on full laptop screens only*/
 @media only screen and (max-width: 1026px) {

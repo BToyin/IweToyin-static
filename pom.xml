@@ -112,7 +112,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>iwetoyin</finalName>
+		<finalName>iweToyin</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
