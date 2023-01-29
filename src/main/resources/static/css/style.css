@@ -6116,8 +6116,9 @@ html {
     .blog-post-archive .blog-post {
       display: block; } }
   .blog-post-archive .blog-post-thumbnail {
-    width: 510px;
-    height: 340px;
+    width: 100%;
+    /*width: 510px;*/
+   /* height: 340px;*/
     -o-object-fit: cover;
        object-fit: cover;
     margin-bottom: 25px; }

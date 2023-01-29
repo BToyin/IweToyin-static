@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,8 +15,8 @@
 
 <body>
 <div class="page-loader"></div>
-<div th:include="/fragments/header"></div>
-<div th:include="/fragments/nav-pop-up"></div>
+<div th:include="fragments/header"></div>
+<div th:include="fragments/nav-pop-up"></div>
 <main class="container">
     <div class="row">
         <div class="main-blog-section col-lg-8">
@@ -52,7 +52,7 @@
                 </form>
             </div>
         </div>
-        <div th:include="/fragments/blog-sidebar" class="col-lg-4 laptop-only"></div>
+        <div th:include="fragments/blog-sidebar" class="col-lg-4 laptop-only"></div>
     </div>
     <div sec:authorize="hasAuthority('ROLE_ADMIN')" class="approve-form-wrapper wow fadeInUpBig py-3">
         <form action="#" th:action="@{/blog/new/approve}" th:object="${blogPost}" method="post">
@@ -85,8 +85,8 @@
         </div>
     </div>
 </div>
-<div th:include="/fragments/blog-sidebar" class="container mobile-only"></div>
-<div th:include="/fragments/footer"></div>
+<div th:include="fragments/blog-sidebar" class="container mobile-only"></div>
+<div th:include="fragments/footer"></div>
 
 <script src="/vendors/wowjs/wow.min.js"></script>
 <script src="/vendors/popper.js/popper.min.js"></script>

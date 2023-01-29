@@ -4,7 +4,7 @@ import com.toyin.iwetoyin.entities.BlogPost;
 import com.toyin.iwetoyin.entities.Subscriber;
 import com.toyin.iwetoyin.services.BlogPostService;
 import com.toyin.iwetoyin.services.SubscriberService;
-import com.toyin.iwetoyin.util.FileUploadUtil;
+import com.toyin.iwetoyin.util.AwsS3Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -53,7 +53,7 @@ public class NewBlogPostController {
             String fileName = Objects.requireNonNull(multipartFile.getOriginalFilename()).replaceAll("\\s", "-");
             if (!fileName.isEmpty()){
                 blogPost.setPhotoFileName(fileName);
-                FileUploadUtil.saveFile(multipartFile);
+                AwsS3Util.uploadImageToS3(multipartFile);
             }
             blogPostService.createNewBlogPost(blogPost);
             redirectAttrs.addFlashAttribute("passed", "Blog post has been submitted successfully! Please wait for approval!");

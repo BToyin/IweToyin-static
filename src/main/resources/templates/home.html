@@ -29,7 +29,7 @@
                 </div>
                 <div class="col-md-6 d-flex flex-column justify-content-center wow fadeInUp">
                     <h2 class="section-title mb-3">About Me</h2>
-                    <p class="section-text-ct text-justify">Hello and welcome to Ìwé Toyin! If you don't already know, the handsome man in the pictures is me - the aforementioned Toyin (or Bait to some).
+                    <p class="section-text-ct">Hello and welcome to Ìwé Toyin! If you don't already know, the handsome man in the pictures is me - the aforementioned Toyin (or Bait to some).
                         So, just a little introduction. I'm a German-born, Nigerian, Chemical Engineering Graduate, living in Birmingham and now working as a Senior Software Engineer specialising in Java.
                         <i>Ìwé Toyin</i> loosely translates to <i>Book of Toyin</i> in my mothertongue Yoruba and that's what this website is. It's a collection of my thoughts and feelings in written format.
                         Expect to find a chaotic blog, semi-useful resources I put together and some shameless self-promotion.
@@ -93,7 +93,7 @@
             <div class="row">
                 <div class="col-md-6 wow fadeInUp">
                     <div class="project-card wow fadeInUp" th:each="blogPost : ${latest2BlogPosts}">
-                        <img th:src="@{'/images/blogPhotos/' + ${blogPost.photoFileName}}" alt="Project" class="project-thumbnail">
+                        <img th:src="@{'/blog/image/' + ${blogPost.postId}}" alt="Project" class="project-thumbnail">
                         <a th:href="@{/blog/posts/{id}(id=${blogPost.postId})}" class="load-more-link">
                             <h6 class="blog-title" th:text="${blogPost.title}">Blog Post Title</h6>
                         </a>
@@ -102,7 +102,7 @@
                 </div>
                 <div class="col-md-6 project-column-indented">
                     <div class="project-card wow fadeInUp" th:each="blogPost : ${latest3rdAnd4thBlogPosts}">
-                        <img th:src="@{'/images/blogPhotos/' + ${blogPost.photoFileName}}" alt="Project" class="project-thumbnail">
+                        <img th:src="@{'/blog/image/' + ${blogPost.postId}}" alt="Project" class="project-thumbnail">
                         <a th:href="@{/blog/posts/{id}(id=${blogPost.postId})}" class="load-more-link">
                             <h6 class="blog-title" th:text="${blogPost.title}">Blog Post Title</h6>
                         </a>
@@ -119,7 +119,9 @@
         <div class="container">
             <div class="service-section">
                 <h2 class="section-title my-services-title">My Services</h2>
-                <p class="text-justify">So not only does my awesome website offer you entertainment through a fascinating blog, but you can also see below what I offer tuition in and a summary of my experience.</p>
+                <p class="text-justify">So not only does my awesome website offer you entertainment through a fascinating blog, but you can also see below what I offer tuition in and a summary of my experience.
+                    You may or may not be interested to know I developed this website using Spring Boot - Java for the backend and Thymeleaf and JS for the frontend. Some AWS services I used were RDS, S3, Route 53 and Elastic Beanstalk.
+                </p>
                 <div class="row">
                     <div class="col-md-4 mb-4 mb-md-0 wow fadeInUp">
                         <h6 class="service-category-title">Tuition</h6>
@@ -136,6 +138,7 @@
                             <li class="list-group-item">Backend Development</li>
                             <li class="list-group-item">Frontend Development</li>
                             <li class="list-group-item">Simple UI and UX design</li>
+                            <li class="list-group-item">AWS</li>
                         </ul>
                     </div>
                     <div class="col-md-4 mb-4 mb-md-0 wow fadeInUp">
@@ -145,7 +148,6 @@
                             <li class="list-group-item">Spring Boot (Web design)</li>
                             <li class="list-group-item">SQL and Database design</li>
                             <li class="list-group-item">HMTL & CSS & JavaScript</li>
-                            <li class="list-group-item">AWS</li>
                         </ul>
                     </div>
                 </div>
@@ -157,7 +159,7 @@
     </section>
     <section class="contact-section site-section" id="contact-section">
         <div class="container wow fadeInUp">
-            <h2 class="section-title mb-0">Contact Me</h2>
+            <h2 class="section-title mb-2">Contact Me</h2>
             <h6 class="font-weight-medium mb-4 mb-md-0">Please get in touch through socials or email to provide feedback on the blog, website or any resources shared. Thank you</h6>
             <div class="contact-address">
                 <div class="row">
