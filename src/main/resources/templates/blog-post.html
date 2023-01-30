@@ -19,7 +19,6 @@
           <div class="main-blog-section col-lg-8">
             <h1 class="blog-post-title" th:action="${blogPost}" th:text="${blogPost.title}"></h1>
             <article>
-    <!--           need to configure how to save images in the DB and then pull them back here to use as the cover art-->
               <img th:src="@{'/blog/image/' + ${blogPost.postId}}" alt="Blog post cover picture" class="blog-cover-picture w-100">
               <p class="text-justify" th:text="${'Posted on ' + blogPost.createdTime + ' by ' + blogPost.author}" ></p>
               <p class="text-justify mb-4" th:utext="${blogPost.rawContent}"></p>
