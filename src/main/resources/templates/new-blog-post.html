@@ -69,19 +69,8 @@
 </main>
 <div class="iwetoyin-footer wow fadeInUp">
     <div class="container">
-        <div class="row">
-            <div class="col-sm-4">
-                <a th:if="${blogPost.postId > 1}" th:href="@{/blog/posts/{id}(id=${blogPost.postId - 1})}"
-                   class="float-left secondary-color load-more-link link-hover-fx">&laquo; Previous Post</a>
-            </div>
-            <div class="col-sm-4 text-center">
-                <a th:href="@{/blog}" class="secondary-color load-more-link link-hover-fx">See all posts</a>
-            </div>
-            <div class="col-sm-4">
-                <a th:if="${blogPost.postId < numberOfBlogPosts}"
-                   th:href="@{/blog/posts/{id}(id=${blogPost.postId + 1})}"
-                   class="float-right secondary-color load-more-link link-hover-fx">Next Post &raquo;</a>
-            </div>
+        <div class="text-center">
+            <a th:href="@{/blog}" class="secondary-color load-more-link link-hover-fx">See all posts</a>
         </div>
     </div>
 </div>
