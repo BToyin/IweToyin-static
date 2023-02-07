@@ -25,7 +25,7 @@ public class AwsS3Util {
 
     public static void uploadImageToS3(MultipartFile file)  {
         String fileName = Objects.requireNonNull(file.getOriginalFilename()).replaceAll("\\s", "-");
-        String filePath = "resources/static/images/blogPhotos/" + fileName;
+        String filePath = "resources/images/blogPhotos/" + fileName;
 
         try {
             byte[] bytes = file.getBytes();
