@@ -25,7 +25,7 @@ public class AwsS3Util {
 
     public static void uploadImageToS3(MultipartFile file)  {
         String fileName = Objects.requireNonNull(file.getOriginalFilename()).replaceAll("\\s", "-");
-        String filePath = "resources/images/blogPhotos/" + fileName;
+        String filePath = "/resources/images/blogPhotos/" + fileName;
 
         try {
             byte[] bytes = file.getBytes();
@@ -60,7 +60,7 @@ public class AwsS3Util {
             AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
                     .withRegion(clientRegion)
                     .build();
-            String filePath = "resources/static/images/blogPhotos/" + fileName;
+            String filePath = "/resources/images/blogPhotos/" + fileName;
             S3Object s3Object = s3Client.getObject(new GetObjectRequest(bucketName, filePath));
             return s3Object.getObjectContent();
         } catch (S3Exception ex) {

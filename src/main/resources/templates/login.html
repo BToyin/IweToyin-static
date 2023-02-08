@@ -20,7 +20,7 @@
             <h1 class="login-page-title">Please log in</h1>
             <h5>To upload a new blog post, you will need to log in first</h5>
             <hr class="my-4">
-            <form th:action="@{/login}" method="post">
+            <form th:action="@{/perform_login}" method="post">
                 <p th:if="${param.error}" class="alert-danger">Invalid username or password.</p>
                 <div class="form-group">
                     <label for="username">Username</label><br>

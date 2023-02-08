@@ -54,8 +54,8 @@ public class NewBlogPostController {
             String fileName = Objects.requireNonNull(multipartFile.getOriginalFilename()).replaceAll("\\s", "-");
             if (!fileName.isEmpty()){
                 blogPost.setPhotoFileName(fileName);
-                FileUploadUtil.saveFile(multipartFile);
-//                AwsS3Util.uploadImageToS3(multipartFile);
+//                FileUploadUtil.saveFile(multipartFile);
+                AwsS3Util.uploadImageToS3(multipartFile);
             }
             blogPostService.createNewBlogPost(blogPost);
             redirectAttrs.addFlashAttribute("passed", "Blog post has been submitted successfully! Please wait for approval!");
