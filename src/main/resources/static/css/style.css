@@ -6280,6 +6280,7 @@ html {
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
+  background-image: url('/images/cover-photo.jpg');
 }
 
 
@@ -6301,10 +6302,10 @@ html {
   height: 100%;
   background-size: cover;
   background-position: center center;
-  background-image: url('/images/cover-photo.jpg');
   transform: translateZ(0);
   will-change: transform;
 }
+
 
 /* Second image (Portfolio) */
 .w3-wide {letter-spacing: 10px;}
