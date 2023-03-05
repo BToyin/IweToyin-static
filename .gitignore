@@ -42,3 +42,6 @@ application.properties
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+# blog-photos for dev
+src/main/resources/static/images/blogPhotos/*
