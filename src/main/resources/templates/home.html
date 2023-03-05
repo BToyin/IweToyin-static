@@ -97,9 +97,9 @@
             <div class="row">
                 <div class="col-md-6 wow fadeInUp">
                     <div class="project-card wow fadeInUp" th:each="blogPost : ${latest2BlogPosts}">
-                        <img th:src="@{'/blog/image/' + ${blogPost.postId}}" alt="Project" class="project-thumbnail">
-<!--                        <img th:src="@{'/images/blogPhotos/' + ${blogPost.photoFileName}}" alt="Project" class="project-thumbnail">-->
                         <a th:href="@{/blog/posts/{id}(id=${blogPost.postId})}" class="load-more-link">
+                            <img th:src="@{'/blog/image/' + ${blogPost.postId}}" alt="Project" class="project-thumbnail">
+<!--                        <img th:src="@{'/images/blogPhotos/' + ${blogPost.photoFileName}}" alt="Project" class="project-thumbnail">-->
                             <h6 class="blog-title" th:text="${blogPost.title}">Blog Post Title</h6>
                         </a>
                         <p class="Project-category"></p>
