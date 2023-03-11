@@ -6218,8 +6218,9 @@ html {
     width: 80px;
     height: 59px;
     -o-object-fit: cover;
-       object-fit: cover;
-    margin-right: 13px; }
+    object-fit: cover;
+    margin-right: 13px;
+    }
   .widget-posts .blog-post .post-title {
     font-size: 14px;
     font-weight: 500;
@@ -6351,7 +6352,8 @@ color: #000000;
 padding: 0; }
 
 .nav-blog-photo {
-    max-height: 75px;
+    height: 64px;
     width: 86px;
     object-fit: cover;
+    float: left;
 }
