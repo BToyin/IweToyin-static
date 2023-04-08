@@ -32,12 +32,10 @@ public class BlogPostController {
         this.subscriberService = subscriberService;
     }
 
-
     @GetMapping("/blog/posts/{id}")
-    public String getBlogPost (@PathVariable("id") int id, ModelMap model) {
+    public String getBlogPost(@PathVariable("id") int id, ModelMap model) {
         return "blog-post";
     }
-
 
     @PostMapping(value = {"/blog/posts/{id}/subscribe"})
     public String saveSubscriber(@Valid @ModelAttribute("subscriber") Subscriber subscriber, BindingResult bindingResult, RedirectAttributes redirectAttrs) {
