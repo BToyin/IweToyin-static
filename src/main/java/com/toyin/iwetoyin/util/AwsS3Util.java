@@ -5,11 +5,11 @@ import com.amazonaws.SdkClientException;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.AmazonS3Exception;
 import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
-import com.amazonaws.services.securitylake.model.S3Exception;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.ByteArrayInputStream;
@@ -63,7 +63,7 @@ public class AwsS3Util {
             String filePath = "resources/images/blogPhotos/" + fileName;
             S3Object s3Object = s3Client.getObject(new GetObjectRequest(bucketName, filePath));
             return s3Object.getObjectContent();
-        } catch (S3Exception ex) {
+        } catch (AmazonS3Exception ex) {
             System.err.println(ex.getErrorMessage());
             System.exit(1);
         }
