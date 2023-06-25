@@ -26,6 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/blog/new").hasAnyRole("USER")
+                .antMatchers("/blog/posts/**/delete").authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
@@ -34,7 +35,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureUrl("/login?error=true")
                 .permitAll();
     }
-
 
     @Bean
     public UserDetailsService userDetailsService() {

@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BlogPostService {
@@ -73,6 +73,7 @@ public class BlogPostService {
         blogPost.setApproved(false);
         blogPostRepository.save(blogPost);
     }
+
     @Transactional
     public void approveBlogPost(BlogPost blogPost) {
         blogPost.setApproved(true);
@@ -81,5 +82,15 @@ public class BlogPostService {
 
     public BlogPost getBlogPostByTitle(String title) {
         return blogPostRepository.findByTitle(title).orElse(null);
+    }
+
+    public boolean deleteBlogPostById(int id) {
+        Optional<BlogPost> optionalBlogPost = blogPostRepository.findById(id);
+        if(optionalBlogPost.isPresent()) {
+            blogPostRepository.delete(optionalBlogPost.get());
+            return true;
+        } else {
+            return false;
+        }
     }
 }
