@@ -1,9 +1,7 @@
 package com.toyin.iwetoyin.controllers;
 
-import com.toyin.iwetoyin.entities.BlogPost;
-import com.toyin.iwetoyin.entities.Subscriber;
+import com.toyin.iwetoyin.BlogPost;
 import com.toyin.iwetoyin.services.BlogPostService;
-import com.toyin.iwetoyin.services.SubscriberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -24,25 +22,14 @@ public class BlogPostController {
 
     @Autowired
     final private BlogPostService blogPostService;
-    @Autowired
-    final private SubscriberService subscriberService;
 
-    public BlogPostController(BlogPostService blogPostService, SubscriberService subscriberService) {
+    public BlogPostController(BlogPostService blogPostService) {
         this.blogPostService = blogPostService;
-        this.subscriberService = subscriberService;
     }
 
     @GetMapping("/blog/posts/{id}")
     public String getBlogPost(@PathVariable("id") int id, ModelMap model) {
         return "blog-post";
-    }
-
-    @PostMapping(value = {"/blog/posts/{id}/subscribe"})
-    public String saveSubscriber(@Valid @ModelAttribute("subscriber") Subscriber subscriber, BindingResult bindingResult, RedirectAttributes redirectAttrs) {
-        if (bindingResult.hasErrors()) {
-            return "blog-post";
-        }
-        return subscriberService.submitSubscriberForm("/blog/posts/{id}/subscribe", subscriber, redirectAttrs);
     }
 
     @GetMapping(value = {"/blog/posts/{id}/subscribe"})
@@ -62,11 +49,11 @@ public class BlogPostController {
 
     @ModelAttribute
     private void addBlogPostPageModelAttributes(ModelMap model, @PathVariable int id) {
-        BlogPost blogPost = blogPostService.getBlogPostById(id);
-        model.addAttribute("subscriber", new Subscriber());
-        model.addAttribute("latest5BlogPosts", blogPostService.getLatest5ApprovedBlogPosts());
-        model.addAttribute("numberOfBlogPosts", blogPostService.getAllApprovedBlogPosts().size());
-        model.addAttribute("latest2BlogPosts", blogPostService.getLatest2ApprovedBlogPosts());
-        model.addAttribute("blogPost",blogPost);
+//        BlogPost blogPost = blogPostService.getBlogPostById(id);
+        BlogPost blogPost = blogPostService.getBlogPostByTitle("123.docx");
+//        model.addAttribute("latest5BlogPosts", blogPostService.getLatest5ApprovedBlogPosts());
+//        model.addAttribute("numberOfBlogPosts", blogPostService.getAllApprovedBlogPosts().size());
+//        model.addAttribute("latest2BlogPosts", blogPostService.getLatest2ApprovedBlogPosts());
+        model.addAttribute("blogPost", blogPost);
     }
 }

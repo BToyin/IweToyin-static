@@ -11,7 +11,6 @@
     <script src="/vendors/jquery/jquery.min.js"></script>
     <script src="/js/loader.js"></script>
 </head>
-
 <body>
     <div class="page-loader"></div>
     <div class="bgimg-1">
@@ -96,10 +95,11 @@
             <h2 class="section-title latest-blog-posts-title">Latest Blog Posts</h2>
             <div class="row">
                 <div class="col-md-6 wow fadeInUp">
+<!--                    todo: For each blog post in the 2 latest blog posts-->
                     <div class="project-card wow fadeInUp" th:each="blogPost : ${latest2BlogPosts}">
                         <a th:href="@{/blog/posts/{id}(id=${blogPost.postId})}" class="load-more-link">
-                            <img th:src="@{'/blog/image/' + ${blogPost.postId}}" alt="Project" class="project-thumbnail">
-<!--                        <img th:src="@{'/images/blogPhotos/' + ${blogPost.photoFileName}}" alt="Project" class="project-thumbnail">-->
+<!--                            <img th:src="@{'/blog/image/' + ${blogPost.postId}}" alt="Project" class="project-thumbnail">-->
+                        <img th:src="@{'/images/blogPhotos/' + ${blogPost.photoFileName}}" alt="Project" class="project-thumbnail">
                             <h6 class="blog-title" th:text="${blogPost.title}">Blog Post Title</h6>
                         </a>
                         <p class="Project-category"></p>
@@ -109,7 +109,6 @@
                     <div class="project-card wow fadeInUp" th:each="blogPost : ${latest3rdAnd4thBlogPosts}">
                         <a th:href="@{/blog/posts/{id}(id=${blogPost.postId})}" class="load-more-link">
                             <img th:src="@{'/blog/image/' + ${blogPost.postId}}" alt="Project" class="project-thumbnail">
-<!--                        <img th:src="@{'/images/blogPhotos/' + ${blogPost.photoFileName}}" alt="Project" class="project-thumbnail">-->
                             <h6 class="blog-title" th:text="${blogPost.title}">Blog Post Title</h6>
                         </a>
                         <p class="Project-category"></p>
@@ -169,7 +168,7 @@
             <h6 class="font-weight-medium mb-4 mb-md-0">Please get in touch through socials or email to provide feedback on the blog, website or any resources shared. Thank you</h6>
             <div class="contact-address">
                 <div class="row">
-                    <div class="col-md-2 mb-4 mb-md-0 d-flex align-items-center">
+                    <div class="col-6 mb-4 mb-md-0 d-flex align-items-center">
                         <ul class="nav contact-social-links">
                             <li class="nav-item">
                                 <a href="https://www.linkedin.com/in/bait-toyin-ajani-338961191/" class="nav-link">
@@ -183,19 +182,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="col-md-8 mb-4 mb-md-0 widget-subscribe">
-                        <p class="subscribe-text">Hear about new blog posts, significant website updates and most importantly...No Spam!</p>
-                        <p th:if="${error}"  th:text="${error}" class="alert-danger"></p>
-                        <p th:if="${passed}" th:text="${passed}" class="alert-success"></p>
-                        <form class="subscribe-form" id="subscriber-form" action="#" th:action="@{/home/subscribe}" th:object="${subscriber}" method="post">
-                            <div class="form-group">
-                                <p  th:if="${#fields.hasErrors('email')}" th:errors="*{email}" th:class="${#fields.hasErrors('email')} ? alert-danger">Invalid Email</p>
-                                <input type="email" class="form-control" th:field="*{email}" id="email" placeholder="Your email" name="email">
-                            </div>
-                            <input class="btn btn-block btn-subscribe" type="submit" value="Subscribe" id="submit-subscriber-form">
-                        </form>
-                    </div>
-                    <div class="col-md-2 d-flex align-items-center">
+                    <div class="col-6 d-flex align-items-center">
                         <a href="#top" class="go-top-btn">
                             <img src="/images/arrow_up@1x.svg" alt="arrow up">
                             <span class="sr-only">Go to top</span>
@@ -213,5 +200,4 @@
     <script src="/js/main.js"></script>
     <script> new WOW().init(); </script>
 </body>
-
 </html>

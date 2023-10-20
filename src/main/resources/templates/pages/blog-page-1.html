@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Iwe Toyin - Blog post - Stress exhibit</title>
+  <link rel="stylesheet" href="/vendors/animate.css/animate.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/vendors/jquery/jquery.min.js"></script>
+  <script src="/js/loader.js"></script>
+</head>
+<body>
+    <div class="page-loader"></div>
+    <div th:include="fragments/header"></div>
+    <div th:include="fragments/nav-pop-up"></div>
+    <main class="container">
+        <div class="row">
+          <div class="main-blog-section col-lg-8">
+            <h1 class="blog-post-title">Stress exhibit</h1>
+            <article>
+<!--              <img th:src="@{'/blog/image/' + ${blogPost.postId}}" alt="Blog post cover picture" class="blog-cover-picture w-100">-->
+                <img th:src="@{'/images/blogPhotos/' + ${blogPost.photoFileName}}" alt="Blog post cover picture" class="blog-cover-picture w-100">
+                <div class="blog-content">
+                    <p class="text-justify">Posted on 23-10-2023 by <b>Toyin Ajani</b></p>
+                    <p class="text-justify mb-4">
+                        Hello everyone and welcome back to another page of Iwetoyin. As per, I'm starting with saying thank you to everyone that has been reading my blog and checking out my website.
+                        I appreciate y’all. And as is becoming a habit, I apologise for not getting out the content as quickly and consistently as I have promised multiple times in the past.
+                        If I am keeping it a buck, I’ve kinda allowed life to give me a couple of Ls recently which has meant I’ve lost that writing bug.
+                        But it’s not forever that we can allow life to keep you down so here I am pushing through and trying to do the things that I love.
+                        I hope you enjoy reading this page, so much so that it encourages you to give me feedback and tell me how fantastic I am so I keep writing these majestic words.
+                    </p>
+                    <p class="text-justify mb-4">
+                        My editor has said I should point out that this page is more of a personal vent and less about giving that good-good advice I usually provide, so take from it what you will.
+                        Let’s get into this content though shall we? Points to the title. I’m writing about stress today. Stress is part and parcel of life. We all go through it.
+                        More so in a cost of livvy crisis like we are in at the moment. But the real question is how you exhibit stress and then deal with it.
+                        I do hope you deal with it better than I have been for the last few months because when you deal with stress badly for a few weeks/months, it will eventually catch up with you and boy oh boy, will you be mudded my friend.
+                        So let me give you a quick overview of the ways I’ve noticed I exhibit stress so that you may not make these same mistakes and are able to recognise them in others. Again, more of a rant n’ write and less of a ‘how you fix it’ sorta page.
+                    </p>
+                    <p class="text-justify mb-4">
+                        To start off, the first thing I do when I get stressed (annoyingly) is that I stop getting a trim. At time of writing my hair is sporting 4 months worth of growth.
+                        I been looking homeless for a hot minute now. I think the general sentiment of caring less about the way you look when stressed is a pretty common one.
+                        For me, this happens particularly when the reason I’m stressed is money. Somehow, I’ve gotten it into my head that not spending that £20 a month will make a big dent in alleviating my money worries which is definitely misguided.
+                        I’ve also noticed that I will stop taking care of my hair which includes moisturising it, combing or brushing it out and putting my durag on before sleeping. Yes, you may have guessed. I am indeed a black male.
+                        This means wearing a durag to bed is important for protecting hair (and them waves). But somehow taking those extra 20 seconds to tie my durag before bed seems like a mammoth task I just cannot muster at times of stress.
+                        Weird. Don’t be like me. Wrap up! (good advice for another particular area of life).
+                    </p>
+                    <p class="text-justify mb-4">
+                        Sticking with physical maintenance, one of the first signs that I’m starting to get stressed out is that my skincare routine falls by the wayside.
+                        Again, you may have guessed it but I am indeed a male with a girlfriend which means she has done her girlfriend-y duty of putting me onto a good skincare routine.
+                        It’s super simple and quick but physical maintenance is always one of the first things to go when stressed. And it really shouldn’t be because when you look good you feel good.
+                        And when you feel good you do good. So do the things that make you feel good.
+                    </p>
+                    <p class="text-justify mb-4">
+                        I also sometimes stop exercising so this is also your reminder that you should NOT stop working out when life gets on top of you.
+                        Many many studies have shown that exercise is one of the most effective stress relievers out there.
+                        Logically, this means to stop exercising, which helps you deal with stress, at the moment that you are stressed is actually insane. Don’t be insane.
+                        Pick up your dumbells and use those stress steroids.
+                    </p>
+                    <p class="text-justify mb-4">
+                        Another unhelpful habit I have when I’m stressed out is that I will stop doing proper maintenance of the space I reside. I think this is probably a common one.
+                        Everyone remembers those exam seasons during uni where one your housemates’ room looked like a murder scene. It’s not quite as bad as that because I keep my space somewhat tidy, but my frequency of cleaning definitely decreases.
+                        I also allow chaos to pile up like not cleaning up my desk after the working day, or just leaving some plates out from the night before. I think these things aren’t helpful because they basically just add to your feeling of being overwhelmed.
+                        Assuming you are an adult and your mum doesn’t pick up after you, NO ONE is coming to clean up your desk and wash up those dishes.
+                        Productivity gurus have been telling us from the dawn of time that your environment has a big impact on how we perceive the tasks we have ahead of us.
+                        So clean up after yourself and get your environment right.
+                    </p>
+                    <p class="text-justify mb-4">
+                        So that’s all I’ve got for you today folks. As mentioned at the start, this page was more of a vent for me
+                        and wasn’t supposed to be on the guidance ting but I hope you potentially took some things away from it regardless,
+                        or just found it entertaining to read because this is my blog so I can do what I want. Nah, seriously, I hope you enjoyed
+                        this page anyways and I’ll catch you next time. It was just a thought I had.
+                    </p>
+                    <p class="text-justify mb-4">
+                        Peace and blessings
+                    </p>
+                    <p class="text-justify mb-4">
+                        Toyin
+                    </p>
+                </div>
+            </article>
+          </div>
+          <div th:include="fragments/blog-sidebar" class="col-lg-4 laptop-only"></div>
+        </div>
+    </main>
+    <div class="iwetoyin-footer wow fadeInUp">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-4" >
+                    <a th:if="${blogPost.postId > 1}" th:href="@{/blog/posts/{id}(id=${blogPost.postId - 1})}" class="float-left secondary-color load-more-link link-hover-fx">&laquo; Prev Post</a>
+                </div>
+                <div class="col-4 text-center">
+                    <a th:href="@{/blog}" class="secondary-color load-more-link link-hover-fx">See all posts</a>
+                </div>
+                <div class="col-4" >
+                    <a th:if="${blogPost.postId < numberOfBlogPosts}" th:href="@{/blog/posts/{id}(id=${blogPost.postId + 1})}" class="float-right secondary-color load-more-link link-hover-fx">Next Post &raquo;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:include="fragments/blog-sidebar" class="container mobile-only"></div>
+    <div th:include="fragments/footer"></div>
+
+    <script src="/vendors/wowjs/wow.min.js"></script>
+    <script src="/vendors/popper.js/popper.min.js"></script>
+    <script src="/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script>new WOW().init();</script>
+</body>
+</html>
