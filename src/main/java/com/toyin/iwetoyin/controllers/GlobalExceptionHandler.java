@@ -1,8 +1,6 @@
 package com.toyin.iwetoyin.controllers;
 
-import com.toyin.iwetoyin.BlogPost;
-import org.apache.tomcat.util.http.fileupload.impl.SizeLimitExceededException;
-import org.springframework.ui.Model;
+import com.toyin.iwetoyin.entity.BlogPost;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

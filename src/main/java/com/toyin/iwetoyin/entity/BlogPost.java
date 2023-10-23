@@ -1,13 +1,12 @@
-package com.toyin.iwetoyin;
-
+package com.toyin.iwetoyin.entity;
 
 public class BlogPost {
 
+    int postId;
     String title;
     String content;
     String excerpt;
     String photoFileName;
-    int postId;
 
     public String getTitle() {
         return title;

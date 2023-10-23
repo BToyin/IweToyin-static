@@ -7,20 +7,21 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.AmazonS3Exception;
 import com.amazonaws.services.s3.model.GetObjectRequest;
-import com.amazonaws.services.s3.model.ListObjectsRequest;
+import com.amazonaws.services.s3.model.ListObjectsV2Result;
+import com.amazonaws.services.s3.model.ListObjectsV2Request;
+import com.amazonaws.services.s3.model.ObjectListing;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
-import com.toyin.iwetoyin.BlogPost;
-import org.apache.commons.io.IOUtils;
+import com.amazonaws.services.s3.model.S3ObjectSummary;
+import com.toyin.iwetoyin.entity.BlogPost;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
-import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.springframework.web.multipart.MultipartFile;
-import software.amazon.awssdk.services.s3.model.ListObjectsResponse;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -87,13 +88,16 @@ public class AwsS3Util {
             InputStream inputStream = s3Object.getObjectContent();
             XWPFDocument document = new XWPFDocument(inputStream);
 
+            String postId = document.getParagraphs().get(0).getText();
+            String title = document.getParagraphs().get(1).getText();
             StringBuilder content1 = new StringBuilder();
             for (int i = 2; i < document.getParagraphs().size(); i++) {
                 content1.append(document.getParagraphs().get(i).getText());
+                if (i < document.getParagraphs().size() - 1) {
+                    content1.append("\n"); // Preserve paragraphs with newlines
+                }
             }
 
-            String postId = document.getParagraphs().get(0).getText();
-            String title = document.getParagraphs().get(1).getText();
             String content = content1.toString();
             System.out.println("post ID: " + postId);
             System.out.println("Title: " + title);
@@ -105,7 +109,7 @@ public class AwsS3Util {
             BlogPost blogPost = new BlogPost();
             blogPost.setPostId(Integer.parseInt(postId));
             blogPost.setTitle(title);
-            blogPost.setPhotoFileName("blog-default-image.jpg");
+            blogPost.setPhotoFileName(transformToLowerCaseWithDash(title));
             blogPost.setContent(content);
             return blogPost;
         } catch (IOException e) {
@@ -115,6 +119,71 @@ public class AwsS3Util {
             System.exit(1);
         }
         return null;
+    }
+
+    public static List<BlogPost> GetBlogPostsFromS3() {
+        String prefix = "resources/blogPages"; // Specify the prefix you want to list
+
+        List<BlogPost> blogPosts = new ArrayList<>();
+        ListObjectsV2Request listRequest = new ListObjectsV2Request()
+                .withBucketName(bucketName)
+                .withPrefix(prefix);
+
+        ListObjectsV2Result result = s3Client.listObjectsV2(listRequest);
+        for (int i=1; i< result.getObjectSummaries().size(); i++) {
+            try {
+                String objectKey = result.getObjectSummaries().get(i).getKey();
+                S3Object s3Object = s3Client.getObject(new GetObjectRequest(bucketName, objectKey));
+                InputStream inputStream = s3Object.getObjectContent();
+                XWPFDocument document = new XWPFDocument(inputStream);
+                String postId = document.getParagraphs().get(0).getText();
+                String title = document.getParagraphs().get(1).getText();
+                StringBuilder content1 = new StringBuilder();
+                for (int j = 2; j < document.getParagraphs().size(); j++) {
+                    content1.append(document.getParagraphs().get(j).getText());
+                    if (j < document.getParagraphs().size() - 1) {
+                        content1.append("\n"); // Preserve paragraphs with newlines
+                    }
+                }
+                String content = content1.toString();
+
+                // Close the input stream
+                inputStream.close();
+
+                BlogPost blogPost = new BlogPost();
+                blogPost.setPostId(Integer.parseInt(postId));
+                blogPost.setTitle(title);
+                blogPost.setPhotoFileName(transformToLowerCaseWithDash(title));
+                blogPost.setContent(content);
+                blogPosts.add(blogPost);
+            }  catch (IOException e) {
+                e.printStackTrace();
+            } catch (AmazonS3Exception ex) {
+                System.err.println(ex.getErrorMessage());
+                System.exit(1);
+            }
+        }
+        return blogPosts;
+    }
+
+    public static String transformToLowerCaseWithDash(String input) {
+        if (input == null) {
+            return "";
+        }
+
+        String[] words = input.split("\\s+"); // Split the input string by whitespace
+
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < words.length; i++) {
+            String word = words[i].toLowerCase(); // Convert each word to lowercase
+            result.append(word);
+
+            if (i < words.length - 1) {
+                result.append("-");
+            }
+        }
+        return result.toString();
     }
 }
 

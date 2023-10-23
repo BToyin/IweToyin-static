@@ -1,14 +1,12 @@
 package com.toyin.iwetoyin.controllers;
 
-import com.toyin.iwetoyin.BlogPost;
+import com.toyin.iwetoyin.entity.BlogPost;
 import com.toyin.iwetoyin.services.BlogPostService;
 import org.apache.maven.shared.utils.io.IOUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -29,8 +27,8 @@ public class BlogPageController {
 
     @GetMapping("/blog/image/{id}")
     public void showBlogImage(HttpServletResponse response, ModelMap model) {
-        BlogPost blogPost  = blogPostService.getBlogPostByTitle("123.docx");
-        InputStream s3Image = GetBlogPostImageFromS3(blogPost.getPhotoFileName());
+        BlogPost blogPost  = blogPostService.getBlogPostByTitle("stress-exhibit.docx");
+        InputStream s3Image = GetBlogPostImageFromS3("stress-exhibit.png");
         try {
             IOUtil.copy(s3Image, response.getOutputStream());
         } catch (IOException ex) {

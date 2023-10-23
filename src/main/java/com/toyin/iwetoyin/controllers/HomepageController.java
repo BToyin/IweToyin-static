@@ -1,6 +1,6 @@
 package com.toyin.iwetoyin.controllers;
 
-import com.toyin.iwetoyin.BlogPost;
+import com.toyin.iwetoyin.entity.BlogPost;
 import com.toyin.iwetoyin.services.BlogPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,7 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.List;
 
 @Controller
 public class HomepageController {
@@ -39,7 +40,7 @@ public class HomepageController {
 
     @ModelAttribute
     private void prepareHomeModel(ModelMap model) {
-        BlogPost blogPost = blogPostService.getBlogPostByTitle("123.docx");
+        List<BlogPost> blogPost = blogPostService.getBlogPosts();
         model.addAttribute("latest3rdAnd4thBlogPosts", blogPost);
     }
     // todo: Need to get the 4 latest blog post here to display on the home page
