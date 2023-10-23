@@ -129,7 +129,7 @@ public class AwsS3Util {
             String objectKey = result.getObjectSummaries().get(i).getKey();
             blogPosts.add(GetBlogPostFromS3(objectKey));
         }
-        Comparator<BlogPost> idComparator = Comparator.comparingInt(BlogPost::getPostId);
+        Comparator<BlogPost> idComparator = Comparator.comparingInt(BlogPost::getPostId).reversed();
 
         blogPosts.sort(idComparator);
 
