@@ -14,9 +14,8 @@ public class BlogPostService {
 //    }
 
     public BlogPost getBlogPostByTitle(String filename) {
-        BlogPost blogPost = AwsS3Util.GetBlogPostFromS3(filename);
+        BlogPost blogPost = AwsS3Util.GetBlogPostFromS3("resources/blogPages/" + filename);
         blogPost.setExcerpt(createExcerpt(blogPost.getContent()));
-        System.out.println(blogPost.getExcerpt());
         return blogPost;
     }
 

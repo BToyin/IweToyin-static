@@ -22,6 +22,8 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
@@ -79,29 +81,22 @@ public class AwsS3Util {
         return null;
     }
 
-    public static BlogPost GetBlogPostFromS3(String fileName) {
+    public static BlogPost GetBlogPostFromS3(String objectKey) {
         try {
-            String filePath = "resources/blogPages/" + fileName;
-            S3Object s3Object = s3Client.getObject(new GetObjectRequest(bucketName, filePath));
-
+            S3Object s3Object = s3Client.getObject(new GetObjectRequest(bucketName, objectKey));
             // Read the content of the Word document
             InputStream inputStream = s3Object.getObjectContent();
             XWPFDocument document = new XWPFDocument(inputStream);
 
             String postId = document.getParagraphs().get(0).getText();
             String title = document.getParagraphs().get(1).getText();
-            StringBuilder content1 = new StringBuilder();
+            StringBuilder content = new StringBuilder();
             for (int i = 2; i < document.getParagraphs().size(); i++) {
-                content1.append(document.getParagraphs().get(i).getText());
+                content.append(document.getParagraphs().get(i).getText());
                 if (i < document.getParagraphs().size() - 1) {
-                    content1.append("\n"); // Preserve paragraphs with newlines
+                    content.append("\n"); // Preserve paragraphs with newlines
                 }
             }
-
-            String content = content1.toString();
-            System.out.println("post ID: " + postId);
-            System.out.println("Title: " + title);
-            System.out.println("Content: " + content);
 
             // Close the input stream
             inputStream.close();
@@ -110,7 +105,7 @@ public class AwsS3Util {
             blogPost.setPostId(Integer.parseInt(postId));
             blogPost.setTitle(title);
             blogPost.setPhotoFileName(transformToLowerCaseWithDash(title));
-            blogPost.setContent(content);
+            blogPost.setContent(content.toString());
             return blogPost;
         } catch (IOException e) {
             e.printStackTrace();
@@ -131,38 +126,13 @@ public class AwsS3Util {
 
         ListObjectsV2Result result = s3Client.listObjectsV2(listRequest);
         for (int i=1; i< result.getObjectSummaries().size(); i++) {
-            try {
-                String objectKey = result.getObjectSummaries().get(i).getKey();
-                S3Object s3Object = s3Client.getObject(new GetObjectRequest(bucketName, objectKey));
-                InputStream inputStream = s3Object.getObjectContent();
-                XWPFDocument document = new XWPFDocument(inputStream);
-                String postId = document.getParagraphs().get(0).getText();
-                String title = document.getParagraphs().get(1).getText();
-                StringBuilder content1 = new StringBuilder();
-                for (int j = 2; j < document.getParagraphs().size(); j++) {
-                    content1.append(document.getParagraphs().get(j).getText());
-                    if (j < document.getParagraphs().size() - 1) {
-                        content1.append("\n"); // Preserve paragraphs with newlines
-                    }
-                }
-                String content = content1.toString();
-
-                // Close the input stream
-                inputStream.close();
-
-                BlogPost blogPost = new BlogPost();
-                blogPost.setPostId(Integer.parseInt(postId));
-                blogPost.setTitle(title);
-                blogPost.setPhotoFileName(transformToLowerCaseWithDash(title));
-                blogPost.setContent(content);
-                blogPosts.add(blogPost);
-            }  catch (IOException e) {
-                e.printStackTrace();
-            } catch (AmazonS3Exception ex) {
-                System.err.println(ex.getErrorMessage());
-                System.exit(1);
-            }
+            String objectKey = result.getObjectSummaries().get(i).getKey();
+            blogPosts.add(GetBlogPostFromS3(objectKey));
         }
+        Comparator<BlogPost> idComparator = Comparator.comparingInt(BlogPost::getPostId);
+
+        blogPosts.sort(idComparator);
+
         return blogPosts;
     }
 
