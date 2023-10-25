@@ -8,6 +8,9 @@ import java.util.List;
 
 @Service
 public class BlogPostService {
+    //todo: change back to 200
+    private static final int EXCERPT_LENGTH = 50;
+
 //
 //    List<BlogPost> getAllBlogPosts() {
 //
@@ -22,12 +25,12 @@ public class BlogPostService {
     public List<BlogPost> getBlogPosts() {
         List<BlogPost> blogPosts = AwsS3Util.GetBlogPostsFromS3();
         blogPosts.forEach(blogPost -> {
-            blogPost.setExcerpt(blogPost.getContent());
+            blogPost.setExcerpt(createExcerpt(blogPost.getContent()));
         });
         return blogPosts;
     }
 
     private String createExcerpt(String content) {
-        return content.substring(0, 200) + "...";
+        return content.substring(0, EXCERPT_LENGTH) + "...";
     }
 }

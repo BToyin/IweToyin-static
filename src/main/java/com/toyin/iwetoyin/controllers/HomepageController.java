@@ -41,8 +41,7 @@ public class HomepageController {
     @ModelAttribute
     private void prepareHomeModel(ModelMap model) {
         List<BlogPost> blogPost = blogPostService.getBlogPosts();
-        model.addAttribute("latest3rdAnd4thBlogPosts", blogPost);
+        model.addAttribute("latest2BlogPosts", blogPost.subList(0,2));
+        model.addAttribute("latest3rdAnd4thBlogPosts", blogPost.subList(2,4));
     }
-    // todo: Need to get the 4 latest blog post here to display on the home page
-
 }

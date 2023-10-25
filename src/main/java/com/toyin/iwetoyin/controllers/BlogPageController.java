@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -25,10 +26,12 @@ public class BlogPageController {
         return "blog";
     }
 
-    @GetMapping("/blog/image/{id}")
-    public void showBlogImage(HttpServletResponse response, ModelMap model) {
-        BlogPost blogPost  = blogPostService.getBlogPostByTitle("stress-exhibit.docx");
-        InputStream s3Image = GetBlogPostImageFromS3("stress-exhibit.png");
+    @GetMapping("/blog/image/{title}")
+    public void showBlogImage(HttpServletResponse response, ModelMap model, @PathVariable String title) {
+        BlogPost blogPost  = blogPostService.getBlogPostByTitle(title + ".docx");
+        //todo: figure out how to appropriate file extension to the file: png/jpg/jpeg etc
+        InputStream s3Image = GetBlogPostImageFromS3(title + ".jpg");
+
         try {
             IOUtil.copy(s3Image, response.getOutputStream());
         } catch (IOException ex) {

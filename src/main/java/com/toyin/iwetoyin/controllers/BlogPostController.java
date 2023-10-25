@@ -23,8 +23,8 @@ public class BlogPostController {
         this.blogPostService = blogPostService;
     }
 
-    @GetMapping("/blog/posts/{id}")
-    public String getBlogPost(@PathVariable("id") int id, ModelMap model) {
+    @GetMapping("/blog/posts/{title}")
+    public String getBlogPost(@PathVariable("title") String title, ModelMap model) {
         return "blog-post";
     }
 

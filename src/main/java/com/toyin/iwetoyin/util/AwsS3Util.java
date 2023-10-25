@@ -9,11 +9,9 @@ import com.amazonaws.services.s3.model.AmazonS3Exception;
 import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.ListObjectsV2Result;
 import com.amazonaws.services.s3.model.ListObjectsV2Request;
-import com.amazonaws.services.s3.model.ObjectListing;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
-import com.amazonaws.services.s3.model.S3ObjectSummary;
 import com.toyin.iwetoyin.entity.BlogPost;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,7 +20,6 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
@@ -67,16 +64,24 @@ public class AwsS3Util {
 
     //todo: Make the filenames the same for the uploaded word doc and image uploaded
     public static InputStream GetBlogPostImageFromS3(String fileName) {
+        AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
+                .withRegion(clientRegion)
+                .build();
+        String filePath = "resources/images/blogPhotos/" + fileName;
+        String defaultFilePath = "resources/images/blogPhotos/blog-default-image.jpg";
+
         try {
-            AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
-                    .withRegion(clientRegion)
-                    .build();
-            String filePath = "resources/images/blogPhotos/" + fileName;
             S3Object s3Object = s3Client.getObject(new GetObjectRequest(bucketName, filePath));
             return s3Object.getObjectContent();
         } catch (AmazonS3Exception ex) {
-            System.err.println(ex.getErrorMessage());
-            System.exit(1);
+            if (ex.getStatusCode() == 404) {
+                // The specified key does not exist, so retry with the default key
+                System.out.println("Specified key not found:" + filePath + " Using default key." );
+                S3Object defaultS3Object = s3Client.getObject(new GetObjectRequest(bucketName, defaultFilePath));
+                return defaultS3Object.getObjectContent();
+            } else {
+                System.err.println(ex.getErrorMessage() + ": " + fileName);
+            }
         }
         return null;
     }
@@ -111,6 +116,7 @@ public class AwsS3Util {
             e.printStackTrace();
         } catch (AmazonS3Exception ex) {
             System.err.println(ex.getErrorMessage());
+            System.err.println(objectKey);
             System.exit(1);
         }
         return null;
@@ -136,6 +142,7 @@ public class AwsS3Util {
         return blogPosts;
     }
 
+    //todo: make this method set the photoFileName to default if it doesn't exist in the images bucket
     public static String transformToLowerCaseWithDash(String input) {
         if (input == null) {
             return "";
