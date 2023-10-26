@@ -18,19 +18,20 @@ public class BlogPostService {
 
     public BlogPost getBlogPostByTitle(String filename) {
         BlogPost blogPost = AwsS3Util.GetBlogPostFromS3("resources/blogPages/" + filename);
-        blogPost.setExcerpt(createExcerpt(blogPost.getContent()));
+        blogPost.setExcerpt(createExcerpt(blogPost.getContent().toString()));
         return blogPost;
     }
 
     public List<BlogPost> getBlogPosts() {
         List<BlogPost> blogPosts = AwsS3Util.GetBlogPostsFromS3();
         blogPosts.forEach(blogPost -> {
-            blogPost.setExcerpt(createExcerpt(blogPost.getContent()));
+            blogPost.setExcerpt(createExcerpt(blogPost.getContent().toString()));
         });
         return blogPosts;
     }
 
+    //todo: changed this to 1 to account for the '[' from the array
     private String createExcerpt(String content) {
-        return content.substring(0, EXCERPT_LENGTH) + "...";
+        return content.substring(1, EXCERPT_LENGTH) + "...";
     }
 }

@@ -28,11 +28,11 @@ public class BlogPageController {
         return "blog";
     }
 
-    @GetMapping("/blog/image/{title}")
-    public void showBlogImage(HttpServletResponse response, ModelMap model, @PathVariable String title) {
-        BlogPost blogPost  = blogPostService.getBlogPostByTitle(title + ".docx");
+    @GetMapping("/blog/image/{fileName}")
+    public void showBlogImage(HttpServletResponse response, ModelMap model, @PathVariable String fileName) {
+        BlogPost blogPost  = blogPostService.getBlogPostByTitle(fileName + ".docx");
         //todo: figure out how to appropriate file extension to the file: png/jpg/jpeg etc
-        InputStream s3Image = GetBlogPostImageFromS3(title + ".jpg");
+        InputStream s3Image = GetBlogPostImageFromS3(fileName + ".jpg");
 
         try {
             IOUtil.copy(s3Image, response.getOutputStream());

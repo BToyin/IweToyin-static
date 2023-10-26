@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -30,11 +31,12 @@ public class BlogPostController {
 
     @ModelAttribute
     private void addBlogPostPageModelAttributes(ModelMap model, @PathVariable("fileName") String fileName) {
-//        BlogPost blogPost = blogPostService.getBlogPostById(id);
+        List<BlogPost> blogPosts = blogPostService.getBlogPosts();
         BlogPost blogPost = blogPostService.getBlogPostByTitle(fileName + ".docx");
-//        model.addAttribute("latest5BlogPosts", blogPostService.getLatest5ApprovedBlogPosts());
-//        model.addAttribute("numberOfBlogPosts", blogPostService.getAllApprovedBlogPosts().size());
-//        model.addAttribute("latest2BlogPosts", blogPostService.getLatest2ApprovedBlogPosts());
-        model.addAttribute("blogPost", blogPost);
+        model.addAttribute("latest2BlogPosts", blogPosts.subList(0,2));
+        model.addAttribute("latest5BlogPosts", blogPosts.subList(0,5));
+        model.addAttribute("numberOfBlogPosts", blogPosts.size());
+        model.addAttribute(blogPost);
+        model.addAttribute("paragraphs", blogPost.getContent());
     }
 }

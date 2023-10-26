@@ -1,10 +1,12 @@
 package com.toyin.iwetoyin.entity;
 
+import java.util.List;
+
 public class BlogPost {
 
     int postId;
     String title;
-    String content;
+    List<String> content;
     String excerpt;
     String fileName;
 
@@ -16,11 +18,11 @@ public class BlogPost {
         this.title = title;
     }
 
-    public String getContent() {
+    public List<String> getContent() {
         return content;
     }
 
-    public void setContent(String content) {
+    public void setContent(List<String> content) {
         this.content = content;
     }
 

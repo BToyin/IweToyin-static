@@ -95,12 +95,14 @@ public class AwsS3Util {
 
             String postId = document.getParagraphs().get(0).getText();
             String title = document.getParagraphs().get(1).getText();
-            StringBuilder content = new StringBuilder();
+//            StringBuilder content = new StringBuilder();
+            List<String> content = new ArrayList<>();
             for (int i = 2; i < document.getParagraphs().size(); i++) {
-                content.append(document.getParagraphs().get(i).getText());
-                if (i < document.getParagraphs().size() - 1) {
-                    content.append("\n"); // Preserve paragraphs with newlines
-                }
+//                content.append(document.getParagraphs().get(i).getText());
+                content.add(document.getParagraphs().get(i).getText());
+//                if (i < document.getParagraphs().size() - 1) {
+//                    content.append("\n"); // Preserve paragraphs with newlines
+//                }
             }
 
             // Close the input stream
@@ -110,7 +112,7 @@ public class AwsS3Util {
             blogPost.setPostId(Integer.parseInt(postId));
             blogPost.setTitle(title);
             blogPost.setFileName(transformToLowerCaseWithDash(title));
-            blogPost.setContent(content.toString());
+            blogPost.setContent(content);
             return blogPost;
         } catch (IOException e) {
             e.printStackTrace();
