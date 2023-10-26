@@ -17,26 +17,8 @@
         <p class="username">Yoruba Proverb</p>
       </div>
       <div class="widget-subscribe">
-        <h6 class="widget-tile">SUBSCRIBE</h6>
-        <p class="subscribe-text">Hear about new blog posts, significant website updates and most importantly...No Spam!</p>
-        <form th:if="${#strings.startsWith(#httpServletRequest.requestURI, '/blog/post')}" class="subscribe-form" id="subscribe-form" action="#" th:action="@{/blog/posts/{id}/subscribe(id=${blogPost.postId})}" th:object="${subscriber}" method="post">
-          <p th:if="${error}"  th:text="${error}" class="alert-danger"></p>
-          <p th:if="${passed}" th:text="${passed}" class="alert-success"></p>
-          <div class="form-group">
-            <p  th:if="${#fields.hasErrors('email')}" th:errors="*{email}" th:class="${#fields.hasErrors('email')} ? alert-danger">Invalid Email</p>
-            <input type="email" class="form-control" th:field="*{email}" id="email" placeholder="Your email" name="email">
-          </div>
-          <input class="btn btn-block btn-subscribe" type="submit" value="Subscribe" id="submit-subscribe-form">
-        </form>
-        <form th:unless="${#strings.startsWith(#httpServletRequest.requestURI, '/blog/post')}" class="subscribe-form" action="#" th:action="@{/blog/subscribe}" th:object="${subscriber}" method="post">
-          <p th:if="${error}"  th:text="${error}" class="alert-danger"></p>
-          <p th:if="${passed}" th:text="${passed}" class="alert-success"></p>
-          <div class="form-group">
-            <p  th:if="${#fields.hasErrors('email')}" th:errors="*{email}" th:class="${#fields.hasErrors('email')} ? alert-danger">Invalid Email</p>
-            <input type="email" class="form-control" th:field="*{email}" placeholder="Your email" name="email">
-          </div>
-          <input class="btn btn-block btn-subscribe" type="submit" value="Subscribe">
-        </form>
+        <h6 class="widget-tile">REACH OUT!</h6>
+        <p class="subscribe-text">Send me an email and chat to me because why are you being a hater.</p>
       </div>
       <div class="widget-posts">
         <h6 class="widget-title">LATEST BLOG POSTS</h6>
