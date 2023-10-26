@@ -109,7 +109,7 @@ public class AwsS3Util {
             BlogPost blogPost = new BlogPost();
             blogPost.setPostId(Integer.parseInt(postId));
             blogPost.setTitle(title);
-            blogPost.setPhotoFileName(transformToLowerCaseWithDash(title));
+            blogPost.setFileName(transformToLowerCaseWithDash(title));
             blogPost.setContent(content.toString());
             return blogPost;
         } catch (IOException e) {
@@ -142,7 +142,7 @@ public class AwsS3Util {
         return blogPosts;
     }
 
-    //todo: make this method set the photoFileName to default if it doesn't exist in the images bucket
+    //todo: make this method set the fileName to default if it doesn't exist in the images bucket
     public static String transformToLowerCaseWithDash(String input) {
         if (input == null) {
             return "";

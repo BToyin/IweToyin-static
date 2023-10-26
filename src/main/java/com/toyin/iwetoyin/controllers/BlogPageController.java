@@ -7,11 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 import static com.toyin.iwetoyin.util.AwsS3Util.GetBlogPostImageFromS3;
 
@@ -39,11 +41,12 @@ public class BlogPageController {
         }
     }
 
-//    @ModelAttribute
-//    private void prepareBlogsPageModelAttributes(ModelMap model) {
-//        model.addAttribute("blogPosts", blogPostService.getAllApprovedBlogPosts());
-//        model.addAttribute("latest5BlogPosts", blogPostService.getLatest5ApprovedBlogPosts());
-//        model.addAttribute("latest2BlogPosts", blogPostService.getLatest2ApprovedBlogPosts());
-//    }
+    @ModelAttribute
+    private void prepareBlogsPageModelAttributes(ModelMap model) {
+        List<BlogPost> blogPosts = blogPostService.getBlogPosts();
+        model.addAttribute("blogPosts", blogPosts);
+        model.addAttribute("latest2BlogPosts", blogPosts.subList(0,2));
+        model.addAttribute("latest5BlogPosts", blogPosts.subList(0,5));
+    }
 
 }

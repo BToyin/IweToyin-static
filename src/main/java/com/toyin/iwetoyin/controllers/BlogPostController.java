@@ -23,30 +23,15 @@ public class BlogPostController {
         this.blogPostService = blogPostService;
     }
 
-    @GetMapping("/blog/posts/{title}")
-    public String getBlogPost(@PathVariable("title") String title, ModelMap model) {
-        return "blog-post";
-    }
-
-    @GetMapping(value = {"/blog/posts/{id}/subscribe"})
-    public String getBlogPageAfterSubmission(HttpServletRequest request, ModelMap model, @PathVariable int id) {
-        Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(request);
-        if (inputFlashMap != null) {
-            if (inputFlashMap.containsKey("passed")) {
-                String passed = (String) inputFlashMap.get("passed");
-                model.addAttribute("passed", passed);
-            } else {
-                String error = (String) inputFlashMap.get("error");
-                model.addAttribute("error", error);
-            }
-        }
+    @GetMapping("/blog/posts/{fileName}")
+    public String getBlogPost(@PathVariable("fileName") String fileName, ModelMap model) {
         return "blog-post";
     }
 
     @ModelAttribute
-    private void addBlogPostPageModelAttributes(ModelMap model, @PathVariable int id) {
+    private void addBlogPostPageModelAttributes(ModelMap model, @PathVariable("fileName") String fileName) {
 //        BlogPost blogPost = blogPostService.getBlogPostById(id);
-        BlogPost blogPost = blogPostService.getBlogPostByTitle("stress-exhibit.docx");
+        BlogPost blogPost = blogPostService.getBlogPostByTitle(fileName + ".docx");
 //        model.addAttribute("latest5BlogPosts", blogPostService.getLatest5ApprovedBlogPosts());
 //        model.addAttribute("numberOfBlogPosts", blogPostService.getAllApprovedBlogPosts().size());
 //        model.addAttribute("latest2BlogPosts", blogPostService.getLatest2ApprovedBlogPosts());

@@ -6,7 +6,7 @@ public class BlogPost {
     String title;
     String content;
     String excerpt;
-    String photoFileName;
+    String fileName;
 
     public String getTitle() {
         return title;
@@ -32,12 +32,12 @@ public class BlogPost {
         this.excerpt = excerpt;
     }
 
-    public String getPhotoFileName() {
-        return photoFileName;
+    public String getFileName() {
+        return fileName;
     }
 
-    public void setPhotoFileName(String photoFileName) {
-        this.photoFileName = photoFileName;
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
     public int getPostId() {
