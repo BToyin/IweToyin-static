@@ -22,13 +22,13 @@
             <div class="row">
                 <div class="col-lg-8 blog-post-archive">
                     <article class="wow fadeInUp mb-5" th:each="blogPost: ${blogPosts}">
-                        <a th:href="@{/blog/posts/{fileName}(fileName=${blogPost.fileName})}">
+                        <a th:href="@{/blog/pages/{fileName}(fileName=${blogPost.fileName})}">
                             <img th:src="@{'/blog/image/' + ${blogPost.fileName}}" alt="blog post" class="blog-post-thumbnail">
                         </a>
                         <div class="media-body">
                             <h5 class="blog-post-title" th:text="${blogPost.title}"></h5>
                             <p class="blog-post-excerpt" th:text="${blogPost.excerpt}"></p>
-                            <a th:href="@{/blog/posts/{id}(id=${blogPost.postId})}" class="blog-post-link link-hover-fx">Read more</a>
+                            <a th:href="@{/blog/pages/{id}(id=${blogPost.postId})}" class="blog-post-link link-hover-fx">Read more</a>
                         </div>
                     </article>
                 </div>

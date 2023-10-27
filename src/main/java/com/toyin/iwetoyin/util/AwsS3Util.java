@@ -76,7 +76,6 @@ public class AwsS3Util {
         } catch (AmazonS3Exception ex) {
             if (ex.getStatusCode() == 404) {
                 // The specified key does not exist, so retry with the default key
-                System.out.println("Specified key not found:" + filePath + " Using default key." );
                 S3Object defaultS3Object = s3Client.getObject(new GetObjectRequest(bucketName, defaultFilePath));
                 return defaultS3Object.getObjectContent();
             } else {
@@ -95,14 +94,9 @@ public class AwsS3Util {
 
             String postId = document.getParagraphs().get(0).getText();
             String title = document.getParagraphs().get(1).getText();
-//            StringBuilder content = new StringBuilder();
             List<String> content = new ArrayList<>();
             for (int i = 2; i < document.getParagraphs().size(); i++) {
-//                content.append(document.getParagraphs().get(i).getText());
                 content.add(document.getParagraphs().get(i).getText());
-//                if (i < document.getParagraphs().size() - 1) {
-//                    content.append("\n"); // Preserve paragraphs with newlines
-//                }
             }
 
             // Close the input stream

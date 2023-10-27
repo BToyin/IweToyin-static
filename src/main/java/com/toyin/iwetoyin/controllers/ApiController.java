@@ -53,12 +53,12 @@
 //        return new ResponseEntity(HttpStatus.OK);
 //    }
 //
-//    @GetMapping("/blog/posts/all")
+//    @GetMapping("/blog/pages/all")
 //    public List<BlogPost> getBlogPosts() {
 //        return blogPostService.getAllApprovedBlogPosts();
 //    }
 //
-//    @PostMapping("/blog/posts/create")
+//    @PostMapping("/blog/pages/create")
 //    public ResponseEntity postNewBlog(@RequestBody BlogPost blogPost) {
 //        if(blogPostService.existsByTitle(blogPost.getTitle())) {
 //            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -67,7 +67,7 @@
 //        return new ResponseEntity(HttpStatus.OK);
 //    }
 //
-//    @DeleteMapping("/blog/posts/{id}/delete")
+//    @DeleteMapping("/blog/pages/{id}/delete")
 //    public ResponseEntity deleteBlogPost(@PathVariable int id) {
 //        boolean isDeleted = blogPostService.deleteBlogPostById(id);
 //        if(isDeleted) {

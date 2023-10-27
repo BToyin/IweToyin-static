@@ -24,7 +24,7 @@ public class BlogPostController {
         this.blogPostService = blogPostService;
     }
 
-    @GetMapping("/blog/posts/{fileName}")
+    @GetMapping("/blog/pages/{fileName}")
     public String getBlogPost(@PathVariable("fileName") String fileName, ModelMap model) {
         return "blog-post";
     }
