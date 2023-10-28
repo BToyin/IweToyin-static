@@ -54,7 +54,7 @@
 //    }
 //
 //    @GetMapping("/blog/pages/all")
-//    public List<BlogPost> getBlogPosts() {
+//    public List<BlogPost> getAllBlogPosts() {
 //        return blogPostService.getAllApprovedBlogPosts();
 //    }
 //

@@ -40,7 +40,7 @@ public class HomepageController {
 
     @ModelAttribute
     private void prepareHomeModel(ModelMap model) {
-        List<BlogPost> blogPost = blogPostService.getBlogPosts();
+        List<BlogPost> blogPost = blogPostService.getAllBlogPosts();
         model.addAttribute("latest2BlogPosts", blogPost.subList(0,2));
         model.addAttribute("latest3rdAnd4thBlogPosts", blogPost.subList(2,4));
     }

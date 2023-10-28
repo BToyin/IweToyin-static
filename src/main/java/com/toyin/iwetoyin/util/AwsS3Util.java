@@ -118,7 +118,7 @@ public class AwsS3Util {
         return null;
     }
 
-    public static List<BlogPost> GetBlogPostsFromS3() {
+    public static List<BlogPost> GetAllBlogPostsFromS3() {
         String prefix = "resources/blogPages"; // Specify the prefix you want to list
 
         List<BlogPost> blogPosts = new ArrayList<>();

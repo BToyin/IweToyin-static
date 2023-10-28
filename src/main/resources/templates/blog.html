@@ -28,7 +28,7 @@
                         <div class="media-body">
                             <h5 class="blog-post-title" th:text="${blogPost.title}"></h5>
                             <p class="blog-post-excerpt" th:text="${blogPost.excerpt}"></p>
-                            <a th:href="@{/blog/pages/{id}(id=${blogPost.postId})}" class="blog-post-link link-hover-fx">Read more</a>
+                            <a th:href="@{/blog/pages/{fileName}(fileName=${blogPost.fileName})}" class="blog-post-link link-hover-fx">Read more</a>
                         </div>
                     </article>
                 </div>
