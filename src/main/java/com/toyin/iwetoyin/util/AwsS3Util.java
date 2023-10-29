@@ -94,8 +94,9 @@ public class AwsS3Util {
 
             String postId = document.getParagraphs().get(0).getText();
             String title = document.getParagraphs().get(1).getText();
+            String byLine = document.getParagraphs().get(2).getText();
             List<String> content = new ArrayList<>();
-            for (int i = 2; i < document.getParagraphs().size(); i++) {
+            for (int i = 3; i < document.getParagraphs().size(); i++) {
                 content.add(document.getParagraphs().get(i).getText());
             }
 
@@ -107,6 +108,7 @@ public class AwsS3Util {
             blogPost.setTitle(title);
             blogPost.setFileName(transformToLowerCaseWithDash(title));
             blogPost.setContent(content);
+            blogPost.setByLine(byLine);
             return blogPost;
         } catch (IOException e) {
             e.printStackTrace();

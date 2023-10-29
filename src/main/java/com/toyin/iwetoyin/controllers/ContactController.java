@@ -64,7 +64,7 @@
 //
 //    @ModelAttribute
 //    private void addContactModelAttributes(ModelMap model) {
-//        model.addAttribute("latest2BlogPosts", blogPostService.getLatest2ApprovedBlogPosts());
+//        model.addAttribute("latest2BlogPosts", blogPostService.getAllBlogPosts().subList(0,2));
 //        model.addAttribute("contactReasons", contactReasons);
 //        model.addAttribute("contact", new Contact());
 //    }

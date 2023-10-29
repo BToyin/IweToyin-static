@@ -9,6 +9,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -20,12 +22,29 @@ import static com.toyin.iwetoyin.util.AwsS3Util.GetBlogPostImageFromS3;
 @Controller
 public class BlogController {
 
+    final int PAGE_SIZE = 3;
+
     @Autowired
     BlogPostService blogPostService;
 
     @GetMapping("/blog")
-    public String getBlogsPage () {
-        return "blog";
+    public ModelAndView getBlogsPage(@RequestParam(name = "page", defaultValue = "1") int page) {
+        List<BlogPost> blogPosts = blogPostService.getAllBlogPosts();
+
+        int totalPosts = blogPosts.size();
+        int totalPages = (int) Math.ceil((double) totalPosts / PAGE_SIZE);
+        int endIndex = Math.min(page * PAGE_SIZE, totalPosts);
+
+        List<BlogPost> currentPagePosts = blogPosts.subList(0, endIndex);
+
+        ModelAndView modelAndView = new ModelAndView("blog");
+        modelAndView.addObject("blogPosts", currentPagePosts);
+        modelAndView.addObject("currentPage", page);
+        modelAndView.addObject("totalPages", totalPages);
+        modelAndView.addObject("latest2BlogPosts", blogPosts.subList(0,2));
+        modelAndView.addObject("latest5BlogPosts", blogPosts.subList(0,5));
+
+        return modelAndView;
     }
 
     @GetMapping("/blog/image/{fileName}")
@@ -40,13 +59,4 @@ public class BlogController {
             ex.printStackTrace();
         }
     }
-
-    @ModelAttribute
-    private void prepareBlogsPageModelAttributes(ModelMap model) {
-        List<BlogPost> blogPosts = blogPostService.getAllBlogPosts();
-        model.addAttribute("blogPosts", blogPosts);
-        model.addAttribute("latest2BlogPosts", blogPosts.subList(0,2));
-        model.addAttribute("latest5BlogPosts", blogPosts.subList(0,5));
-    }
-
 }

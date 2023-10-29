@@ -31,6 +31,10 @@
                             <a th:href="@{/blog/pages/{fileName}(fileName=${blogPost.fileName})}" class="blog-post-link link-hover-fx">Read more</a>
                         </div>
                     </article>
+                    <!-- Pagination navigation -->
+                    <div th:if="${currentPage < totalPages}">
+                        <a th:href="@{/blog(page=${currentPage + 1})}" class="blog-post-link link-hover-fx" style="font-size: 20px">View more...</a>
+                    </div>
                 </div>
                 <div th:include="fragments/blog-sidebar" class="blog-sidebar col-lg-4"></div>
             </div>

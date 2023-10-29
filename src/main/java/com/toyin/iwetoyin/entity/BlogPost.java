@@ -9,6 +9,7 @@ public class BlogPost {
     List<String> content;
     String excerpt;
     String fileName;
+    String byLine;
 
     public String getTitle() {
         return title;
@@ -48,5 +49,13 @@ public class BlogPost {
 
     public void setPostId(int postId) {
         this.postId = postId;
+    }
+
+    public String getByLine() {
+        return byLine;
+    }
+
+    public void setByLine(String byLine) {
+        this.byLine = byLine;
     }
 }
