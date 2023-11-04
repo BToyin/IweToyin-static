@@ -42,40 +42,11 @@
 //        this.userDetailsService = userDetailsService;
 //    }
 //
-//    @PostMapping("/subscriber/register")
-//    public ResponseEntity register(@RequestBody Subscriber subscriber) {
-//
-//        if(subscriberService.existsByEmail(subscriber.getEmail())) {
-//            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//
-//        subscriberService.createSubscriber(subscriber);
-//        return new ResponseEntity(HttpStatus.OK);
-//    }
-//
 //    @GetMapping("/blog/pages/all")
 //    public List<BlogPost> getAllBlogPosts() {
 //        return blogPostService.getAllApprovedBlogPosts();
 //    }
 //
-//    @PostMapping("/blog/pages/create")
-//    public ResponseEntity postNewBlog(@RequestBody BlogPost blogPost) {
-//        if(blogPostService.existsByTitle(blogPost.getTitle())) {
-//            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//        blogPostService.createNewBlogPost(blogPost);
-//        return new ResponseEntity(HttpStatus.OK);
-//    }
-//
-//    @DeleteMapping("/blog/pages/{id}/delete")
-//    public ResponseEntity deleteBlogPost(@PathVariable int id) {
-//        boolean isDeleted = blogPostService.deleteBlogPostById(id);
-//        if(isDeleted) {
-//            return new ResponseEntity(HttpStatus.OK);
-//        } else {
-//            return new ResponseEntity(HttpStatus.NOT_FOUND);
-//        }
-//    }
 //
 //    @GetMapping("/contact/all")
 //    public List<Contact> getAllContacts() {
