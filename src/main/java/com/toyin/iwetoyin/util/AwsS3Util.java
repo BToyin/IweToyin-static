@@ -23,6 +23,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class AwsS3Util {
 
@@ -62,8 +64,8 @@ public class AwsS3Util {
         }
     }
 
-    //todo: Make the filenames the same for the uploaded word doc and image uploaded
-    public static InputStream GetBlogPostImageFromS3(String fileName) {
+    // Ensure the filenames the same for the uploaded word doc and image uploaded
+    public static InputStream getBlogPostImageFromS3(String fileName) {
         AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
                 .withRegion(clientRegion)
                 .build();
@@ -85,42 +87,55 @@ public class AwsS3Util {
         return null;
     }
 
-    public static BlogPost GetBlogPostFromS3(String objectKey) {
+    public static BlogPost getBlogPostFromS3(String objectKey) {
         try {
             S3Object s3Object = s3Client.getObject(new GetObjectRequest(bucketName, objectKey));
-            // Read the content of the Word document
             InputStream inputStream = s3Object.getObjectContent();
-            XWPFDocument document = new XWPFDocument(inputStream);
 
-            String postId = document.getParagraphs().get(0).getText();
-            String title = document.getParagraphs().get(1).getText();
-            String byLine = document.getParagraphs().get(2).getText();
-            List<String> content = new ArrayList<>();
-            for (int i = 3; i < document.getParagraphs().size(); i++) {
-                content.add(document.getParagraphs().get(i).getText());
+            try {
+                XWPFDocument document = new XWPFDocument(inputStream);
+                String title = document.getParagraphs().get(0).getText();
+                String byLine = document.getParagraphs().get(1).getText();
+                List<String> content = new ArrayList<>();
+
+                for (int i = 2; i < document.getParagraphs().size(); i++) {
+                    content.add(document.getParagraphs().get(i).getText());
+                }
+
+                // Close the input stream
+                inputStream.close();
+
+                BlogPost blogPost = new BlogPost();
+
+                // Get the post ID using regex pattern
+                Pattern pattern = Pattern.compile("\\d+");
+                Matcher matcher = pattern.matcher(objectKey);
+
+                if (matcher.find()) {
+                    blogPost.setPostId(Integer.parseInt(matcher.group()));
+                }
+
+                blogPost.setTitle(title);
+                blogPost.setFileName(transformToLowerCaseWithDash(title));
+                blogPost.setContent(content);
+                blogPost.setByLine(byLine);
+
+                return blogPost;
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null; // Return null in case of IOException
             }
-
-            // Close the input stream
-            inputStream.close();
-
-            BlogPost blogPost = new BlogPost();
-            blogPost.setPostId(Integer.parseInt(postId));
-            blogPost.setTitle(title);
-            blogPost.setFileName(transformToLowerCaseWithDash(title));
-            blogPost.setContent(content);
-            blogPost.setByLine(byLine);
-            return blogPost;
-        } catch (IOException e) {
-            e.printStackTrace();
         } catch (AmazonS3Exception ex) {
             System.err.println(ex.getErrorMessage());
             System.err.println(objectKey);
-            System.exit(1);
+            System.exit(1); // Consider a more graceful way to handle this error
         }
-        return null;
+
+        return null; // Return null for any other exceptions
     }
 
-    public static List<BlogPost> GetAllBlogPostsFromS3() {
+
+    public static List<BlogPost> getAllBlogPostsFromS3() {
         String prefix = "resources/blogPages"; // Specify the prefix you want to list
 
         List<BlogPost> blogPosts = new ArrayList<>();
@@ -131,7 +146,7 @@ public class AwsS3Util {
         ListObjectsV2Result result = s3Client.listObjectsV2(listRequest);
         for (int i=1; i< result.getObjectSummaries().size(); i++) {
             String objectKey = result.getObjectSummaries().get(i).getKey();
-            blogPosts.add(GetBlogPostFromS3(objectKey));
+            blogPosts.add(getBlogPostFromS3(objectKey));
         }
         Comparator<BlogPost> idComparator = Comparator.comparingInt(BlogPost::getPostId).reversed();
 
@@ -140,25 +155,12 @@ public class AwsS3Util {
         return blogPosts;
     }
 
-    //todo: make this method set the fileName to default if it doesn't exist in the images bucket
     public static String transformToLowerCaseWithDash(String input) {
         if (input == null) {
             return "";
         }
 
-        String[] words = input.split("\\s+"); // Split the input string by whitespace
-
-        StringBuilder result = new StringBuilder();
-
-        for (int i = 0; i < words.length; i++) {
-            String word = words[i].toLowerCase(); // Convert each word to lowercase
-            result.append(word);
-
-            if (i < words.length - 1) {
-                result.append("-");
-            }
-        }
-        return result.toString();
+        return input.replaceAll("\\s+", "-").toLowerCase().replaceAll("-+", "-").replaceAll("^-+|-+$", "");
     }
 }
 

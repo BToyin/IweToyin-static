@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-import static com.toyin.iwetoyin.util.AwsS3Util.GetBlogPostImageFromS3;
+import static com.toyin.iwetoyin.util.AwsS3Util.getBlogPostImageFromS3;
 
 @Controller
 public class BlogController {
@@ -48,11 +48,10 @@ public class BlogController {
 
     @GetMapping("/blog/image/{fileName}")
     public void showBlogImage(HttpServletResponse response, ModelMap model, @PathVariable String fileName) {
-        BlogPost blogPost  = blogPostService.getBlogPostByTitle(fileName + ".docx");
-        //todo: figure out how to appropriate file extension to the file: png/jpg/jpeg etc
-        InputStream s3Image = GetBlogPostImageFromS3(fileName + ".jpg");
+        InputStream s3Image = getBlogPostImageFromS3(fileName + ".jpg");
 
         try {
+            assert s3Image != null;
             IOUtil.copy(s3Image, response.getOutputStream());
         } catch (IOException ex) {
             ex.printStackTrace();

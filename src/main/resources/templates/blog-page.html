@@ -33,13 +33,13 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-4" >
-                    <a th:if="${blogPost.postId > 1}" th:href="@{/blog/pages/previous(currentPostTitle=${blogPost.title})}" class="float-left secondary-color load-more-link link-hover-fx">&laquo; Prev Post</a>
+                    <a th:if="${blogPost.postId > 1}" th:href="@{/blog/pages/previous(nextPostTitle=${blogPost.title})}" class="float-left secondary-color load-more-link link-hover-fx">&laquo; Prev Post</a>
                 </div>
                 <div class="col-4 text-center">
                     <a th:href="@{/blog}" class="secondary-color load-more-link link-hover-fx">See all posts</a>
                 </div>
                 <div class="col-4" >
-                    <a th:if="${blogPost.postId < numberOfBlogPosts}" th:href="@{/blog/pages/next(currentPostTitle=${blogPost.title})}" class="float-right secondary-color load-more-link link-hover-fx">Next Post &raquo;</a>
+                    <a th:if="${blogPost.postId < numberOfBlogPosts}" th:href="@{/blog/pages/next(previousPostTitle=${blogPost.title})}" class="float-right secondary-color load-more-link link-hover-fx">Next Post &raquo;</a>
                 </div>
             </div>
         </div>

@@ -25,7 +25,7 @@ public class BlogPageController {
 
     @GetMapping("/blog/pages/{fileName}")
     public ModelAndView getBlogPage(@PathVariable("fileName") String fileName) {
-        BlogPost blogPost = blogPostService.getBlogPostByTitle(fileName + ".docx");
+        BlogPost blogPost = blogPostService.getBlogPostByTitle(fileName);
         ModelAndView modelAndView = new ModelAndView("blog-page");
         modelAndView.addObject("blogPost", blogPost);
         modelAndView.addObject("paragraphs", blogPost.getContent());
@@ -33,8 +33,8 @@ public class BlogPageController {
     }
 
     @GetMapping("/blog/pages/next")
-    public ModelAndView getNextBlogPage(@RequestParam("currentPostTitle") String currentPostTitle) {
-        BlogPost nextPost = blogPostService.getNextBlogPost(currentPostTitle);
+    public ModelAndView getNextBlogPage(@RequestParam("previousPostTitle") String previousPostTitle) {
+        BlogPost nextPost = blogPostService.getNextBlogPost(previousPostTitle);
         ModelAndView modelAndView = new ModelAndView("blog-page");
         modelAndView.addObject("blogPost", nextPost);
         modelAndView.addObject("paragraphs", nextPost.getContent());
@@ -42,8 +42,8 @@ public class BlogPageController {
     }
 
     @GetMapping("/blog/pages/previous")
-    public ModelAndView getPreviousBlogPage(@RequestParam("currentPostTitle") String currentPostTitle) {
-        BlogPost previousPost = blogPostService.getPreviousBlogPost(currentPostTitle);
+    public ModelAndView getPreviousBlogPage(@RequestParam("nextPostTitle") String nextPostTitle) {
+        BlogPost previousPost = blogPostService.getPreviousBlogPost(nextPostTitle);
         ModelAndView modelAndView = new ModelAndView("blog-page");
         modelAndView.addObject("blogPost", previousPost);
         modelAndView.addObject("paragraphs", previousPost.getContent());

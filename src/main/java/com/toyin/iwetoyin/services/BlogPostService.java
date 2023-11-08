@@ -9,37 +9,35 @@ import java.util.List;
 
 @Service
 public class BlogPostService {
-    //todo: change back to 200
-    private static final int EXCERPT_LENGTH = 50;
+    private static final int EXCERPT_LENGTH = 200;
 
-    public BlogPost getBlogPostByTitle(String filename) {
-        BlogPost blogPost = AwsS3Util.GetBlogPostFromS3("resources/blogPages/" + filename);
-        blogPost.setExcerpt(createExcerpt(blogPost.getContent().toString()));
-        return blogPost;
+    public BlogPost getBlogPostByTitle(String title) {
+        List<BlogPost> blogPosts  = getAllBlogPosts();
+        return blogPosts.stream().filter(bg -> bg.getFileName().equals(AwsS3Util.transformToLowerCaseWithDash(title))).findFirst().get();
     }
 
     public List<BlogPost> getAllBlogPosts() {
-        List<BlogPost> blogPosts = AwsS3Util.GetAllBlogPostsFromS3();
+        List<BlogPost> blogPosts = AwsS3Util.getAllBlogPostsFromS3();
         blogPosts.forEach(blogPost -> {
             blogPost.setExcerpt(createExcerpt(blogPost.getContent().toString()));
         });
         return blogPosts;
     }
 
-    //todo: changed this to 1 to account for the '[' from the array
+    // Changed this to 1 to account for the '[' from the array
     private String createExcerpt(String content) {
         return content.substring(1, EXCERPT_LENGTH) + "...";
     }
 
-    public BlogPost getPreviousBlogPost(String currentPostTitle) {
-        BlogPost currentPost = getBlogPostByTitle(AwsS3Util.transformToLowerCaseWithDash(currentPostTitle) + ".docx");
+    public BlogPost getPreviousBlogPost(String nextPostTitle) {
+        BlogPost currentPost = getBlogPostByTitle(AwsS3Util.transformToLowerCaseWithDash(nextPostTitle));
         List<BlogPost> allBlogPosts = getAllBlogPosts();
         Collections.reverse(allBlogPosts);
         return allBlogPosts.get(currentPost.getPostId() - 2);
     }
 
-    public BlogPost getNextBlogPost(String currentPostTitle) {
-        BlogPost currentPost = getBlogPostByTitle(AwsS3Util.transformToLowerCaseWithDash(currentPostTitle) + ".docx");
+    public BlogPost getNextBlogPost(String previousPostTitle) {
+        BlogPost currentPost = getBlogPostByTitle(AwsS3Util.transformToLowerCaseWithDash(previousPostTitle));
         List<BlogPost> allBlogPosts = getAllBlogPosts();
         Collections.reverse(allBlogPosts);
         return allBlogPosts.get(currentPost.getPostId());
